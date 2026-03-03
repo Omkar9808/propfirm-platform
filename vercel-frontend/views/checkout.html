@@ -28,127 +28,144 @@
     <!-- Checkout Section -->
     <section class="checkout-section">
         <div class="container">
-            <div class="checkout-container">
-                <div class="checkout-header">
-                    <h1>Complete Your Purchase</h1>
-                    <p>Securely complete your challenge purchase</p>
+            <!-- 2-Column Grid Layout -->
+            <div class="checkout-grid animate-fade-in">
+                
+                <!-- Left Panel: Capital Summary (Sticky) -->
+                <div class="capital-summary-panel">
+                    <div class="summary-card">
+                        <h3 class="summary-title">Capital Activation</h3>
+                        
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span class="summary-label">Program</span>
+                                <span class="summary-value" id="programName">$10K Practice Challenge</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            
+                            <div class="summary-row">
+                                <span class="summary-label">Simulated Capital</span>
+                                <span class="summary-value highlight" id="capitalAmount">$10,000</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            
+                            <div class="summary-row">
+                                <span class="summary-label">Profit Target</span>
+                                <span class="summary-value" id="profitTarget">8%</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            
+                            <div class="summary-row">
+                                <span class="summary-label">Daily Loss Limit</span>
+                                <span class="summary-value" id="dailyLoss">5%</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            
+                            <div class="summary-row">
+                                <span class="summary-label">Max Drawdown</span>
+                                <span class="summary-value" id="maxDrawdown">10%</span>
+                            </div>
+                            <div class="summary-divider"></div>
+                            
+                            <div class="summary-row">
+                                <span class="summary-label">Min Trading Days</span>
+                                <span class="summary-value" id="tradingDays">5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-footer">
+                            <div class="summary-divider thick"></div>
+                            <div class="fee-row">
+                                <span class="fee-label">Program Fee</span>
+                                <span class="fee-value" id="programFee">$2</span>
+                            </div>
+                            <div class="total-row">
+                                <span class="total-label">Total</span>
+                                <span class="total-value" id="totalAmount">$2</span>
+                            </div>
+                            <p class="disclaimer">All accounts are simulated for evaluation purposes.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="checkout-content">
-                    <div class="order-summary">
-                        <h2>Order Summary</h2>
-                        <div class="order-item">
-                            <div class="item-info">
-                                <h3>$5K Practice Challenge</h3>
-                                <p class="item-desc">Account balance: $5,000</p>
-                                <p class="item-desc">Profit target: 8%</p>
-                                <p class="item-desc">Daily loss limit: 5%</p>
-                                <p class="item-desc">Max drawdown: 10%</p>
-                                <p class="item-desc">Min trading days: 3</p>
-                            </div>
-                            <div class="item-price">$1.00</div>
+                <!-- Right Panel: Payment Form -->
+                <div class="payment-panel">
+                    <div class="payment-container">
+                        <div class="payment-header">
+                            <h2>Secure Payment</h2>
+                            <p>Your challenge account will be activated instantly after confirmation.</p>
                         </div>
                         
-                        <div class="order-details">
-                            <div class="detail-row">
-                                <span>Subtotal:</span>
-                                <span>$1.00</span>
-                            </div>
-                            <div class="detail-row">
-                                <span>Tax:</span>
-                                <span>$0.00</span>
-                            </div>
-                            <div class="detail-row total">
-                                <span>Total:</span>
-                                <span class="total-price">$1.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="payment-form">
-                        <h2>Payment Information</h2>
-                        
-                        <div class="payment-methods">
-                            <div class="payment-method active" data-method="card">
-                                <i class="fab fa-cc-visa"></i>
-                                <span>Credit/Debit Card</span>
-                            </div>
-                            <div class="payment-method" data-method="paypal">
-                                <i class="fab fa-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="payment-method" data-method="stripe">
-                                <i class="fab fa-cc-stripe"></i>
-                                <span>Stripe</span>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-fields">
-                            <div class="form-group">
-                                <label for="cardNumber">Card Number</label>
-                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group half">
-                                    <label for="expiryDate">Expiry Date</label>
-                                    <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+                        <form class="payment-form" id="checkoutForm">
+                            <div class="form-section">
+                                <h4 class="section-title">Card Information</h4>
+                                
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input 
+                                        type="text" 
+                                        id="cardNumber" 
+                                        placeholder="1234 5678 9012 3456" 
+                                        maxlength="19"
+                                        required
+                                    >
                                 </div>
-                                <div class="form-group half">
-                                    <label for="cvv">CVV</label>
-                                    <input type="text" id="cvv" placeholder="123" maxlength="3">
+                                
+                                <div class="form-row">
+                                    <div class="form-group half">
+                                        <label for="expiryDate">Expiry Date</label>
+                                        <input 
+                                            type="text" 
+                                            id="expiryDate" 
+                                            placeholder="MM/YY" 
+                                            maxlength="5"
+                                            required
+                                        >
+                                    </div>
+                                    <div class="form-group half">
+                                        <label for="cvv">CVV</label>
+                                        <input 
+                                            type="text" 
+                                            id="cvv" 
+                                            placeholder="123" 
+                                            maxlength="3"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cardName">Name on Card</label>
+                                    <input 
+                                        type="text" 
+                                        id="cardName" 
+                                        placeholder="John Doe"
+                                        required
+                                    >
                                 </div>
                             </div>
                             
-                            <div class="form-group">
-                                <label for="cardName">Name on Card</label>
-                                <input type="text" id="cardName" placeholder="John Doe">
-                            </div>
+                            <button type="submit" class="activate-btn" id="activateBtn">
+                                <span class="btn-text">Activate $10K Challenge – $2</span>
+                                <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i> Processing...</span>
+                            </button>
                             
-                            <div class="form-group checkbox-group">
-                                <input type="checkbox" id="saveCard">
-                                <label for="saveCard">Save card details for future purchases</label>
+                            <div class="trust-indicators">
+                                <div class="indicator">
+                                    <i class="fas fa-lock"></i>
+                                    <span>256-bit SSL Encryption</span>
+                                </div>
+                                <div class="indicator">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Instant Account Access</span>
+                                </div>
+                                <div class="indicator">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Secure Payment via Stripe</span>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <button class="btn btn-primary btn-full" id="completePurchaseBtn">
-                            Complete Purchase - $1.00
-                        </button>
-                        
-                        <div class="secure-payment">
-                            <i class="fas fa-lock"></i>
-                            <p>Your payment is secured with 256-bit SSL encryption</p>
-                        </div>
+                        </form>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rules Summary -->
-    <section class="rules-summary">
-        <div class="container">
-            <h2>Challenge Rules Summary</h2>
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <i class="fas fa-percentage"></i>
-                    <h3>8% Profit Target</h3>
-                    <p>Required for challenge completion</p>
-                </div>
-                <div class="summary-card">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h3>5% Daily Loss</h3>
-                    <p>Maximum daily drawdown limit</p>
-                </div>
-                <div class="summary-card">
-                    <i class="fas fa-times-circle"></i>
-                    <h3>10% Max DD</h3>
-                    <p>Overall maximum drawdown limit</p>
-                </div>
-                <div class="summary-card">
-                    <i class="fas fa-calendar-day"></i>
-                    <h3>Min 3 Trading Days</h3>
-                    <p>Required before profit target</p>
                 </div>
             </div>
         </div>
@@ -165,21 +182,62 @@
 
     <script src="/public/js/main.js"></script>
     <script>
-        // Payment method selection
-        document.querySelectorAll('.payment-method').forEach(method => {
-            method.addEventListener('click', function() {
-                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
-                this.classList.add('active');
-                
-                const methodType = this.getAttribute('data-method');
-                if (methodType === 'card') {
-                    document.querySelector('.payment-fields').style.display = 'block';
-                } else {
-                    document.querySelector('.payment-fields').style.display = 'none';
-                }
-            });
-        });
-
+        // Get challenge data from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const challengeTier = urlParams.get('challenge') || '10k';
+        
+        // Challenge tier data
+        const tierData = {
+            '5k': {
+                name: '$5K Practice Challenge',
+                capital: 5000,
+                profitTarget: '8%',
+                dailyLoss: '5%',
+                maxDrawdown: '10%',
+                tradingDays: 3,
+                fee: 1
+            },
+            '10k': {
+                name: '$10K Practice Challenge',
+                capital: 10000,
+                profitTarget: '8%',
+                dailyLoss: '5%',
+                maxDrawdown: '10%',
+                tradingDays: 5,
+                fee: 2
+            },
+            '25k': {
+                name: '$25K Practice Challenge',
+                capital: 25000,
+                profitTarget: '8%',
+                dailyLoss: '5%',
+                maxDrawdown: '10%',
+                tradingDays: 10,
+                fee: 5
+            }
+        };
+        
+        // Initialize checkout with tier data
+        function initializeCheckout() {
+            const data = tierData[challengeTier] || tierData['10k'];
+            
+            // Update summary panel
+            document.getElementById('programName').textContent = data.name;
+            document.getElementById('capitalAmount').textContent = `$${data.capital.toLocaleString()}`;
+            document.getElementById('profitTarget').textContent = data.profitTarget;
+            document.getElementById('dailyLoss').textContent = data.dailyLoss;
+            document.getElementById('maxDrawdown').textContent = data.maxDrawdown;
+            document.getElementById('tradingDays').textContent = data.tradingDays;
+            document.getElementById('programFee').textContent = `$${data.fee}`;
+            document.getElementById('totalAmount').textContent = `$${data.fee}`;
+            
+            // Update button text
+            const btnText = document.querySelector('.btn-text');
+            if (btnText) {
+                btnText.textContent = `Activate $${data.capital.toLocaleString()} Challenge – $${data.fee}`;
+            }
+        }
+        
         // Format card number input
         document.getElementById('cardNumber').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
@@ -195,9 +253,11 @@
             }
             e.target.value = value;
         });
-
-        // Complete purchase
-        document.getElementById('completePurchaseBtn').addEventListener('click', function() {
+        
+        // Form submission
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             const cardNumber = document.getElementById('cardNumber').value;
             const expiryDate = document.getElementById('expiryDate').value;
             const cvv = document.getElementById('cvv').value;
@@ -210,18 +270,20 @@
             }
             
             // Show loading state
-            const btn = this;
+            const btn = document.getElementById('activateBtn');
             btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            btn.classList.add('loading');
             
             // Simulate payment processing
             setTimeout(() => {
                 // Show success popup
                 showSuccessPopup();
                 
-                // Reset button
-                btn.disabled = false;
-                btn.innerHTML = 'Complete Purchase - $1.00';
+                // Reset button after delay
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.classList.remove('loading');
+                }, 2000);
             }, 2000);
         });
 
@@ -232,11 +294,11 @@
             overlay.innerHTML = `
                 <div class="success-modal">
                     <div class="modal-content">
-                        <div class="modal-icon">
+                        <div class="modal-icon success">
                             <i class="fas fa-check-circle"></i>
                         </div>
-                        <h2>Account Created Successfully!</h2>
-                        <p>Check your email for MT5 credentials.</p>
+                        <h2>Account Activated Successfully!</h2>
+                        <p>Your challenge account is now ready.</p>
                         <p class="modal-subtext">Redirecting to dashboard...</p>
                     </div>
                 </div>
@@ -244,11 +306,58 @@
             
             document.body.appendChild(overlay);
             
+            // Add styles for modal
+            const style = document.createElement('style');
+            style.textContent = `
+                .modal-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.8);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    animation: fadeIn 0.3s ease;
+                }
+                .success-modal {
+                    background: linear-gradient(135deg, rgba(40, 40, 40, 0.98) 0%, rgba(30, 30, 30, 1) 100%);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    border-radius: 24px;
+                    padding: 3rem;
+                    text-align: center;
+                    max-width: 400px;
+                    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .modal-icon.success {
+                    font-size: 4rem;
+                    color: #10b981;
+                    margin-bottom: 1.5rem;
+                }
+                .modal-content h2 {
+                    color: #ffffff;
+                    margin-bottom: 0.5rem;
+                }
+                .modal-content p {
+                    color: #a0aec0;
+                }
+                @keyframes slideUp {
+                    from { transform: translateY(20px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
             // Redirect after delay
             setTimeout(() => {
                 window.location.href = '/dashboard';
             }, 2000);
         }
+        
+        // Initialize on page load
+        initializeCheckout();
     </script>
 </body>
 </html>
