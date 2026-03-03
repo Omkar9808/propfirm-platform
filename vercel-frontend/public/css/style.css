@@ -690,6 +690,48 @@ select:focus {
     font-weight: 500;
 }
 
+/* Social Proof Metrics Strip */
+.social-proof-strip {
+    padding: 3rem 0;
+    background: rgba(20, 20, 25, 0.8);
+    border-top: 1px solid rgba(0, 255, 157, 0.1);
+    border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+    position: relative;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.metric-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.metric-item i {
+    color: #00cc80;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.metric-divider {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, rgba(0, 255, 157, 0.2), transparent);
+    align-self: center;
+}
+
 /* Live Platform Preview Section */
 .live-platform-preview {
     padding: 4rem 0;
@@ -2593,6 +2635,29 @@ input:checked + .slider:before {
     
     .gauge-value {
         font-size: 0.95rem;
+    }
+    
+    .social-proof-strip {
+        padding: 2rem 1rem;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        row-gap: 1.5rem;
+    }
+    
+    .metric-divider {
+        display: none;
+    }
+    
+    .metric-item {
+        font-size: 0.9rem;
+        justify-content: flex-start;
+    }
+    
+    .metric-item i {
+        font-size: 1.1rem;
     }
     
     .pricing-cards {
