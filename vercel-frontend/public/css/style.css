@@ -1613,9 +1613,10 @@ select:focus {
     }
 }
 
-/* Faster, smoother animation */
+/* Natural 1x speed - consistent across all devices */
 .testimonial-track {
-    animation-duration: 25s; /* Reduced from 30s for snappier feel */
+    animation-duration: 20s; /* Fast, smooth, responsive */
+    animation-timing-function: linear; /* Constant speed, no easing */
 }
 
 .testimonial-track:hover {
@@ -3012,7 +3013,7 @@ input:checked + .slider:before {
     }
     
     .testimonial-track {
-        animation: scroll 25s linear infinite; /* Faster on mobile */
+        /* Inherit global animation timing - no device-specific override */
         gap: 1rem; /* Reduced gap for better mobile layout */
     }
     
