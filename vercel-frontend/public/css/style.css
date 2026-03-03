@@ -2452,6 +2452,12 @@ select:focus {
     text-align: center;
 }
 
+.pricing-hero .container {
+    max-width: 1280px; /* max-w-7xl equivalent */
+    margin: 0 auto;
+    padding: 0 1.5rem; /* px-6 equivalent */
+}
+
 .pricing-hero h1 {
     font-size: 2.5rem; /* Reduced from 3rem for professional look */
     margin-bottom: 1rem;
@@ -2470,10 +2476,14 @@ select:focus {
 
 /* Pricing section */
 .pricing-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem 32px; /* Increased horizontal gap */
+    padding: 4rem 2rem;
     margin: 2rem 0;
+}
+
+.pricing-section .container {
+    max-width: 1280px; /* max-w-7xl equivalent */
+    margin: 0 auto;
+    padding: 0 1.5rem; /* px-6 equivalent */
 }
 
 .pricing-card {
@@ -2634,6 +2644,13 @@ select:focus {
     opacity: 0.8;
 }
 
+/* Comparison section container */
+.comparison-section .container {
+    max-width: 1280px; /* max-w-7xl equivalent */
+    margin: 0 auto;
+    padding: 0 1.5rem; /* px-6 equivalent */
+}
+
 .comparison-table table {
     width: 100%;
     border-collapse: collapse;
@@ -2716,6 +2733,12 @@ select:focus {
     padding: 5rem 0; /* Slightly reduced from 6rem */
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.4) 100%);
     text-align: center;
+}
+
+.cta-section .container {
+    max-width: 1280px; /* max-w-7xl equivalent */
+    margin: 0 auto;
+    padding: 0 1.5rem; /* px-6 equivalent */
 }
 
 .cta-section h2 {
@@ -3177,8 +3200,32 @@ input:checked + .slider:before {
     }
     
     .pricing-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Mobile first - single column */
+        gap: 24px;
     }
+}
+
+/* Tablet and up - 2 columns */
+@media (min-width: 768px) {
+    .pricing-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
+/* Desktop and up - 3 columns */
+@media (min-width: 1024px) {
+    .pricing-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+    
+    .pricing-card.featured {
+        transform: scale(1.03); /* Restore featured scale on desktop */
+    }
+}
+
+@media (max-width: 767px) {
     
     .pricing-card.featured {
         transform: scale(1); /* Reset scale on mobile */
