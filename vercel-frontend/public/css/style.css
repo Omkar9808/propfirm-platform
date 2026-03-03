@@ -230,12 +230,63 @@ select:focus {
     align-items: center;
 }
 
-.logo h2 {
-    color: var(--text-primary);
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
 }
 
-.logo .highlight {
+.logo-symbol {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.logo-symbol svg {
+    width: 100%;
+    height: 100%;
     color: var(--primary-color);
+}
+
+.logo-text {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.logo-highlight {
+    color: #00cc80;
+    font-weight: 600;
+    opacity: 0.9;
+    position: relative;
+}
+
+.logo-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #00cc80, transparent);
+    transition: width 0.3s ease;
+}
+
+.logo:hover .logo-highlight::after {
+    width: 100%;
+}
+
+.logo:hover .logo-symbol {
+    transform: translateY(-2px);
+    opacity: 0.8;
 }
 
 .nav-menu {
@@ -2185,6 +2236,15 @@ input:checked + .slider:before {
     
     .hamburger {
         display: flex;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+    }
+    
+    .logo-symbol {
+        width: 32px;
+        height: 32px;
     }
     
     .sidebar {
