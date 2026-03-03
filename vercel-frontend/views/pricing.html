@@ -12,7 +12,15 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <h2>PropFirm<span class="highlight">Challenge</span></h2>
+                <a href="/">
+                    <div class="logo-symbol">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 28L16 20L22 26L32 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="32" cy="14" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">PropFirm<span class="logo-highlight">Challenge</span></span>
+                </a>
             </div>
             <ul class="nav-menu">
                 <li><a href="/">Home</a></li>
@@ -29,18 +37,11 @@
         </div>
     </nav>
 
-    <!-- Pricing Banner -->
-    <section class="pricing-banner">
+    <!-- Pricing Hero Section -->
+    <section class="pricing-hero">
         <div class="container">
             <h1>Choose Your Challenge</h1>
-            <p class="banner-subtext">Start with simulated capital. Prove your discipline. Get funded.</p>
-            
-            <!-- Trust Strip -->
-            <div class="trust-strip">
-                <span><i class="fas fa-check-circle"></i> Instant Account Access</span>
-                <span><i class="fas fa-check-circle"></i> Real-Time Risk Monitoring</span>
-                <span><i class="fas fa-check-circle"></i> No Hidden Rules</span>
-            </div>
+            <p class="hero-subtitle">Select a challenge size that matches your discipline and trading goals.</p>
         </div>
     </section>
 
@@ -70,8 +71,8 @@
                             <li><span class="label">Account Type:</span> <span class="value"><strong>Standard</strong></span></li>
                         </ul>
                     </div>
-                    <button class="btn btn-primary" onclick="buyChallenge('5k')">Buy Now</button>
-                    <p class="trust-text"><i class="fas fa-lock"></i> Instant Access &bull; Secure Checkout &bull; No Subscription</p>
+                    <button class="btn btn-primary" onclick="buyChallenge('5k')">Start Challenge</button>
+                    <p class="trust-line">Instant access • No hidden rules</p>
                 </div>
 
                 <div class="pricing-card featured">
@@ -97,8 +98,8 @@
                             <li><span class="label">Account Type:</span> <span class="value"><strong>Advanced</strong></span></li>
                         </ul>
                     </div>
-                    <button class="btn btn-primary btn-gradient" onclick="buyChallenge('10k')">Start $10K Challenge</button>
-                    <p class="trust-text"><i class="fas fa-lock"></i> Instant Access &bull; Secure Checkout &bull; No Subscription</p>
+                    <button class="btn btn-primary btn-gradient" onclick="buyChallenge('10k')">Start Challenge</button>
+                    <p class="trust-line">Instant access • No hidden rules</p>
                 </div>
 
                 <div class="pricing-card">
@@ -123,8 +124,8 @@
                             <li><span class="label">Account Type:</span> <span class="value"><strong>Professional</strong></span></li>
                         </ul>
                     </div>
-                    <button class="btn btn-primary" onclick="buyChallenge('25k')">Buy Now</button>
-                    <p class="trust-text"><i class="fas fa-lock"></i> Instant Access &bull; Secure Checkout &bull; No Subscription</p>
+                    <button class="btn btn-primary" onclick="buyChallenge('25k')">Start Challenge</button>
+                    <p class="trust-line">Instant access • No hidden rules</p>
                 </div>
             </div>
         </div>
@@ -204,9 +205,9 @@
     <section class="cta-section">
         <div class="container">
             <h2>Ready to Prove Your Discipline?</h2>
-            <p>Thousands of traders are already taking the challenge.</p>
+            <p>Join thousands of traders building real prop-firm discipline.</p>
             <div class="cta-buttons">
-                <a href="/checkout?challenge=10k" class="btn btn-primary btn-gradient">Start $10K Challenge</a>
+                <a href="/checkout?challenge=10k" class="btn btn-primary btn-gradient">Start Your Challenge</a>
                 <a href="/rules" class="btn btn-secondary">View Rules</a>
             </div>
         </div>
