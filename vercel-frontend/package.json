@@ -1,0 +1,23 @@
+{
+  "name": "propfirm-frontend-vercel",
+  "version": "1.0.0",
+  "description": "Prop Firm Practice Platform - Vercel Deployment",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "echo 'Build completed'",
+    "start": "node server.js"
+  },
+  "keywords": ["propfirm", "trading", "vercel", "express"],
+  "author": "Prop Firm Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@vercel/node": "^2.15.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

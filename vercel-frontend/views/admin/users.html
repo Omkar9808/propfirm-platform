@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users | Admin Panel - Prop Firm Challenge</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Admin Sidebar Navigation -->
+    <div class="sidebar admin-sidebar">
+        <div class="sidebar-header">
+            <h2>PropFirm<span class="highlight">Admin</span></h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/admin"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="active"><a href="/admin/users"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="/admin/accounts"><i class="fas fa-wallet"></i> Accounts</a></li>
+            <li><a href="/admin/challenges"><i class="fas fa-tasks"></i> Challenges</a></li>
+            <li><a href="/admin/payments"><i class="fas fa-credit-card"></i> Payments</a></li>
+            <li><a href="/admin/violations"><i class="fas fa-exclamation-triangle"></i> Violations</a></li>
+            <li><a href="/admin/analytics"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a href="/"><i class="fas fa-arrow-left"></i> Back to Site</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content admin-main">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="admin-info">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin User</span>
+            </div>
+        </div>
+
+        <!-- Users Content -->
+        <div class="admin-users-container">
+            <div class="page-header">
+                <h1>Users Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="addUserBtn">
+                        <i class="fas fa-user-plus"></i> Add User
+                    </button>
+                    <button class="btn btn-secondary" id="exportUsersBtn">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="statusFilter">Status</label>
+                    <select id="statusFilter">
+                        <option value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="dateFilter">Date Range</label>
+                    <select id="dateFilter">
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="all">All Time</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="searchInput">Search</label>
+                    <input type="text" id="searchInput" placeholder="Search users...">
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="users-table-container">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Active Accounts</th>
+                            <th>Registration Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="user-info">
+                                    <div class="avatar">JD</div>
+                                    <div class="user-details">
+                                        <div class="user-name">John Doe</div>
+                                        <div class="user-id">#12345</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>john.doe@example.com</td>
+                            <td>3</td>
+                            <td>Mar 1, 2026</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewUser('12345')">View</button>
+                                <button class="btn btn-small btn-secondary" onclick="suspendUser('12345')">Suspend</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-info">
+                                    <div class="avatar">SM</div>
+                                    <div class="user-details">
+                                        <div class="user-name">Sarah Miller</div>
+                                        <div class="user-id">#67890</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>sarah.miller@example.com</td>
+                            <td>1</td>
+                            <td>Feb 28, 2026</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewUser('67890')">View</button>
+                                <button class="btn btn-small btn-secondary" onclick="suspendUser('67890')">Suspend</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-info">
+                                    <div class="avatar">MR</div>
+                                    <div class="user-details">
+                                        <div class="user-name">Mike Roberts</div>
+                                        <div class="user-id">#11111</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>mike.roberts@example.com</td>
+                            <td>2</td>
+                            <td>Feb 25, 2026</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewUser('11111')">View</button>
+                                <button class="btn btn-small btn-secondary" onclick="suspendUser('11111')">Suspend</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-info">
+                                    <div class="avatar">JK</div>
+                                    <div class="user-details">
+                                        <div class="user-name">Jane Kim</div>
+                                        <div class="user-id">#22222</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>jane.kim@example.com</td>
+                            <td>0</td>
+                            <td>Feb 20, 2026</td>
+                            <td><span class="status-badge suspended">Suspended</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewUser('22222')">View</button>
+                                <button class="btn btn-small btn-success" onclick="activateUser('22222')">Activate</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-info">
+                                    <div class="avatar">DT</div>
+                                    <div class="user-details">
+                                        <div class="user-name">David Thompson</div>
+                                        <div class="user-id">#33333</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>david.thompson@example.com</td>
+                            <td>1</td>
+                            <td>Feb 18, 2026</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewUser('33333')">View</button>
+                                <button class="btn btn-small btn-secondary" onclick="suspendUser('33333')">Suspend</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="btn btn-secondary">Previous</button>
+                <span class="page-info">Page 1 of 24</span>
+                <button class="btn btn-secondary">Next</button>
+            </div>
+
+            <!-- User Detail Modal -->
+            <div id="userDetailModal" class="modal-overlay hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>User Details</h2>
+                        <button class="close-btn" onclick="closeUserModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="user-profile">
+                            <div class="profile-header">
+                                <div class="avatar-large">JD</div>
+                                <div class="profile-info">
+                                    <h3>John Doe</h3>
+                                    <p>ID: #12345</p>
+                                    <p>Email: john.doe@example.com</p>
+                                </div>
+                            </div>
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <span class="label">Registration Date:</span>
+                                    <span class="value">Mar 1, 2026</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Active Accounts:</span>
+                                    <span class="value">3</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Total Purchases:</span>
+                                    <span class="value">$8</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Last Login:</span>
+                                    <span class="value">Today, 10:30 AM</span>
+                                </div>
+                            </div>
+                            <div class="user-actions">
+                                <button class="btn btn-danger" onclick="suspendUser('12345')">Suspend User</button>
+                                <button class="btn btn-secondary">Reset Password</button>
+                                <button class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/main.js"></script>
+    <script>
+        // User management functions
+        function viewUser(userId) {
+            document.getElementById('userDetailModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            // In a real app, this would fetch user details
+        }
+
+        function closeUserModal() {
+            document.getElementById('userDetailModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function suspendUser(userId) {
+            if (confirm(`Are you sure you want to suspend user #${userId}?`)) {
+                // In a real app, this would make an API call
+                alert(`User #${userId} has been suspended.`);
+            }
+        }
+
+        function activateUser(userId) {
+            if (confirm(`Are you sure you want to activate user #${userId}?`)) {
+                // In a real app, this would make an API call
+                alert(`User #${userId} has been activated.`);
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('userDetailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeUserModal();
+            }
+        });
+
+        // Add user button
+        document.getElementById('addUserBtn').addEventListener('click', function() {
+            alert('Add user functionality would open modal in a real implementation');
+        });
+
+        // Export users button
+        document.getElementById('exportUsersBtn').addEventListener('click', function() {
+            alert('Exporting user data...');
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            // In a real app, this would filter the table
+            console.log('Searching for:', this.value);
+        });
+    </script>
+</body>
+</html>
