@@ -1573,7 +1573,6 @@ select:focus {
 .testimonial-track {
     display: flex;
     gap: 1.5rem; /* Slightly reduced gap for mobile */
-    animation: scroll 30s linear infinite;
 }
 
 /* Pagination dots indicator */
@@ -1613,10 +1612,10 @@ select:focus {
     }
 }
 
-/* Natural 1x speed - consistent across all devices */
+/* Natural 1x speed - modern premium feel across all devices */
 .testimonial-track {
-    animation-duration: 20s; /* Fast, smooth, responsive */
-    animation-timing-function: linear; /* Constant speed, no easing */
+    animation: scroll 16s ease-in-out infinite; /* Premium smooth timing */
+    will-change: transform; /* Optimize performance */
 }
 
 .testimonial-track:hover {
