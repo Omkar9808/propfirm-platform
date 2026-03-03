@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHoverEffects();
     initFAQAccordion();
     initScrollReveal();
+    initTestimonials(); // Initialize testimonial slider with pagination sync
 });
 
 // Advanced Visualizations
@@ -649,6 +650,97 @@ function handleAction(action, element) {
         default:
             console.log('Unknown action:', action);
     }
+}
+
+// Testimonial Slider with Dynamic Pagination Sync
+function initTestimonials() {
+    const track = document.getElementById('testimonialTrack');
+    const dotsContainer = document.getElementById('testimonialDots');
+    
+    if (!track || !dotsContainer) return;
+    
+    const cards = track.querySelectorAll('.testimonial-card');
+    const totalUniqueCards = 9; // We have 9 unique testimonials
+    let currentSlide = 0;
+    let autoplayInterval;
+    const autoplayDelay = 2000; // 2 seconds between slides
+    const animationSpeed = 400; // 0.4s transition speed
+    
+    // Add active class to track for animation
+    track.classList.add('animate');
+    
+    // Update pagination dots
+    function updatePagination(index) {
+        const dots = dotsContainer.querySelectorAll('.testimonial-dot');
+        dots.forEach((dot, i) => {
+            dot.classList.remove('active');
+            if (i === index % totalUniqueCards) {
+                dot.classList.add('active');
+            }
+        });
+    }
+    
+    // Pause animation on hover
+    track.addEventListener('mouseenter', () => {
+        track.style.animationPlayState = 'paused';
+        clearInterval(autoplayInterval);
+    });
+    
+    track.addEventListener('mouseleave', () => {
+        track.style.animationPlayState = 'running';
+        startAutoplay();
+    });
+    
+    // Click on dots to navigate
+    dotsContainer.querySelectorAll('.testimonial-dot').forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updatePagination(currentSlide);
+            // Smooth scroll to specific card
+            const cardWidth = cards[0].offsetWidth + 24; // card width + gap
+            track.scrollTo({
+                left: cardWidth * currentSlide,
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // Auto-update pagination based on scroll position
+    track.addEventListener('scroll', () => {
+        const cardWidth = cards[0].offsetWidth + 24;
+        const scrollPos = track.scrollLeft;
+        const newIndex = Math.round(scrollPos / cardWidth);
+        
+        if (newIndex !== currentSlide && newIndex >= 0 && newIndex < totalUniqueCards) {
+            currentSlide = newIndex;
+            updatePagination(currentSlide);
+        }
+    });
+    
+    // Start autoplay
+    function startAutoplay() {
+        autoplayInterval = setInterval(() => {
+            const cardWidth = cards[0].offsetWidth + 24;
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            
+            if (track.scrollLeft >= maxScroll - 10) {
+                // Reset to beginning smoothly
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+                currentSlide = 0;
+            } else {
+                track.scrollBy({
+                    left: cardWidth,
+                    behavior: 'smooth'
+                });
+                currentSlide++;
+            }
+            
+            updatePagination(currentSlide);
+        }, autoplayDelay);
+    }
+    
+    startAutoplay();
+    updatePagination(0);
 }
 
 // Initialize all components when DOM is ready

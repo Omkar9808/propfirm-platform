@@ -1572,10 +1572,15 @@ select:focus {
 
 .testimonial-track {
     display: flex;
-    gap: 1.5rem; /* Slightly reduced gap for mobile */
+    gap: 1.5rem;
+    /* Animation removed - now controlled by JS for better pagination sync */
 }
 
-/* Pagination dots indicator */
+/* Natural 1x speed - modern premium feel across all devices */
+.testimonial-track.animate {
+    animation: scroll 16s ease-in-out infinite;
+    will-change: transform;
+}
 .testimonial-dots {
     display: flex;
     justify-content: center;
@@ -1629,15 +1634,15 @@ select:focus {
     padding: 2rem;
     backdrop-filter: blur(10px);
     text-align: center;
-    min-width: 300px; /* Optimized for mobile */
-    max-width: 90vw; /* Prevent overflow on mobile */
+    min-width: 320px; /* Optimal reading width */
+    max-width: 100%; /* Prevent overflow */
     flex-shrink: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth scale effect */
-    word-wrap: break-word; /* Ensure text wrapping */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    word-wrap: break-word;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-5px) scale(1.02); /* Subtle scale up on hover */
+    transform: translateY(-5px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -3014,6 +3019,17 @@ input:checked + .slider:before {
     .testimonial-track {
         /* Inherit global animation timing - no device-specific override */
         gap: 1rem; /* Reduced gap for better mobile layout */
+    }
+    
+    .testimonial-card {
+        min-width: 280px; /* Perfect fit for most mobile screens */
+        max-width: calc(100vw - 2rem); /* Ensure no overflow with padding */
+        padding: 1.5rem;
+    }
+    
+    .testimonial-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
     
     .testimonial-card {
