@@ -90,20 +90,55 @@
                 <span>Real-Time Risk Tracking Enabled</span>
             </div>
         </div>
-        <div class="hero-animation">
-            <div class="chart-placeholder">
-                <div class="floating-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">8%</span>
-                        <span class="stat-label">Profit Target</span>
+    </section>
+
+    <!-- Live Platform Preview -->
+    <section class="live-platform-preview">
+        <div class="container">
+            <div class="preview-header">
+                <h2>Live Dashboard Preview</h2>
+                <p>Monitor your performance, drawdown, and risk in real-time.</p>
+            </div>
+            <div class="preview-container">
+                <div class="preview-item chart-preview">
+                    <div class="mini-chart">
+                        <svg viewBox="0 0 400 150" class="chart-svg">
+                            <defs>
+                                <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ff9d;stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:#00ff9d;stop-opacity:0" />
+                                </linearGradient>
+                            </defs>
+                            <polyline class="chart-line" points="0,120 50,100 100,110 150,80 200,90 250,60 300,70 350,40 400,50"/>
+                            <polygon class="chart-area" points="0,120 50,100 100,110 150,80 200,90 250,60 300,70 350,40 400,50 400,150 0,150"/>
+                        </svg>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">5%</span>
-                        <span class="stat-label">Daily Loss</span>
+                </div>
+                <div class="preview-item risk-meter">
+                    <div class="gauge-container">
+                        <div class="gauge">
+                            <div class="gauge-background"></div>
+                            <div class="gauge-fill" style="width: 25%;"></div>
+                        </div>
+                        <div class="gauge-status">
+                            <span class="gauge-label">Risk Status</span>
+                            <span class="gauge-value">Within Limits</span>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">10%</span>
-                        <span class="stat-label">Max DD</span>
+                </div>
+                <div class="preview-item drawdown-tracker">
+                    <div class="drawdown-info">
+                        <div class="drawdown-row">
+                            <span class="dd-label">Current Drawdown:</span>
+                            <span class="dd-value">2.1%</span>
+                        </div>
+                        <div class="drawdown-row">
+                            <span class="dd-label">Max Allowed:</span>
+                            <span class="dd-max">10%</span>
+                        </div>
+                        <div class="drawdown-progress">
+                            <div class="progress-bar" style="width: 21%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
