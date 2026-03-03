@@ -945,7 +945,7 @@ select:focus {
 /* Trust Indicators Row */
 .hero-trust-container {
     max-width: 800px;
-    margin: 2rem auto 0;
+    margin: 3rem auto 2.5rem;
     padding: 0 1rem;
 }
 
@@ -953,8 +953,9 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .trust-item {
@@ -962,14 +963,15 @@ select:focus {
     align-items: center;
     gap: 0.5rem;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    opacity: 0.8;
+    opacity: 0.85;
+    letter-spacing: 0.01em;
 }
 
 .trust-item i {
     color: #00cc80;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .chart-placeholder {
@@ -2533,12 +2535,12 @@ input:checked + .slider:before {
     /* Trust Row Mobile */
     .hero-trust-row {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.25rem;
         align-items: flex-start;
     }
     
     .trust-item {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
     
     .metrics-section,
