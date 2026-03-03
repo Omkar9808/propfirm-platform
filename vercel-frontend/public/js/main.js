@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initAdvancedVisualizations();
     initSmoothScrolling();
     initHoverEffects();
+    initFAQAccordion();
+    initScrollReveal();
 });
 
 // Advanced Visualizations
@@ -110,6 +112,51 @@ function initHoverEffects() {
         button.addEventListener('mousedown', function() {
             this.style.transform = 'translateY(1px)';
         });
+    });
+}
+
+// FAQ Accordion
+function initFAQAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const header = item.querySelector('.faq-header');
+        if (header) {
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active', !isActive);
+            });
+        }
+    });
+}
+
+// Scroll Reveal Animation
+function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
     });
 }
 
