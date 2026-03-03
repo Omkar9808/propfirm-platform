@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates | Prop Firm Challenge</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>PropFirm<span class="highlight">Challenge</span></h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="/accounts"><i class="fas fa-wallet"></i> My Accounts</a></li>
+            <li><a href="/buy"><i class="fas fa-shopping-cart"></i> Buy Challenge</a></li>
+            <li><a href="/leaderboard"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+            <li><a href="/affiliate"><i class="fas fa-users"></i> Affiliate</a></li>
+            <li class="active"><a href="/certificates"><i class="fas fa-certificate"></i> Certificates</a></li>
+            <li><a href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>John Doe</span>
+            </div>
+        </div>
+
+        <!-- Certificates Content -->
+        <div class="certificates-container">
+            <h1>My Certificates</h1>
+            
+            <!-- Certificate Cards -->
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <div class="certificate-header">
+                        <i class="fas fa-certificate"></i>
+                        <h3>$25K Challenge</h3>
+                    </div>
+                    <div class="certificate-body">
+                        <p class="certificate-description">Successfully completed the $25,000 prop firm challenge</p>
+                        <div class="certificate-details">
+                            <div class="detail-item">
+                                <span class="label">Date Issued:</span>
+                                <span class="value">Feb 25, 2026</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Account ID:</span>
+                                <span class="value">#11111</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Profit Achieved:</span>
+                                <span class="value">8.4%</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Days to Complete:</span>
+                                <span class="value">12 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="certificate-actions">
+                        <button class="btn btn-primary" onclick="downloadCertificate('25k')">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <button class="btn btn-secondary" onclick="shareCertificate('25k')">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="certificate-card pending">
+                    <div class="certificate-header">
+                        <i class="fas fa-clock"></i>
+                        <h3>$10K Challenge</h3>
+                    </div>
+                    <div class="certificate-body">
+                        <p class="certificate-description">Currently active challenge, not yet completed</p>
+                        <div class="certificate-details">
+                            <div class="detail-item">
+                                <span class="label">Status:</span>
+                                <span class="value status-badge active">Active</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Account ID:</span>
+                                <span class="value">#67890</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Current Profit:</span>
+                                <span class="value">-1.5%</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Days Traded:</span>
+                                <span class="value">8 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="certificate-actions">
+                        <button class="btn btn-secondary" disabled>
+                            <i class="fas fa-download"></i> Not Available
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="certificate-card pending">
+                    <div class="certificate-header">
+                        <i class="fas fa-clock"></i>
+                        <h3>$5K Challenge</h3>
+                    </div>
+                    <div class="certificate-body">
+                        <p class="certificate-description">Currently active challenge, not yet completed</p>
+                        <div class="certificate-details">
+                            <div class="detail-item">
+                                <span class="label">Status:</span>
+                                <span class="value status-badge active">Active</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Account ID:</span>
+                                <span class="value">#12345</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Current Profit:</span>
+                                <span class="value">2.5%</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Days Traded:</span>
+                                <span class="value">7 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="certificate-actions">
+                        <button class="btn btn-secondary" disabled>
+                            <i class="fas fa-download"></i> Not Available
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Preview -->
+            <div class="certificate-preview">
+                <h2>Certificate Preview</h2>
+                <div class="preview-container">
+                    <div class="certificate-template">
+                        <div class="certificate-top">
+                            <h1>PROPRIETARY TRADING CERTIFICATE</h1>
+                            <p>This certifies that</p>
+                            <h2>JOHN DOE</h2>
+                            <p>has successfully completed the</p>
+                            <h3>$25,000 PROP FIRM CHALLENGE</h3>
+                        </div>
+                        
+                        <div class="certificate-middle">
+                            <div class="achievement-data">
+                                <div class="data-item">
+                                    <span class="label">Account Number:</span>
+                                    <span class="value">#11111</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="label">Final Profit:</span>
+                                    <span class="value">8.4%</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="label">Completion Date:</span>
+                                    <span class="value">February 25, 2026</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="label">Days to Complete:</span>
+                                    <span class="value">12 days</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-bottom">
+                            <div class="signature-area">
+                                <p>PropFirmChallenge Authority</p>
+                                <div class="signature-line"></div>
+                            </div>
+                            <div class="verification">
+                                <p>This certificate is verified and can be validated at:</p>
+                                <p>www.propfirmchallenge.com/verify/ABC123XYZ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Sharing Options -->
+            <div class="social-sharing">
+                <h2>Share Your Achievement</h2>
+                <div class="sharing-options">
+                    <button class="share-btn linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </button>
+                    <button class="share-btn twitter">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </button>
+                    <button class="share-btn facebook">
+                        <i class="fab fa-facebook"></i>
+                        Facebook
+                    </button>
+                    <button class="share-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/main.js"></script>
+    <script>
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = '/login';
+        });
+
+        function downloadCertificate(type) {
+            alert(`Downloading certificate for ${type.toUpperCase()} Challenge...`);
+            // In a real app, this would trigger the PDF download
+        }
+
+        function shareCertificate(type) {
+            // Create a shareable message
+            const message = `I just passed my ${type.toUpperCase()} prop firm challenge! Check out my achievement on PropFirmChallenge.com`;
+            
+            // Try to use the Web Share API if available
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Trading Achievement',
+                    text: message,
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(message);
+                alert('Achievement text copied to clipboard!');
+            }
+        }
+    </script>
+</body>
+</html>
