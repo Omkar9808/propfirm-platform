@@ -345,6 +345,18 @@ select:focus {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* Subtle gradient glow from bottom */
+}
+
+.mobile-nav-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: radial-gradient(ellipse at center bottom, rgba(0, 255, 157, 0.08), transparent 70%);
+    pointer-events: none;
 }
 
 .mobile-nav-overlay.active {
@@ -360,6 +372,7 @@ select:focus {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 4rem 2rem;
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -392,22 +405,57 @@ select:focus {
     background: rgba(0, 255, 157, 0.1);
 }
 
+/* Logo area */
+.mobile-nav-logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-nav-divider {
+    position: absolute;
+    top: 5.5rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.2), transparent);
+}
+
 .mobile-nav-menu {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2.5rem; /* Increased gap for breathing room */
     align-items: center;
     justify-content: center;
+    width: 100%;
+    max-width: 400px;
 }
 
 .mobile-nav-link {
     color: var(--text-primary);
-    font-size: 1.75rem;
-    font-weight: 500;
+    font-size: 2rem; /* Larger, more prominent */
+    font-weight: 600; /* Semibold for better presence */
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
     letter-spacing: 0.02em;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.mobile-nav-overlay.active .mobile-nav-link {
+    animation: navLinkFadeIn 0.5s ease forwards;
+    animation-delay: calc(0.1s + var(--delay, 0s));
+}
+
+@keyframes navLinkFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .mobile-nav-link::after {
@@ -427,7 +475,35 @@ select:focus {
 }
 
 .mobile-nav-link:hover::after {
+    width: 100%; /* Underline animation */
+}
+
+/* Tagline */
+.mobile-nav-tagline {
+    margin-top: 3rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    opacity: 0.6;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+/* CTA Button */
+.mobile-nav-cta {
+    margin-top: 2rem;
     width: 100%;
+    max-width: 320px;
+    padding: 1rem 2rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.mobile-nav-overlay.active .mobile-nav-cta {
+    animation: navLinkFadeIn 0.5s ease forwards;
+    animation-delay: 0.6s;
 }
 
 .bar {
@@ -1480,10 +1556,37 @@ select:focus {
     margin-top: 2rem;
 }
 
+.testimonial-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
 .testimonial-track {
     display: flex;
     gap: 2rem;
     animation: scroll 30s linear infinite;
+}
+
+/* Pagination dots indicator */
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 2rem;
+}
+
+.testimonial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 255, 157, 0.3);
+    transition: all 0.3s ease;
+}
+
+.testimonial-dot.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
 }
 
 @keyframes scroll {
@@ -2886,11 +2989,11 @@ input:checked + .slider:before {
     }
     
     .testimonial-track {
-        animation: none;
+        animation: scroll 40s linear infinite; /* Slower on mobile for better UX */
     }
     
     .testimonial-card {
-        min-width: 100%;
+        min-width: 280px; /* Smaller cards on mobile */
     }
 }
 

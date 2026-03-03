@@ -206,6 +206,9 @@ function initNavigation() {
     const mobileNavClose = document.getElementById('mobileNavClose');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     
+    // Ensure body scroll is restored on initial page load
+    document.body.style.overflow = 'auto';
+    
     // Open mobile menu
     if (hamburger && mobileNavOverlay) {
         hamburger.addEventListener('click', function(e) {
@@ -233,11 +236,17 @@ function initNavigation() {
         });
     }
     
-    // Close mobile menu when clicking a link
+    // Close mobile menu when clicking a link AND reset after navigation
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', function() {
             mobileNavOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            
+            // Force reset after a short delay to ensure navigation completes
+            setTimeout(() => {
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }, 100);
         });
     });
     
@@ -248,6 +257,14 @@ function initNavigation() {
         if (!isClickInsideNav && mobileNavOverlay.classList.contains('active')) {
             mobileNavOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Cleanup on page unload to prevent stuck state
+    window.addEventListener('beforeunload', function() {
+        document.body.style.overflow = 'auto';
+        if (mobileNavOverlay) {
+            mobileNavOverlay.classList.remove('active');
         }
     });
     

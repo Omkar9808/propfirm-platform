@@ -43,13 +43,29 @@
             <button class="mobile-nav-close" id="mobileNavClose">
                 <i class="fas fa-times"></i>
             </button>
+            <!-- Logo area with divider -->
+            <div class="mobile-nav-logo">
+                <div class="logo-symbol">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 28L16 20L22 26L32 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="32" cy="14" r="3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <span class="logo-text">PropFirm<span class="logo-highlight">Challenge</span></span>
+            </div>
+            <div class="mobile-nav-divider"></div>
+            <!-- Navigation links -->
             <nav class="mobile-nav-menu">
-                <a href="/" class="mobile-nav-link">Home</a>
-                <a href="/pricing" class="mobile-nav-link">Pricing</a>
-                <a href="/rules" class="mobile-nav-link">Rules</a>
-                <a href="/leaderboard" class="mobile-nav-link">Leaderboard</a>
-                <a href="/login" class="mobile-nav-link">Login</a>
+                <a href="/" class="mobile-nav-link" style="--delay: 0.05s">Home</a>
+                <a href="/pricing" class="mobile-nav-link" style="--delay: 0.10s">Pricing</a>
+                <a href="/rules" class="mobile-nav-link" style="--delay: 0.15s">Rules</a>
+                <a href="/leaderboard" class="mobile-nav-link" style="--delay: 0.20s">Leaderboard</a>
+                <a href="/login" class="mobile-nav-link" style="--delay: 0.25s">Login</a>
             </nav>
+            <!-- Tagline -->
+            <p class="mobile-nav-tagline">Practice Like a Real Prop Trader</p>
+            <!-- Bottom CTA button -->
+            <a href="/pricing" class="mobile-nav-cta btn btn-primary">Start Challenge</a>
         </div>
     </div>
 
@@ -262,6 +278,7 @@
             <h2>What Our Traders Say</h2>
             <div class="testimonial-carousel">
                 <div class="testimonial-track">
+                    <!-- Duplicate cards for seamless loop -->
                     <div class="testimonial-card">
                         <div class="rating">
                             <i class="fas fa-star"></i>
@@ -342,7 +359,54 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Duplicate cards for seamless infinite scroll -->
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Passed my $5K challenge in just 2 weeks! The real-time tracking helped me stay disciplined."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>John D. <i class="fas fa-check-circle verified-badge"></i></h4>
+                                <p class="author-stat">Passed $5K Challenge in 14 days</p>
+                                <p class="performance-metric">+$720 Simulated Profit</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The best simulation of a real prop firm. The rules are challenging but fair."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah M. <i class="fas fa-check-circle verified-badge"></i></h4>
+                                <p class="author-stat">Passed $10K Challenge in 21 days</p>
+                                <p class="performance-metric">Maintained Max DD Under 4%</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <!-- Pagination dots -->
+            <div class="testimonial-dots">
+                <span class="testimonial-dot active"></span>
+                <span class="testimonial-dot"></span>
+                <span class="testimonial-dot"></span>
             </div>
         </div>
     </section>
