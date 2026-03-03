@@ -2698,6 +2698,141 @@ select:focus {
     opacity: 0.4; /* Muted gray cross */
 }
 
+/* Mobile Plan Cards - Premium Clean Design */
+.mobile-plan-cards {
+    display: none; /* Hidden on desktop */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+.mobile-plan-card {
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.mobile-plan-card.featured {
+    border: 1px solid rgba(0, 255, 157, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 255, 157, 0.08);
+}
+
+.popular-tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.plan-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.plan-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.plan-price {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.plan-price .currency {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-top: 0.25rem;
+}
+
+.plan-price .amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.plan-note {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+.plan-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%);
+    margin: 1.5rem 0;
+}
+
+.plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.feature-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.feature-row:last-child {
+    border-bottom: none;
+}
+
+.feature-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.feature-value {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.feature-status {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.feature-status.available {
+    color: #10b981; /* Green check */
+}
+
+.feature-status.unavailable {
+    color: var(--text-secondary);
+    opacity: 0.4; /* Muted gray cross */
+}
+
+.feature-status i {
+    font-size: 1rem;
+}
+
+.mobile-plan-card .btn {
+    width: 100%;
+    margin-top: 1.5rem;
+    min-height: 48px; /* Touch-friendly */
+}
+
 /* Trust line under buttons */
 .trust-line {
     font-size: 0.75rem;
@@ -3211,6 +3346,15 @@ input:checked + .slider:before {
         grid-template-columns: repeat(2, 1fr);
         gap: 32px;
     }
+    
+    /* Show desktop comparison table on tablet+ */
+    .comparison-table.desktop-view {
+        display: block;
+    }
+    
+    .mobile-plan-cards {
+        display: none; /* Hide mobile plan cards */
+    }
 }
 
 /* Desktop and up - 3 columns */
@@ -3265,48 +3409,41 @@ input:checked + .slider:before {
         min-height: 48px; /* Minimum touch-friendly height */
     }
     
-    /* Comparison Table - Mobile Stacked Cards */
-    .comparison-table {
-        display: block;
-        overflow-x: unset; /* Remove horizontal scroll */
+    /* Comparison Table - Show Mobile Plan Cards Instead */
+    .comparison-table.desktop-view {
+        display: none; /* Hide desktop table on mobile */
     }
     
-    .comparison-table thead {
-        display: none; /* Hide headers on mobile */
+    .mobile-plan-cards {
+        display: grid; /* Show mobile plan cards */
     }
     
-    .comparison-table tbody {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+    /* Reduce section padding on mobile */
+    .comparison-section {
+        padding: 2rem 0; /* py-16 equivalent */
     }
     
-    .comparison-table tr {
-        background: var(--card-bg);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+    /* Mobile plan card adjustments */
+    .mobile-plan-card {
+        padding: 1.5rem; /* Reduced padding on mobile */
     }
     
-    .comparison-table td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    .plan-header h3 {
+        font-size: 1.25rem; /* Smaller heading on mobile */
     }
     
-    .comparison-table td:last-child {
-        border-bottom: none;
+    .plan-price .amount {
+        font-size: 3rem; /* Slightly smaller price */
     }
     
-    .comparison-table td:first-child {
-        font-weight: 600;
-        color: var(--text-secondary);
-        font-size: 0.875rem;
+    .feature-label,
+    .feature-value,
+    .feature-status {
+        font-size: 0.8125rem; /* Smaller text on mobile */
+    }
+    
+    .feature-row {
+        padding: 0.625rem 0; /* Reduced row padding */
     }
     
     .summary-grid {

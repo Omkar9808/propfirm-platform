@@ -136,7 +136,9 @@
         <div class="container">
             <h2>Feature Comparison</h2>
             <p class="table-intro">Transparent comparison. No hidden conditions.</p>
-            <div class="comparison-table">
+            
+            <!-- Desktop Table View -->
+            <div class="comparison-table desktop-view">
                 <table>
                     <thead>
                         <tr>
@@ -197,6 +199,154 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            
+            <!-- Mobile Plan Cards View -->
+            <div class="mobile-plan-cards">
+                <!-- $5K Plan Card -->
+                <div class="mobile-plan-card">
+                    <div class="plan-header">
+                        <h3>$5K Practice</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span>
+                            <span class="amount">1</span>
+                        </div>
+                        <p class="plan-note">One-Time Fee</p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-features">
+                        <div class="feature-row">
+                            <span class="feature-label">Account Balance</span>
+                            <span class="feature-value">$5,000</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Profit Target</span>
+                            <span class="feature-value">8%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Daily Loss Limit</span>
+                            <span class="feature-value">5%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Max Drawdown</span>
+                            <span class="feature-value">10%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Min Trading Days</span>
+                            <span class="feature-value">3</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Advanced Analytics</span>
+                            <span class="feature-status unavailable"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Priority Support</span>
+                            <span class="feature-status unavailable"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Custom Reports</span>
+                            <span class="feature-status unavailable"><i class="fas fa-times"></i></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="buyChallenge('5k')">Start Challenge</button>
+                </div>
+
+                <!-- $10K Plan Card (Featured) -->
+                <div class="mobile-plan-card featured">
+                    <div class="popular-tag">POPULAR</div>
+                    <div class="plan-header">
+                        <h3>$10K Practice</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span>
+                            <span class="amount">2</span>
+                        </div>
+                        <p class="plan-note">One-Time Fee</p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-features">
+                        <div class="feature-row">
+                            <span class="feature-label">Account Balance</span>
+                            <span class="feature-value">$10,000</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Profit Target</span>
+                            <span class="feature-value">8%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Daily Loss Limit</span>
+                            <span class="feature-value">5%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Max Drawdown</span>
+                            <span class="feature-value">10%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Min Trading Days</span>
+                            <span class="feature-value">5</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Advanced Analytics</span>
+                            <span class="feature-status available"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Priority Support</span>
+                            <span class="feature-status available"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Custom Reports</span>
+                            <span class="feature-status unavailable"><i class="fas fa-times"></i></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-gradient" onclick="buyChallenge('10k')">Start Challenge</button>
+                </div>
+
+                <!-- $25K Plan Card -->
+                <div class="mobile-plan-card">
+                    <div class="plan-header">
+                        <h3>$25K Practice</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span>
+                            <span class="amount">5</span>
+                        </div>
+                        <p class="plan-note">One-Time Fee</p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <div class="plan-features">
+                        <div class="feature-row">
+                            <span class="feature-label">Account Balance</span>
+                            <span class="feature-value">$25,000</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Profit Target</span>
+                            <span class="feature-value">8%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Daily Loss Limit</span>
+                            <span class="feature-value">5%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Max Drawdown</span>
+                            <span class="feature-value">10%</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Min Trading Days</span>
+                            <span class="feature-value">10</span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Advanced Analytics</span>
+                            <span class="feature-status available"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Priority Support</span>
+                            <span class="feature-status available"><i class="fas fa-check"></i></span>
+                        </div>
+                        <div class="feature-row">
+                            <span class="feature-label">Custom Reports</span>
+                            <span class="feature-status available"><i class="fas fa-check"></i></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="buyChallenge('25k')">Start Challenge</button>
+                </div>
             </div>
         </div>
     </section>
