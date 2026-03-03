@@ -33,7 +33,14 @@
     <section class="pricing-banner">
         <div class="container">
             <h1>Choose Your Challenge</h1>
-            <p>Select the perfect challenge level to start your prop trading journey</p>
+            <p class="banner-subtext">Start with simulated capital. Prove your discipline. Get funded.</p>
+            
+            <!-- Trust Strip -->
+            <div class="trust-strip">
+                <span><i class="fas fa-check-circle"></i> Instant Account Access</span>
+                <span><i class="fas fa-check-circle"></i> Real-Time Risk Monitoring</span>
+                <span><i class="fas fa-check-circle"></i> No Hidden Rules</span>
+            </div>
         </div>
     </section>
 
@@ -44,56 +51,80 @@
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>$5K Practice</h3>
-                        <div class="price">$1</div>
+                        <div class="price-wrapper">
+                            <span class="currency">$</span>
+                            <span class="amount">1</span>
+                        </div>
+                        <p class="price-note">One-Time Challenge Fee</p>
                     </div>
                     <div class="pricing-details">
                         <ul>
-                            <li>Account Balance: <strong>$5,000</strong></li>
-                            <li>Profit Target: <strong>8%</strong></li>
-                            <li>Daily Loss Limit: <strong>5%</strong></li>
-                            <li>Max Drawdown: <strong>10%</strong></li>
-                            <li>Min Trading Days: <strong>3</strong></li>
-                            <li>Account Type: <strong>Standard</strong></li>
+                            <li class="balance-row">
+                                <span class="label">Simulated Capital</span>
+                                <span class="value"><strong>$5,000</strong></span>
+                            </li>
+                            <li><span class="label">Profit Target:</span> <span class="value"><strong>8%</strong></span></li>
+                            <li><span class="label">Daily Loss Limit:</span> <span class="value"><strong>5%</strong></span></li>
+                            <li><span class="label">Max Drawdown:</span> <span class="value"><strong>10%</strong></span></li>
+                            <li><span class="label">Min Trading Days:</span> <span class="value"><strong>3</strong></span></li>
+                            <li><span class="label">Account Type:</span> <span class="value"><strong>Standard</strong></span></li>
                         </ul>
                     </div>
                     <button class="btn btn-primary" onclick="buyChallenge('5k')">Buy Now</button>
+                    <p class="trust-text"><i class="fas fa-lock"></i> Instant Access &bull; Secure Checkout &bull; No Subscription</p>
                 </div>
 
                 <div class="pricing-card featured">
                     <div class="popular-tag">POPULAR</div>
                     <div class="pricing-header">
                         <h3>$10K Practice</h3>
-                        <div class="price">$2</div>
+                        <div class="price-wrapper">
+                            <span class="currency">$</span>
+                            <span class="amount">2</span>
+                        </div>
+                        <p class="price-note">One-Time Challenge Fee</p>
                     </div>
                     <div class="pricing-details">
                         <ul>
-                            <li>Account Balance: <strong>$10,000</strong></li>
-                            <li>Profit Target: <strong>8%</strong></li>
-                            <li>Daily Loss Limit: <strong>5%</strong></li>
-                            <li>Max Drawdown: <strong>10%</strong></li>
-                            <li>Min Trading Days: <strong>5</strong></li>
-                            <li>Account Type: <strong>Advanced</strong></li>
+                            <li class="balance-row">
+                                <span class="label">Simulated Capital</span>
+                                <span class="value"><strong>$10,000</strong></span>
+                            </li>
+                            <li><span class="label">Profit Target:</span> <span class="value"><strong>8%</strong></span></li>
+                            <li><span class="label">Daily Loss Limit:</span> <span class="value"><strong>5%</strong></span></li>
+                            <li><span class="label">Max Drawdown:</span> <span class="value"><strong>10%</strong></span></li>
+                            <li><span class="label">Min Trading Days:</span> <span class="value"><strong>5</strong></span></li>
+                            <li><span class="label">Account Type:</span> <span class="value"><strong>Advanced</strong></span></li>
                         </ul>
                     </div>
-                    <button class="btn btn-primary" onclick="buyChallenge('10k')">Buy Now</button>
+                    <button class="btn btn-primary btn-gradient" onclick="buyChallenge('10k')">Start $10K Challenge</button>
+                    <p class="trust-text"><i class="fas fa-lock"></i> Instant Access &bull; Secure Checkout &bull; No Subscription</p>
                 </div>
 
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>$25K Practice</h3>
-                        <div class="price">$5</div>
+                        <div class="price-wrapper">
+                            <span class="currency">$</span>
+                            <span class="amount">5</span>
+                        </div>
+                        <p class="price-note">One-Time Challenge Fee</p>
                     </div>
                     <div class="pricing-details">
                         <ul>
-                            <li>Account Balance: <strong>$25,000</strong></li>
-                            <li>Profit Target: <strong>8%</strong></li>
-                            <li>Daily Loss Limit: <strong>5%</strong></li>
-                            <li>Max Drawdown: <strong>10%</strong></li>
-                            <li>Min Trading Days: <strong>10</strong></li>
-                            <li>Account Type: <strong>Professional</strong></li>
+                            <li class="balance-row">
+                                <span class="label">Simulated Capital</span>
+                                <span class="value"><strong>$25,000</strong></span>
+                            </li>
+                            <li><span class="label">Profit Target:</span> <span class="value"><strong>8%</strong></span></li>
+                            <li><span class="label">Daily Loss Limit:</span> <span class="value"><strong>5%</strong></span></li>
+                            <li><span class="label">Max Drawdown:</span> <span class="value"><strong>10%</strong></span></li>
+                            <li><span class="label">Min Trading Days:</span> <span class="value"><strong>10</strong></span></li>
+                            <li><span class="label">Account Type:</span> <span class="value"><strong>Professional</strong></span></li>
                         </ul>
                     </div>
                     <button class="btn btn-primary" onclick="buyChallenge('25k')">Buy Now</button>
+                    <p class="trust-text"><i class="fas fa-lock"></i> Instant Access &bull; Secure Checkout &bull; No Subscription</p>
                 </div>
             </div>
         </div>
@@ -103,6 +134,7 @@
     <section class="comparison-section">
         <div class="container">
             <h2>Feature Comparison</h2>
+            <p class="table-intro">Transparent comparison. No hidden conditions.</p>
             <div class="comparison-table">
                 <table>
                     <thead>
@@ -115,52 +147,52 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Account Balance</td>
+                            <td class="feature-name">Account Balance</td>
                             <td>$5,000</td>
                             <td>$10,000</td>
                             <td>$25,000</td>
                         </tr>
                         <tr>
-                            <td>Profit Target</td>
+                            <td class="feature-name">Profit Target</td>
                             <td>8%</td>
                             <td>8%</td>
                             <td>8%</td>
                         </tr>
                         <tr>
-                            <td>Daily Loss Limit</td>
+                            <td class="feature-name">Daily Loss Limit</td>
                             <td>5%</td>
                             <td>5%</td>
                             <td>5%</td>
                         </tr>
                         <tr>
-                            <td>Max Drawdown</td>
+                            <td class="feature-name">Max Drawdown</td>
                             <td>10%</td>
                             <td>10%</td>
                             <td>10%</td>
                         </tr>
                         <tr>
-                            <td>Min Trading Days</td>
+                            <td class="feature-name">Min Trading Days</td>
                             <td>3</td>
                             <td>5</td>
                             <td>10</td>
                         </tr>
                         <tr>
-                            <td>Advanced Analytics</td>
-                            <td><i class="fas fa-times"></i></td>
-                            <td><i class="fas fa-check"></i></td>
-                            <td><i class="fas fa-check"></i></td>
+                            <td class="feature-name">Advanced Analytics</td>
+                            <td><i class="fas fa-times unavailable"></i></td>
+                            <td><i class="fas fa-check available"></i></td>
+                            <td><i class="fas fa-check available"></i></td>
                         </tr>
                         <tr>
-                            <td>Priority Support</td>
-                            <td><i class="fas fa-times"></i></td>
-                            <td><i class="fas fa-check"></i></td>
-                            <td><i class="fas fa-check"></i></td>
+                            <td class="feature-name">Priority Support</td>
+                            <td><i class="fas fa-times unavailable"></i></td>
+                            <td><i class="fas fa-check available"></i></td>
+                            <td><i class="fas fa-check available"></i></td>
                         </tr>
                         <tr>
-                            <td>Custom Reports</td>
-                            <td><i class="fas fa-times"></i></td>
-                            <td><i class="fas fa-times"></i></td>
-                            <td><i class="fas fa-check"></i></td>
+                            <td class="feature-name">Custom Reports</td>
+                            <td><i class="fas fa-times unavailable"></i></td>
+                            <td><i class="fas fa-times unavailable"></i></td>
+                            <td><i class="fas fa-check available"></i></td>
                         </tr>
                     </tbody>
                 </table>
@@ -171,9 +203,12 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Start Your Challenge?</h2>
-            <p>Join thousands of traders who have successfully passed their prop firm challenges with our platform</p>
-            <a href="/faq" class="btn btn-secondary">Learn More</a>
+            <h2>Ready to Prove Your Discipline?</h2>
+            <p>Thousands of traders are already taking the challenge.</p>
+            <div class="cta-buttons">
+                <a href="/checkout?challenge=10k" class="btn btn-primary btn-gradient">Start $10K Challenge</a>
+                <a href="/rules" class="btn btn-secondary">View Rules</a>
+            </div>
         </div>
     </section>
 
