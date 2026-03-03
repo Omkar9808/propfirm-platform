@@ -473,7 +473,7 @@ select:focus {
     font-size: 3.5rem !important;
     font-weight: 700 !important;
     margin-bottom: 1rem !important;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color)) !important;
+    background: linear-gradient(135deg, #00ff9d 0%, #0ea5e9 50%, #8b5cf6 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
@@ -503,7 +503,7 @@ select:focus {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
     animation: glow 3s infinite;
     opacity: 0;
 }
@@ -519,12 +519,124 @@ select:focus {
     }
     50% {
         transform: translate(-50%, -50%) scale(1.2);
-        opacity: 1;
+        opacity: 0.5;
     }
     100% {
         transform: translate(-50%, -50%) scale(0.8);
         opacity: 0;
     }
+}
+
+/* Hero Stats Row */
+.hero-stats-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(0, 255, 157, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 157, 0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease 0.6s forwards;
+    opacity: 0;
+}
+
+.hero-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stat-check-icon {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+/* Challenge Snapshot Panel */
+.challenge-snapshot-panel {
+    max-width: 600px;
+    margin: 3rem auto 0;
+    background: rgba(30, 30, 46, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 157, 0.2);
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease 0.8s forwards;
+    opacity: 0;
+}
+
+.panel-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+}
+
+.panel-header h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+}
+
+.panel-content {
+    padding: 1.5rem;
+}
+
+.rule-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem 0;
+}
+
+.rule-label {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.rule-value {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: right;
+}
+
+.rule-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.2), transparent);
+    margin: 0.5rem 0;
+}
+
+.panel-footer {
+    padding: 1rem 1.5rem;
+    background: rgba(0, 255, 157, 0.05);
+    border-top: 1px solid rgba(0, 255, 157, 0.1);
+    border-radius: 0 0 16px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.panel-footer i {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.panel-footer span {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
 .hero p {
@@ -660,11 +772,17 @@ select:focus {
     position: absolute;
     top: 15px;
     right: 20px;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 900;
     color: var(--card-border);
-    opacity: 0.3;
+    opacity: 0.5;
     line-height: 1;
+    transition: var(--transition);
+}
+
+.step-card:hover .step-number {
+    opacity: 0.8;
+    color: var(--primary-color);
 }
 
 .step-card::before {
@@ -852,6 +970,33 @@ select:focus {
     color: var(--text-primary);
 }
 
+/* Pricing Benefits Row */
+.pricing-benefits-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    padding: 2rem;
+    background: rgba(0, 255, 157, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 255, 157, 0.1);
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.benefit-item i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
 /* Why Choose Us */
 .why-choose-us {
     padding: 5rem 0;
@@ -882,13 +1027,13 @@ select:focus {
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
+    gap: 3rem;
     margin-top: 2rem;
 }
 
 .feature-item {
     text-align: center;
-    padding: 2.5rem;
+    padding: 3rem 2rem;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: var(--border-radius);
@@ -1034,6 +1179,14 @@ select:focus {
     margin: 0;
 }
 
+.performance-metric {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0.25rem 0 0;
+    opacity: 0.9;
+}
+
 /* FAQ */
 .faq-preview {
     padding: 5rem 0;
@@ -1055,6 +1208,10 @@ select:focus {
     backdrop-filter: blur(10px);
     overflow: hidden;
     transition: var(--transition);
+}
+
+.faq-item:not(:last-child) {
+    border-bottom: 2px solid var(--card-border);
 }
 
 .faq-item:hover {
@@ -2095,6 +2252,39 @@ input:checked + .slider:before {
     .trust-indicator {
         font-size: 0.75rem;
         padding: 6px 12px;
+    }
+    
+    .hero-stats-row {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding: 1.5rem;
+    }
+    
+    .challenge-snapshot-panel {
+        margin: 2rem 1rem 0;
+        border-radius: 12px;
+    }
+    
+    .panel-header h3 {
+        font-size: 1rem;
+    }
+    
+    .rule-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .rule-value {
+        font-size: 1.5rem;
+    }
+    
+    .pricing-benefits-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+        padding: 1.5rem;
     }
     
     .pricing-cards {
