@@ -200,24 +200,54 @@ function animateCounters() {
 
 // Navigation Functions
 function initNavigation() {
-    // Mobile menu toggle
+    // Premium Mobile Navigation Overlay
     const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
+    const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+    // Open mobile menu
+    if (hamburger && mobileNavOverlay) {
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileNavOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
         });
     }
     
+    // Close mobile menu with close button
+    if (mobileNavClose && mobileNavOverlay) {
+        mobileNavClose.addEventListener('click', function() {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scroll
+        });
+    }
+    
+    // Close mobile menu when clicking on overlay background
+    if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileNavOverlay) {
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+    
+    // Close mobile menu when clicking a link
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+    
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
-        const isClickInsideNav = hamburger.contains(event.target) || navMenu.contains(event.target);
+        const isClickInsideNav = hamburger.contains(event.target) || mobileNavOverlay.contains(event.target);
         
-        if (!isClickInsideNav && navMenu.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+        if (!isClickInsideNav && mobileNavOverlay.classList.contains('active')) {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
     });
     

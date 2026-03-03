@@ -333,6 +333,103 @@ select:focus {
     cursor: pointer;
 }
 
+/* Premium Full-Screen Mobile Navigation Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-overlay.active .mobile-nav-content {
+    transform: translateX(0);
+}
+
+.mobile-nav-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-close:hover {
+    color: var(--primary-color);
+    background: rgba(0, 255, 157, 0.1);
+}
+
+.mobile-nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-nav-link {
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    letter-spacing: 0.02em;
+}
+
+.mobile-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.mobile-nav-link:hover::after {
+    width: 100%;
+}
+
 .bar {
     width: 25px;
     height: 3px;
@@ -2497,6 +2594,37 @@ input:checked + .slider:before {
         height: 32px;
     }
     
+    /* Premium Mobile Spacing - Increased vertical rhythm */
+    section {
+        padding: 4rem 1rem !important; /* 64px vertical spacing */
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    /* Enhanced Card Spacing on Mobile */
+    .step-card,
+    .model-card,
+    .feature-card,
+    .testimonial-card,
+    .pricing-card {
+        padding: 1.5rem !important; /* Reduced from p-8 to p-6 equivalent */
+    }
+    
+    /* Improved Section Headings Spacing */
+    section h2 {
+        margin-bottom: 2rem !important; /* 32px below headings */
+    }
+    
+    /* Stacked Cards - Better Gap */
+    .steps,
+    .models-grid,
+    .features-grid,
+    .testimonial-grid {
+        gap: 1.5rem !important; /* 24px gap between stacked cards */
+    }
+    
     .sidebar {
         width: 70px;
         overflow: hidden;
@@ -2599,6 +2727,66 @@ input:checked + .slider:before {
     
     .rule-value {
         font-size: 1.5rem;
+    }
+    
+    /* Premium Mobile Buttons - Full Width with Clear Hierarchy */
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+    
+    .btn {
+        min-height: 48px; /* Touch-friendly minimum */
+        width: 100%;
+        text-align: center;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        font-weight: 600;
+        letter-spacing: 0.01em;
+    }
+    
+    .btn-secondary {
+        background: transparent;
+        border: 2px solid rgba(0, 255, 157, 0.3);
+        color: var(--text-secondary);
+        opacity: 0.9;
+        font-weight: 500;
+    }
+    
+    .btn-secondary:hover {
+        opacity: 1;
+        border-color: var(--primary-color);
+    }
+    
+    /* Soften "Most Popular" Card Glow on Mobile */
+    .pricing-card.popular::before,
+    .model-card.popular::before {
+        box-shadow: 0 0 30px rgba(0, 255, 157, 0.15); /* Reduced from 0.3 to 0.15 */
+    }
+    
+    .pricing-card.popular,
+    .model-card.popular {
+        border: 1px solid rgba(0, 255, 157, 0.2); /* Softer border */
+    }
+    
+    /* Testimonial Section - Fix Overflow and Alignment */
+    .testimonial-grid {
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+    
+    .testimonial-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    /* Trust Indicator Mobile Enhancement */
+    .trust-indicator {
+        justify-content: center;
+        text-align: center;
     }
     
     .pricing-benefits-row {
