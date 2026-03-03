@@ -725,6 +725,23 @@ select:focus {
     flex-shrink: 0;
 }
 
+/* Animated Counter Styles */
+.counter {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: scale(0.98);
+}
+
+.counter.animated {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.metric-item[data-animate="true"] .counter {
+    will-change: transform, opacity;
+}
+
 .metric-divider {
     width: 1px;
     height: 40px;

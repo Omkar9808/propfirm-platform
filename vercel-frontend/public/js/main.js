@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHoverEffects();
     initFAQAccordion();
     initScrollReveal();
+    initPremiumCounters();
 });
 
 // Advanced Visualizations
@@ -158,6 +159,71 @@ function initScrollReveal() {
     revealElements.forEach(el => {
         revealObserver.observe(el);
     });
+}
+
+// Premium Animated Counter System for Social Proof Metrics
+function initPremiumCounters() {
+    const counters = document.querySelectorAll('.counter[data-target]');
+    
+    if (!counters.length) return;
+
+    const animateCounter = (counter) => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const duration = 2000; // 2 seconds
+        const startTime = performance.now();
+        
+        // Use requestAnimationFrame for smooth, performant animation
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Ease-out quartic for smooth deceleration (professional feel)
+            const easeOut = 1 - Math.pow(1 - progress, 4);
+            const currentValue = Math.floor(easeOut * target);
+            
+            // Format numbers properly with commas for 1000+
+            if (target === 1000) {
+                counter.textContent = currentValue.toLocaleString();
+            } else {
+                counter.textContent = currentValue;
+            }
+            
+            // Continue animation until complete
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                // Animation complete - append suffix
+                counter.textContent = target.toLocaleString() + suffix;
+                
+                // Add animated class for final state
+                counter.classList.add('animated');
+            }
+        }
+        
+        requestAnimationFrame(updateCounter);
+    };
+
+    // Use Intersection Observer to trigger animation once when visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                // Mark as animated to prevent re-trigger
+                entry.target.dataset.animated = true;
+                
+                // Start counting animation
+                animateCounter(entry.target);
+                
+                // Stop observing after animation starts (one-time trigger)
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5, // Trigger when 50% visible
+        rootMargin: '0px'
+    });
+
+    counters.forEach(counter => observer.observe(counter));
 }
 
 // Enhanced counter animations
