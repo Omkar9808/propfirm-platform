@@ -3225,6 +3225,466 @@ select:focus {
     }
 }
 
+/* ========================================
+   RULES PAGE - INSTITUTIONAL EVALUATION FRAMEWORK
+   ======================================== */
+
+/* Evaluation Framework Header */
+.evaluation-header {
+    padding: 3rem 0 2.5rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.policy-badge {
+    display: inline-block;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    color: #718096;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.evaluation-header h1 {
+    font-size: 1.75rem;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.evaluation-header .header-subtitle {
+    font-size: 0.9375rem;
+    color: #a0aec0;
+    line-height: 1.6;
+    max-width: 65ch;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Core Rules Snapshot Grid */
+.core-rules-section {
+    padding: 3rem 0;
+}
+
+.core-rules-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .core-rules-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .core-rules-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+.core-rule-card {
+    background: #0a0a0a; /* neutral-950 */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px; /* rounded-2xl */
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.core-rule-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.rule-icon {
+    font-size: 1.5rem;
+    color: #00ff9d;
+    margin-bottom: 1rem;
+}
+
+.core-rule-card h3 {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.core-rule-card p {
+    font-size: 0.8125rem;
+    color: #718096;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Failure Conditions Section */
+.failure-conditions-section {
+    padding: 3rem 0 4rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.condition-card {
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.95) 0%, rgba(30, 30, 30, 0.98) 50%, rgba(10, 10, 10, 1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 4px solid rgba(0, 255, 157, 0.4); /* emerald-500/40 */
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.condition-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.condition-header h3 {
+    font-size: 1.125rem;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.condition-header h3 i {
+    color: #00ff9d;
+}
+
+.severity-indicator {
+    font-size: 0.75rem;
+    color: #00ff9d;
+    background: rgba(0, 255, 157, 0.1);
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.severity-indicator.critical {
+    color: #f56565;
+    background: rgba(245, 101, 101, 0.1);
+}
+
+.condition-content .condition-summary {
+    font-size: 0.9375rem;
+    color: #a0aec0;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.condition-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.condition-list li {
+    font-size: 0.875rem;
+    color: #cbd5e0;
+    line-height: 1.8;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.condition-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #00ff9d;
+    font-weight: bold;
+}
+
+.condition-list li strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.violation-warning {
+    font-size: 0.8125rem;
+    color: #fc8181; /* red-400 */
+    background: rgba(245, 101, 101, 0.05);
+    border-left: 3px solid #f56565;
+    padding: 0.75rem 1rem;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.violation-warning i {
+    flex-shrink: 0;
+}
+
+/* Operational Rules Accordion */
+.operational-rules-section {
+    padding: 3rem 0 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rules-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.accordion-item {
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.accordion-item:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.accordion-item.active {
+    border-color: rgba(0, 255, 157, 0.3);
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.accordion-header h3 {
+    font-size: 0.9375rem;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.accordion-header h3 i {
+    color: #00ff9d;
+}
+
+.accordion-icon {
+    color: #718096;
+    transition: transform 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+    color: #00ff9d;
+}
+
+.accordion-content {
+    display: none;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.accordion-content p {
+    font-size: 0.875rem;
+    color: #a0aec0;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion-content ul li {
+    font-size: 0.875rem;
+    color: #cbd5e0;
+    line-height: 1.8;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.accordion-content ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #00ff9d;
+}
+
+.accordion-content ul li strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Documentation Section */
+.documentation-section {
+    padding: 3rem 0 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.download-area {
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.6) 0%, rgba(30, 30, 30, 0.8) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.download-btn:hover {
+    border-color: rgba(0, 255, 157, 0.4);
+    background: rgba(0, 255, 157, 0.05);
+    transform: translateY(-2px);
+}
+
+.download-btn i {
+    font-size: 1.125rem;
+    color: #00ff9d;
+}
+
+.download-note {
+    font-size: 0.8125rem;
+    color: #718096;
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+/* Professional CTA */
+.professional-cta {
+    padding: 4rem 0 5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #10b981 0%, #06b6d1 100%);
+    color: #000;
+    padding: 1rem 3rem;
+    min-height: 48px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.cta-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.2);
+}
+
+.cta-disclaimer {
+    font-size: 0.75rem;
+    color: #718096;
+    margin-top: 1.5rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Mobile Responsiveness for Rules Page */
+@media (max-width: 767px) {
+    .evaluation-header {
+        padding: 2.5rem 0 1.5rem;
+        text-align: center;
+    }
+    
+    .policy-badge {
+        font-size: 0.625rem;
+    }
+    
+    .evaluation-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header-subtitle {
+        font-size: 0.875rem;
+    }
+    
+    .core-rules-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .condition-card {
+        padding: 1.5rem;
+    }
+    
+    .condition-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .severity-indicator {
+        align-self: flex-start;
+    }
+    
+    .accordion-header {
+        padding: 1rem;
+    }
+    
+    .accordion-content {
+        padding: 0 1rem 1rem 1rem;
+    }
+    
+    .download-area {
+        padding: 1.5rem;
+    }
+    
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .professional-cta {
+        padding: 3rem 0 4rem;
+    }
+    
+    .cta-button {
+        width: 100%;
+    }
+}
+
+/* Fade In Animation */
+.animate-fade-in {
+    animation: fadeInSlide 0.35s ease-out;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 767px) {
     .program-header {

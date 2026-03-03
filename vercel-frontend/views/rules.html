@@ -37,90 +37,146 @@
         </div>
     </nav>
 
-    <!-- Rules Banner -->
-    <section class="rules-banner">
+    <!-- Evaluation Framework Header -->
+    <section class="evaluation-header">
         <div class="container">
-            <h1>Challenge Rules</h1>
-            <p>Understand the rules and guidelines for successful challenge completion</p>
+            <div class="policy-badge">EVALUATION POLICY v1.0</div>
+            <h1>Evaluation Framework</h1>
+            <p class="header-subtitle">All participants must adhere strictly to the following capital evaluation conditions.</p>
         </div>
     </section>
 
-    <!-- Rules Sections -->
-    <section class="rules-section">
+    <!-- Core Rules Snapshot -->
+    <section class="core-rules-section">
         <div class="container">
+            <div class="core-rules-grid">
+                <div class="core-rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>8% Profit Target</h3>
+                    <p>Required for challenge completion</p>
+                </div>
+                
+                <div class="core-rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>5% Daily Loss Limit</h3>
+                    <p>Maximum daily drawdown threshold</p>
+                </div>
+                
+                <div class="core-rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>10% Maximum Drawdown</h3>
+                    <p>Overall capital protection limit</p>
+                </div>
+                
+                <div class="core-rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Minimum Trading Days</h3>
+                    <p>3–10 days based on program tier</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Failure Conditions (Non-Collapsible) -->
+    <section class="failure-conditions-section">
+        <div class="container">
+            <h2 class="section-title">Core Evaluation Conditions</h2>
+            
+            <!-- Profit Target -->
+            <div class="condition-card">
+                <div class="condition-header">
+                    <h3><i class="fas fa-bullseye"></i> Profit Target Requirement</h3>
+                    <span class="severity-indicator">Primary Objective</span>
+                </div>
+                <div class="condition-content">
+                    <p class="condition-summary">All challenges require achieving an 8% profit target based on your account balance.</p>
+                    <ul class="condition-list">
+                        <li>Profit must be calculated based on floating P&L at the end of each trading day</li>
+                        <li>Minimum trading days must be met before profit target can be achieved</li>
+                        <li>Profit target is calculated as (Equity - Initial Balance) / Initial Balance × 100</li>
+                        <li>Once profit target is reached, the challenge is considered passed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Daily Drawdown -->
+            <div class="condition-card">
+                <div class="condition-header">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Daily Drawdown Limit</h3>
+                    <span class="severity-indicator critical">Critical Threshold</span>
+                </div>
+                <div class="condition-content">
+                    <p class="condition-summary">Daily drawdown limit is 5% of your account balance. Violation results in immediate account termination.</p>
+                    <ul class="condition-list">
+                        <li>Daily drawdown is calculated as (Highest Equity of Day - Current Equity) / Highest Equity of Day × 100</li>
+                        <li>If daily drawdown exceeds 5%, the challenge is failed immediately</li>
+                        <li>Daily drawdown resets at the start of each trading day</li>
+                        <li>Highest equity of the day is tracked from 00:00 to 23:59 server time</li>
+                    </ul>
+                    <p class="violation-warning"><i class="fas fa-times-circle"></i> Violation results in immediate account termination.</p>
+                </div>
+            </div>
+
+            <!-- Maximum Drawdown -->
+            <div class="condition-card">
+                <div class="condition-header">
+                    <h3><i class="fas fa-shield-alt"></i> Maximum Drawdown Limit</h3>
+                    <span class="severity-indicator critical">Critical Threshold</span>
+                </div>
+                <div class="condition-content">
+                    <p class="condition-summary">Maximum drawdown limit is 10% of your account balance. Violation results in immediate account termination.</p>
+                    <ul class="condition-list">
+                        <li>Max drawdown is calculated as (Initial Balance - Lowest Equity) / Initial Balance × 100</li>
+                        <li>If max drawdown exceeds 10%, the challenge is failed immediately</li>
+                        <li>This is measured from account opening until challenge completion</li>
+                        <li>Max drawdown is not reset during the challenge period</li>
+                    </ul>
+                    <p class="violation-warning"><i class="fas fa-times-circle"></i> Violation results in immediate account termination.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operational Rules (Accordion) -->
+    <section class="operational-rules-section">
+        <div class="container">
+            <h2 class="section-title">Operational Guidelines</h2>
+            
             <div class="rules-accordion">
+                <!-- Lot Size Rules -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Profit Target</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <h3><i class="fas fa-ruler-horizontal"></i> Lot Size Restrictions</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
                     </div>
                     <div class="accordion-content">
-                        <p>All challenges require achieving an 8% profit target based on your account balance.</p>
+                        <p>Adhere to maximum lot size restrictions for each instrument:</p>
                         <ul>
-                            <li>Profit must be calculated based on floating P&L at the end of each trading day</li>
-                            <li>Minimum trading days must be met before profit target can be achieved</li>
-                            <li>Profit target is calculated as (Equity - Initial Balance) / Initial Balance * 100</li>
-                            <li>Once profit target is reached, the challenge is considered passed</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>Daily Drawdown</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Daily drawdown limit is 5% of your account balance.</p>
-                        <ul>
-                            <li>Daily drawdown is calculated as (Highest Equity of Day - Current Equity) / Highest Equity of Day * 100</li>
-                            <li>If daily drawdown exceeds 5%, the challenge is failed</li>
-                            <li>Daily drawdown resets at the start of each trading day</li>
-                            <li>Highest equity of the day is tracked from 00:00 to 23:59 server time</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>Maximum Drawdown</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Maximum drawdown limit is 10% of your account balance.</p>
-                        <ul>
-                            <li>Max drawdown is calculated as (Initial Balance - Lowest Equity) / Initial Balance * 100</li>
-                            <li>If max drawdown exceeds 10%, the challenge is failed</li>
-                            <li>This is measured from account opening until challenge completion</li>
-                            <li>Max drawdown is not reset during the challenge period</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>Lot Size Rules</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Adhere to maximum lot size restrictions for each instrument.</p>
-                        <ul>
-                            <li>Major currency pairs (EURUSD, GBPUSD, USDJPY, etc.): Maximum 1.0 lot per position</li>
-                            <li>Minor currency pairs: Maximum 0.5 lot per position</li>
-                            <li>Indices: Maximum 0.2 lot per position</li>
-                            <li>Commodities: Maximum 0.5 lot per position</li>
+                            <li><strong>Major currency pairs</strong> (EURUSD, GBPUSD, USDJPY, etc.): Maximum 1.0 lot per position</li>
+                            <li><strong>Minor currency pairs:</strong> Maximum 0.5 lot per position</li>
+                            <li><strong>Indices:</strong> Maximum 0.2 lot per position</li>
+                            <li><strong>Commodities:</strong> Maximum 0.5 lot per position</li>
                             <li>No hedging allowed (opening opposite positions on the same instrument)</li>
                         </ul>
                     </div>
                 </div>
 
+                <!-- News Trading Restrictions -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>News Trading Restrictions</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <h3><i class="fas fa-newspaper"></i> News Trading Restrictions</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
                     </div>
                     <div class="accordion-content">
-                        <p>Certain high-impact news events are restricted for trading.</p>
+                        <p>Certain high-impact news events are restricted for trading:</p>
                         <ul>
                             <li>No trading 30 minutes before and after major economic news releases</li>
                             <li>Restricted news events include NFP, CPI, FOMC decisions, ECB meetings</li>
@@ -130,16 +186,17 @@
                     </div>
                 </div>
 
+                <!-- Prohibited Strategies -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Prohibited Strategies</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <h3><i class="fas fa-ban"></i> Prohibited Strategies</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
                     </div>
                     <div class="accordion-content">
-                        <p>These strategies are not allowed during the challenge:</p>
+                        <p>The following strategies are strictly prohibited:</p>
                         <ul>
                             <li>Copying trades from other traders or using copy trading services</li>
-                            <li>Using automated trading systems or expert advisors</li>
+                            <li>Using automated trading systems or expert advisors (EAs)</li>
                             <li>Hedging the same instrument with opposing positions</li>
                             <li>Opening multiple positions that net to zero risk</li>
                             <li>Intentionally causing losses to reset daily drawdown</li>
@@ -148,13 +205,14 @@
                     </div>
                 </div>
 
+                <!-- Account Termination -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Account Termination</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <h3><i class="fas fa-user-slash"></i> Account Termination Conditions</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
                     </div>
                     <div class="accordion-content">
-                        <p>Conditions that lead to account termination:</p>
+                        <p>Account termination occurs under the following conditions:</p>
                         <ul>
                             <li>Exceeding daily drawdown limit (5%)</li>
                             <li>Exceeding maximum drawdown limit (10%)</li>
@@ -167,17 +225,18 @@
                     </div>
                 </div>
 
+                <!-- Minimum Trading Days -->
                 <div class="accordion-item">
                     <div class="accordion-header">
-                        <h3>Minimum Trading Days</h3>
-                        <i class="fas fa-chevron-down"></i>
+                        <h3><i class="fas fa-calendar-check"></i> Minimum Trading Days Requirement</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
                     </div>
                     <div class="accordion-content">
-                        <p>Minimum trading days required for each challenge:</p>
+                        <p>Minimum trading days required for each challenge tier:</p>
                         <ul>
-                            <li>$5K Challenge: Minimum 3 trading days</li>
-                            <li>$10K Challenge: Minimum 5 trading days</li>
-                            <li>$25K Challenge: Minimum 10 trading days</li>
+                            <li><strong>$5K Challenge:</strong> Minimum 3 trading days</li>
+                            <li><strong>$10K Challenge:</strong> Minimum 5 trading days</li>
+                            <li><strong>$25K Challenge:</strong> Minimum 10 trading days</li>
                             <li>Trading days are counted as days with at least one closed position</li>
                             <li>Day counts do not need to be consecutive</li>
                             <li>Minimum days must be met before profit target can be achieved</li>
@@ -188,41 +247,27 @@
         </div>
     </section>
 
-    <!-- Rules Summary -->
-    <section class="rules-summary">
+    <!-- Official Documentation -->
+    <section class="documentation-section">
         <div class="container">
-            <h2>Quick Reference</h2>
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <i class="fas fa-percentage"></i>
-                    <h3>8% Profit Target</h3>
-                    <p>Required for challenge completion</p>
-                </div>
-                <div class="summary-card">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h3>5% Daily Loss</h3>
-                    <p>Maximum daily drawdown limit</p>
-                </div>
-                <div class="summary-card">
-                    <i class="fas fa-times-circle"></i>
-                    <h3>10% Max DD</h3>
-                    <p>Overall maximum drawdown limit</p>
-                </div>
-                <div class="summary-card">
-                    <i class="fas fa-calendar-day"></i>
-                    <h3>Min Trading Days</h3>
-                    <p>3-10 days depending on challenge</p>
-                </div>
+            <h2 class="section-title">Official Documentation</h2>
+            <div class="download-area">
+                <a href="/public/evaluation-policy.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Download Full Evaluation Policy (PDF)</span>
+                </a>
+                <p class="download-note">Complete documentation of all evaluation conditions and operational guidelines.</p>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Professional CTA -->
+    <section class="professional-cta">
         <div class="container">
-            <h2>Ready to Accept the Challenge?</h2>
-            <p>Review all rules carefully and start your prop trading journey today</p>
-            <a href="/pricing" class="btn btn-primary">Choose Your Challenge</a>
+            <a href="/pricing" class="cta-button">
+                Proceed to Evaluation
+            </a>
+            <p class="cta-disclaimer">By proceeding, you confirm that you understand and accept all evaluation conditions.</p>
         </div>
     </section>
 
@@ -269,15 +314,25 @@
 
     <script src="/public/js/main.js"></script>
     <script>
-        // Accordion functionality
+        // Enhanced Accordion functionality with smooth transitions
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
                 const content = item.querySelector('.accordion-content');
+                const icon = header.querySelector('.accordion-icon');
                 
+                // Close other open items
+                document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
+                    if (activeItem !== item) {
+                        activeItem.classList.remove('active');
+                        activeItem.querySelector('.accordion-content').style.display = 'none';
+                        activeItem.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Toggle current item
                 item.classList.toggle('active');
                 
-                const icon = header.querySelector('i');
                 if (item.classList.contains('active')) {
                     content.style.display = 'block';
                     icon.style.transform = 'rotate(180deg)';
@@ -288,8 +343,8 @@
             });
         });
 
-        // Initialize accordion content display
-        document.querySelectorAll('.accordion-content').forEach(content => {
+        // Initialize accordion - keep operational rules collapsed by default
+        document.querySelectorAll('.operational-rules-section .accordion-content').forEach(content => {
             content.style.display = 'none';
         });
     </script>
