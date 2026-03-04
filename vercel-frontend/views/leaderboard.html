@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-black">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -37,91 +37,88 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="leaderboard-header">
-        <div class="container" style="max-width: 7xl; margin: 0 auto; padding: 0 2rem;">
-            <h1 style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">Leaderboard</h1>
-            <p style="color: #a3a3a3; font-size: 1.125rem;">Track performance and compete with traders worldwide.</p>
+    <!-- Page Header with Glow Effect -->
+    <section class="relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.08),transparent_60%)] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 py-16 relative">
+            <h1 class="text-4xl font-semibold text-white">Leaderboard</h1>
+            <p class="text-neutral-400 mt-2">Track performance and compete with traders worldwide.</p>
         </div>
     </section>
 
     <!-- Competition Statistics -->
-    <section class="competition-stats">
-        <div class="container" style="max-width: 7xl; margin: 0 auto; padding: 0 2rem;">
-            <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 1rem; margin-top: 2rem;">
-                <!-- Total Traders -->
-                <div style="background: #0a0a0a; border: 1px solid #262626; border-radius: 0.75rem; padding: 1.5rem; text-align: center; transition: all 0.3s ease;">
-                    <div style="font-size: 1.875rem; font-weight: 600; color: white;">1,247</div>
-                    <div style="font-size: 0.875rem; color: #a3a3a3; margin-top: 0.25rem;">Total Traders</div>
-                </div>
-                <!-- Passed Challenges -->
-                <div style="background: #0a0a0a; border: 1px solid #262626; border-radius: 0.75rem; padding: 1.5rem; text-align: center; transition: all 0.3s ease;">
-                    <div style="font-size: 1.875rem; font-weight: 600; color: white;">342</div>
-                    <div style="font-size: 0.875rem; color: #a3a3a3; margin-top: 0.25rem;">Passed Challenges</div>
-                </div>
-                <!-- Success Rate -->
-                <div style="background: #0a0a0a; border: 1px solid #262626; border-radius: 0.75rem; padding: 1.5rem; text-align: center; transition: all 0.3s ease;">
-                    <div style="font-size: 1.875rem; font-weight: 600; color: white;">27.4%</div>
-                    <div style="font-size: 0.875rem; color: #a3a3a3; margin-top: 0.25rem;">Success Rate</div>
-                </div>
-                <!-- Total Trades -->
-                <div style="background: #0a0a0a; border: 1px solid #262626; border-radius: 0.75rem; padding: 1.5rem; text-align: center; transition: all 0.3s ease;">
-                    <div style="font-size: 1.875rem; font-weight: 600; color: white;">15,689</div>
-                    <div style="font-size: 0.875rem; color: #a3a3a3; margin-top: 0.25rem;">Total Trades</div>
-                </div>
+    <section class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+            <!-- Total Traders -->
+            <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-6 text-center transition-all duration-300 hover:border-emerald-500/40">
+                <div class="text-3xl font-semibold text-white">1,247</div>
+                <div class="text-sm text-neutral-400 mt-2">Total Traders</div>
+            </div>
+            <!-- Passed Challenges -->
+            <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-6 text-center transition-all duration-300 hover:border-emerald-500/40">
+                <div class="text-3xl font-semibold text-white">342</div>
+                <div class="text-sm text-neutral-400 mt-2">Passed Challenges</div>
+            </div>
+            <!-- Success Rate -->
+            <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-6 text-center transition-all duration-300 hover:border-emerald-500/40">
+                <div class="text-3xl font-semibold text-white">27.4%</div>
+                <div class="text-sm text-neutral-400 mt-2">Success Rate</div>
+            </div>
+            <!-- Total Trades -->
+            <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-6 text-center transition-all duration-300 hover:border-emerald-500/40">
+                <div class="text-3xl font-semibold text-white">15,689</div>
+                <div class="text-sm text-neutral-400 mt-2">Total Trades</div>
             </div>
         </div>
     </section>
 
     <!-- This Week's Top Traders -->
-    <section class="weekly-top-traders">
-        <div class="container" style="max-width: 7xl; margin: 0 auto; padding: 0 2rem;">
-            <h2 style="text-align: center; font-size: 1.75rem; font-weight: 700; color: white; margin: 3rem 0 2rem;">🔥 This Week's Top Traders</h2>
-            <div style="display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; margin-top: 1rem;">
-                <!-- Weekly Champion -->
-                <div style="background: linear-gradient(135deg, #0a0a0a, #000000); border: 1px solid #262626; border-radius: 0.75rem; padding: 1.5rem; transition: all 0.3s ease;">
-                    <div style="color: #a3a3a3; font-size: 0.875rem; margin-bottom: 1rem; font-weight: 600;">🏆 Weekly Champion</div>
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 3.5rem; height: 3.5rem; border-radius: 9999px; background: linear-gradient(135deg, #10b981, #14b8a6); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.25rem;">TM</div>
-                        <div>
-                            <div style="font-weight: 600; color: white; font-size: 1.125rem;">TradingMaster</div>
-                            <div style="color: #a3a3a3; font-size: 0.875rem;">Swing Trader 🇺🇸</div>
-                        </div>
-                    </div>
-                    <div style="color: #34d399; font-weight: 700; font-size: 1.5rem; margin-bottom: 0.75rem;">+8.2% this week</div>
-                    <div style="width: 100%; height: 0.5rem; background: #262626; border-radius: 9999px; overflow: hidden;">
-                        <div style="height: 100%; background: linear-gradient(90deg, #34d399, #14b8a6); width: 82%;"></div>
+    <section class="max-w-7xl mx-auto px-6">
+        <h2 class="text-xl font-semibold text-white mt-16 mb-8 text-center">🔥 This Week's Top Traders</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Weekly Champion -->
+            <div class="bg-gradient-to-br from-neutral-900 to-black border border-neutral-800 rounded-xl p-6 transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]">
+                <div class="text-sm text-neutral-400 uppercase tracking-wide">🏆 Weekly Champion</div>
+                <div class="flex items-center gap-3 mt-4">
+                    <img src="https://i.pravatar.cc/100?img=5" alt="TradingMaster" class="w-16 h-16 rounded-full object-cover">
+                    <div>
+                        <div class="text-lg font-semibold text-white">TradingMaster</div>
+                        <div class="text-sm text-neutral-400">Swing Trader 🇺🇸</div>
                     </div>
                 </div>
-                <!-- Fastest Rising -->
-                <div style="background: linear-gradient(135deg, #0a0a0a, #000000); border: 1px solid #262626; border-radius: 0.75rem; padding: 1.5rem; transition: all 0.3s ease;">
-                    <div style="color: #a3a3a3; font-size: 0.875rem; margin-bottom: 1rem; font-weight: 600;">🚀 Fastest Rising</div>
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 3.5rem; height: 3.5rem; border-radius: 9999px; background: linear-gradient(135deg, #06b6d1, #3b82f6); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.25rem;">CQ</div>
-                        <div>
-                            <div style="font-weight: 600; color: white; font-size: 1.125rem;">CryptoQueen</div>
-                            <div style="color: #a3a3a3; font-size: 0.875rem;">Swing Trader 🇬🇧</div>
-                        </div>
-                    </div>
-                    <div style="color: #34d399; font-weight: 700; font-size: 1.5rem; margin-bottom: 0.75rem;">↑5 positions</div>
-                    <div style="width: 100%; height: 0.5rem; background: #262626; border-radius: 9999px; overflow: hidden;">
-                        <div style="height: 100%; background: linear-gradient(90deg, #34d399, #14b8a6); width: 70%;"></div>
+                <div class="text-emerald-400 text-lg font-semibold mt-3">+8.2% this week</div>
+                <div class="w-full h-2 bg-neutral-800 rounded-full mt-3">
+                    <div class="h-2 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500" style="width: 82%;"></div>
+                </div>
+            </div>
+            <!-- Fastest Rising -->
+            <div class="bg-gradient-to-br from-neutral-900 to-black border border-neutral-800 rounded-xl p-6 transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]">
+                <div class="text-sm text-neutral-400 uppercase tracking-wide">🚀 Fastest Rising</div>
+                <div class="flex items-center gap-3 mt-4">
+                    <img src="https://i.pravatar.cc/100?img=9" alt="CryptoQueen" class="w-16 h-16 rounded-full object-cover">
+                    <div>
+                        <div class="text-lg font-semibold text-white">CryptoQueen</div>
+                        <div class="text-sm text-neutral-400">Swing Trader 🇬🇧</div>
                     </div>
                 </div>
-                <!-- Highest Win Rate -->
-                <div style="background: linear-gradient(135deg, #0a0a0a, #000000); border: 1px solid #262626; border-radius: 0.75rem; padding: 1.5rem; transition: all 0.3s ease;">
-                    <div style="color: #a3a3a3; font-size: 0.875rem; margin-bottom: 1rem; font-weight: 600;">🎯 Highest Win Rate</div>
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 3.5rem; height: 3.5rem; border-radius: 9999px; background: linear-gradient(135deg, #f59e0b, #ef4444); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.25rem;">SP</div>
-                        <div>
-                            <div style="font-weight: 600; color: white; font-size: 1.125rem;">ScalperPro</div>
-                            <div style="color: #a3a3a3; font-size: 0.875rem;">Scalper 🇨🇦</div>
-                        </div>
+                <div class="text-emerald-400 text-lg font-semibold mt-3">↑5 positions</div>
+                <div class="w-full h-2 bg-neutral-800 rounded-full mt-3">
+                    <div class="h-2 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500" style="width: 70%;"></div>
+                </div>
+            </div>
+            <!-- Highest Win Rate -->
+            <div class="bg-gradient-to-br from-neutral-900 to-black border border-neutral-800 rounded-xl p-6 transition-all duration-300 hover:border-emerald-500/40 hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]">
+                <div class="text-sm text-neutral-400 uppercase tracking-wide">🎯 Highest Win Rate</div>
+                <div class="flex items-center gap-3 mt-4">
+                    <img src="https://i.pravatar.cc/100?img=12" alt="ScalperPro" class="w-16 h-16 rounded-full object-cover">
+                    <div>
+                        <div class="text-lg font-semibold text-white">ScalperPro</div>
+                        <div class="text-sm text-neutral-400">Scalper 🇨🇦</div>
                     </div>
-                    <div style="color: #34d399; font-weight: 700; font-size: 1.5rem; margin-bottom: 0.75rem;">85% Win Rate</div>
-                    <div style="width: 100%; height: 0.5rem; background: #262626; border-radius: 9999px; overflow: hidden;">
-                        <div style="height: 100%; background: linear-gradient(90deg, #34d399, #14b8a6); width: 85%;"></div>
-                    </div>
+                </div>
+                <div class="text-emerald-400 text-lg font-semibold mt-3">85% Win Rate</div>
+                <div class="w-full h-2 bg-neutral-800 rounded-full mt-3">
+                    <div class="h-2 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500" style="width: 85%;"></div>
                 </div>
             </div>
         </div>
@@ -130,282 +127,270 @@
 
 
     <!-- Filter Controls -->
-    <section class="filter-section">
-        <div class="container" style="max-width: 7xl; margin: 0 auto; padding: 0 2rem;">
-            <div class="filter-control-bar" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem;">
-                <select id="challengeFilter" class="filter-select" style="background: #0a0a0a; border: 1px solid #262626; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.875rem; color: #d4d4d4;">
-                    <option value="all">All Challenges</option>
-                    <option value="5k">$5K Challenge</option>
-                    <option value="10k">$10K Challenge</option>
-                    <option value="25k">$25K Challenge</option>
-                </select>
-                <select id="sortBy" class="filter-select" style="background: #0a0a0a; border: 1px solid #262626; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.875rem; color: #d4d4d4;">
-                    <option value="profit">Sort by Profit %</option>
-                    <option value="winrate">Sort by Win Rate</option>
-                    <option value="rank">Sort by Rank</option>
-                </select>
-                <select id="statusFilter" class="filter-select" style="background: #0a0a0a; border: 1px solid #262626; border-radius: 0.5rem; padding: 0.5rem 1rem; font-size: 0.875rem; color: #d4d4d4;">
-                    <option value="all">All Status</option>
-                    <option value="active">Active</option>
-                    <option value="passed">Passed</option>
-                </select>
-            </div>
+    <section class="max-w-7xl mx-auto px-6">
+        <div class="space-y-3 mt-8">
+            <select id="challengeFilter" class="bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white w-full transition-all duration-200 hover:border-emerald-500/40">
+                <option value="all">All Challenges</option>
+                <option value="5k">$5K Challenge</option>
+                <option value="10k">$10K Challenge</option>
+                <option value="25k">$25K Challenge</option>
+            </select>
+            <select id="sortBy" class="bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white w-full transition-all duration-200 hover:border-emerald-500/40">
+                <option value="profit">Sort by Profit %</option>
+                <option value="winrate">Sort by Win Rate</option>
+                <option value="rank">Sort by Rank</option>
+            </select>
+            <select id="statusFilter" class="bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white w-full transition-all duration-200 hover:border-emerald-500/40">
+                <option value="all">All Status</option>
+                <option value="active">Active</option>
+                <option value="passed">Passed</option>
+            </select>
         </div>
     </section>
 
-    <!-- Enhanced Leaderboard Table -->
-    <section class="leaderboard-section">
-        <div class="container" style="max-width: 7xl; margin: 0 auto; padding: 0 2rem;">
-            <div class="leaderboard-table-container-enhanced" style="overflow-x: auto; margin-top: 2rem;">
-                <table class="leaderboard-table-enhanced" style="width: 100%; font-size: 0.875rem;">
-                    <thead>
-                        <tr style="border-bottom: 1px solid #262626;">
-                            <th style="text-align: left; padding: 1rem; color: #a3a3a3;">Rank</th>
-                            <th style="text-align: left; padding: 1rem; color: #a3a3a3;">Trader</th>
-                            <th style="text-align: left; padding: 1rem; color: #a3a3a3;">Challenge</th>
-                            <th style="text-align: left; padding: 1rem; color: #a3a3a3;">Profit %</th>
-                            <th style="text-align: left; padding: 1rem; color: #a3a3a3;">Movement</th>
-                            <th style="text-align: left; padding: 1rem; color: #a3a3a3;">Win Rate</th>
-                            <th style="text-align: left; padding: 1rem; color: #a3a3a3;">Status</th>
-                            <th style="text-align: left; padding: 1rem; color: #a3a3a3;">Trades</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="trader-row" style="transition: all 0.2s ease;">
-                            <td style="padding: 1rem;"><span class="rank-badge gold">1</span></td>
-                            <td style="padding: 1rem;">
-                                <div class="trader-info" style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <div style="width: 2rem; height: 2rem; border-radius: 9999px; background: linear-gradient(135deg, #10b981, #06b6d1);"></div>
-                                    <div>
-                                        <div class="trader-name" style="font-weight: 500; color: white;">TradingMaster</div>
-                                        <div class="trader-tag" style="font-size: 0.75rem; color: #a3a3a3;">Swing Trader</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="padding: 1rem;"><span class="challenge-badge">$25K</span></td>
-                            <td style="padding: 1rem;">
+    <!-- Leaderboard Table -->
+    <section class="max-w-7xl mx-auto px-6">
+        <div class="overflow-x-auto mt-10">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-t border-neutral-800">
+                        <th class="text-neutral-400 text-sm py-4 text-left">Rank</th>
+                        <th class="text-neutral-400 text-sm py-4 text-left">Trader</th>
+                        <th class="text-neutral-400 text-sm py-4 text-left">Challenge</th>
+                        <th class="text-neutral-400 text-sm py-4 text-left">Profit %</th>
+                        <th class="text-neutral-400 text-sm py-4 text-left">Movement</th>
+                        <th class="text-neutral-400 text-sm py-4 text-left">Win Rate</th>
+                        <th class="text-neutral-400 text-sm py-4 text-left">Status</th>
+                        <th class="text-neutral-400 text-sm py-4 text-left">Trades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1 -->
+                    <tr class="border-t border-neutral-800 hover:bg-neutral-900/40 transition-colors">
+                        <td class="py-4"><span class="text-emerald-400 font-semibold">1</span></td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/100?img=5" alt="TradingMaster" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <span class="profit-value positive" style="color: #34d399; font-weight: 600;">+12.5%</span>
-                                    <div style="width: 7rem; height: 0.375rem; background: #262626; border-radius: 9999px; margin-top: 0.25rem;">
-                                        <div style="height: 100%; background: linear-gradient(90deg, #10b981, #06b6d1); border-radius: 9999px; width: 100%;"></div>
-                                    </div>
+                                    <div class="text-white font-medium">TradingMaster</div>
+                                    <div class="text-xs text-neutral-400">Swing Trader</div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;">
-                                <span style="color: #34d399; font-weight: 500;">→</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="win-rate">78%</span></td>
-                            <td style="padding: 1rem;">
-                                <span class="status-badge passed" style="background: rgba(16, 185, 129, 0.1); color: #34d399; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem;">Passed</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="trades-count">142</span></td>
-                        </tr>
-                        <tr class="trader-row" style="transition: all 0.2s ease;">
-                            <td style="padding: 1rem;"><span class="rank-badge silver">2</span></td>
-                            <td style="padding: 1rem;">
-                                <div class="trader-info" style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <div style="width: 2rem; height: 2rem; border-radius: 9999px; background: #262626;"></div>
-                                    <div>
-                                        <div class="trader-name" style="font-weight: 500; color: white;">ForexKing</div>
-                                        <div class="trader-tag" style="font-size: 0.75rem; color: #a3a3a3;">Scalper</div>
-                                    </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-white">$25K</span></td>
+                        <td class="py-4">
+                            <div>
+                                <div class="text-emerald-400 font-medium">+12.5%</div>
+                                <div class="w-32 h-2 bg-neutral-800 rounded-full mt-1">
+                                    <div class="h-2 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full" style="width: 100%;"></div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;"><span class="challenge-badge">$10K</span></td>
-                            <td style="padding: 1rem;">
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-neutral-400">→ 0</span></td>
+                        <td class="py-4"><span class="text-white">78%</span></td>
+                        <td class="py-4">
+                            <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs">Passed</span>
+                        </td>
+                        <td class="py-4"><span class="text-white">142</span></td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr class="border-t border-neutral-800 hover:bg-neutral-900/40 transition-colors">
+                        <td class="py-4"><span class="text-neutral-400">2</span></td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/100?img=8" alt="ForexKing" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <span class="profit-value positive" style="color: #34d399; font-weight: 600;">+9.8%</span>
-                                    <div style="width: 7rem; height: 0.375rem; background: #262626; border-radius: 9999px; margin-top: 0.25rem;">
-                                        <div style="height: 100%; background: linear-gradient(90deg, #10b981, #06b6d1); border-radius: 9999px; width: 78%;"></div>
-                                    </div>
+                                    <div class="text-white font-medium">ForexKing</div>
+                                    <div class="text-xs text-neutral-400">Scalper</div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;">
-                                <span style="color: #f87171; font-weight: 500;">↓1</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="win-rate">72%</span></td>
-                            <td style="padding: 1rem;">
-                                <span class="status-badge passed" style="background: rgba(16, 185, 129, 0.1); color: #34d399; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem;">Passed</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="trades-count">98</span></td>
-                        </tr>
-                        <tr class="trader-row" style="transition: all 0.2s ease;">
-                            <td style="padding: 1rem;"><span class="rank-badge bronze">3</span></td>
-                            <td style="padding: 1rem;">
-                                <div class="trader-info" style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <div style="width: 2rem; height: 2rem; border-radius: 9999px; background: #262626;"></div>
-                                    <div>
-                                        <div class="trader-name" style="font-weight: 500; color: white;">RiskTaker</div>
-                                        <div class="trader-tag" style="font-size: 0.75rem; color: #a3a3a3;">Trend Trader</div>
-                                    </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-white">$10K</span></td>
+                        <td class="py-4">
+                            <div>
+                                <div class="text-emerald-400 font-medium">+9.8%</div>
+                                <div class="w-32 h-2 bg-neutral-800 rounded-full mt-1">
+                                    <div class="h-2 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full" style="width: 78%;"></div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;"><span class="challenge-badge">$5K</span></td>
-                            <td style="padding: 1rem;">
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-red-400">⬇ -1</span></td>
+                        <td class="py-4"><span class="text-white">72%</span></td>
+                        <td class="py-4">
+                            <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs">Passed</span>
+                        </td>
+                        <td class="py-4"><span class="text-white">98</span></td>
+                    </tr>
+                    <!-- Row 3 -->
+                    <tr class="border-t border-neutral-800 hover:bg-neutral-900/40 transition-colors">
+                        <td class="py-4"><span class="text-amber-600 font-semibold">3</span></td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/100?img=11" alt="RiskTaker" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <span class="profit-value positive" style="color: #34d399; font-weight: 600;">+8.7%</span>
-                                    <div style="width: 7rem; height: 0.375rem; background: #262626; border-radius: 9999px; margin-top: 0.25rem;">
-                                        <div style="height: 100%; background: linear-gradient(90deg, #10b981, #06b6d1); border-radius: 9999px; width: 69%;"></div>
-                                    </div>
+                                    <div class="text-white font-medium">RiskTaker</div>
+                                    <div class="text-xs text-neutral-400">Trend Trader</div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;">
-                                <span style="color: #34d399; font-weight: 500;">↑1</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="win-rate">65%</span></td>
-                            <td style="padding: 1rem;">
-                                <span class="status-badge passed" style="background: rgba(16, 185, 129, 0.1); color: #34d399; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem;">Passed</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="trades-count">76</span></td>
-                        </tr>
-                        <tr class="trader-row" style="transition: all 0.2s ease;">
-                            <td style="padding: 1rem;"><span class="rank-number">4</span></td>
-                            <td style="padding: 1rem;">
-                                <div class="trader-info" style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <div style="width: 2rem; height: 2rem; border-radius: 9999px; background: linear-gradient(135deg, #06b6d1, #3b82f6);"></div>
-                                    <div>
-                                        <div class="trader-name" style="font-weight: 500; color: white;">CryptoQueen</div>
-                                        <div class="trader-tag" style="font-size: 0.75rem; color: #a3a3a3;">Swing Trader</div>
-                                    </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-white">$5K</span></td>
+                        <td class="py-4">
+                            <div>
+                                <div class="text-emerald-400 font-medium">+8.7%</div>
+                                <div class="w-32 h-2 bg-neutral-800 rounded-full mt-1">
+                                    <div class="h-2 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full" style="width: 69%;"></div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;"><span class="challenge-badge">$10K</span></td>
-                            <td style="padding: 1rem;">
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-emerald-400">⬆ +1</span></td>
+                        <td class="py-4"><span class="text-white">65%</span></td>
+                        <td class="py-4">
+                            <span class="bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs">Passed</span>
+                        </td>
+                        <td class="py-4"><span class="text-white">76</span></td>
+                    </tr>
+                    <!-- Row 4 -->
+                    <tr class="border-t border-neutral-800 hover:bg-neutral-900/40 transition-colors">
+                        <td class="py-4"><span class="text-neutral-400">4</span></td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/100?img=9" alt="CryptoQueen" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <span class="profit-value positive" style="color: #34d399; font-weight: 600;">+7.2%</span>
-                                    <div style="width: 7rem; height: 0.375rem; background: #262626; border-radius: 9999px; margin-top: 0.25rem;">
-                                        <div style="height: 100%; background: linear-gradient(90deg, #10b981, #06b6d1); border-radius: 9999px; width: 57%;"></div>
-                                    </div>
+                                    <div class="text-white font-medium">CryptoQueen</div>
+                                    <div class="text-xs text-neutral-400">Swing Trader</div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;">
-                                <span style="color: #34d399; font-weight: 500;">↑5</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="win-rate">69%</span></td>
-                            <td style="padding: 1rem;">
-                                <span class="status-badge active" style="background: rgba(6, 182, 212, 0.1); color: #22d3ee; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem;">Active</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="trades-count">124</span></td>
-                        </tr>
-                        <tr class="trader-row" style="transition: all 0.2s ease;">
-                            <td style="padding: 1rem;"><span class="rank-number">5</span></td>
-                            <td style="padding: 1rem;">
-                                <div class="trader-info" style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <div style="width: 2rem; height: 2rem; border-radius: 9999px; background: #262626;"></div>
-                                    <div>
-                                        <div class="trader-name" style="font-weight: 500; color: white;">ScalperPro</div>
-                                        <div class="trader-tag" style="font-size: 0.75rem; color: #a3a3a3;">Scalper</div>
-                                    </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-white">$10K</span></td>
+                        <td class="py-4">
+                            <div>
+                                <div class="text-emerald-400 font-medium">+7.2%</div>
+                                <div class="w-32 h-2 bg-neutral-800 rounded-full mt-1">
+                                    <div class="h-2 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full" style="width: 57%;"></div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;"><span class="challenge-badge">$5K</span></td>
-                            <td style="padding: 1rem;">
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-emerald-400">⬆ +5</span></td>
+                        <td class="py-4"><span class="text-white">69%</span></td>
+                        <td class="py-4">
+                            <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs">Active</span>
+                        </td>
+                        <td class="py-4"><span class="text-white">124</span></td>
+                    </tr>
+                    <!-- Row 5 -->
+                    <tr class="border-t border-neutral-800 hover:bg-neutral-900/40 transition-colors">
+                        <td class="py-4"><span class="text-neutral-400">5</span></td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/100?img=12" alt="ScalperPro" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <span class="profit-value positive" style="color: #34d399; font-weight: 600;">+6.9%</span>
-                                    <div style="width: 7rem; height: 0.375rem; background: #262626; border-radius: 9999px; margin-top: 0.25rem;">
-                                        <div style="height: 100%; background: linear-gradient(90deg, #10b981, #06b6d1); border-radius: 9999px; width: 55%;"></div>
-                                    </div>
+                                    <div class="text-white font-medium">ScalperPro</div>
+                                    <div class="text-xs text-neutral-400">Scalper</div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;">
-                                <span style="color: #34d399; font-weight: 500;">↑2</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="win-rate">75%</span></td>
-                            <td style="padding: 1rem;">
-                                <span class="status-badge active" style="background: rgba(6, 182, 212, 0.1); color: #22d3ee; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem;">Active</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="trades-count">201</span></td>
-                        </tr>
-                        <tr class="trader-row" style="transition: all 0.2s ease;">
-                            <td style="padding: 1rem;"><span class="rank-number">6</span></td>
-                            <td style="padding: 1rem;">
-                                <div class="trader-info" style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <div style="width: 2rem; height: 2rem; border-radius: 9999px; background: #262626;"></div>
-                                    <div>
-                                        <div class="trader-name" style="font-weight: 500; color: white;">SwingTradr</div>
-                                        <div class="trader-tag" style="font-size: 0.75rem; color: #a3a3a3;">Swing Trader</div>
-                                    </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-white">$5K</span></td>
+                        <td class="py-4">
+                            <div>
+                                <div class="text-emerald-400 font-medium">+6.9%</div>
+                                <div class="w-32 h-2 bg-neutral-800 rounded-full mt-1">
+                                    <div class="h-2 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full" style="width: 55%;"></div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;"><span class="challenge-badge">$25K</span></td>
-                            <td style="padding: 1rem;">
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-emerald-400">⬆ +2</span></td>
+                        <td class="py-4"><span class="text-white">75%</span></td>
+                        <td class="py-4">
+                            <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs">Active</span>
+                        </td>
+                        <td class="py-4"><span class="text-white">201</span></td>
+                    </tr>
+                    <!-- Row 6 -->
+                    <tr class="border-t border-neutral-800 hover:bg-neutral-900/40 transition-colors">
+                        <td class="py-4"><span class="text-neutral-400">6</span></td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/100?img=33" alt="SwingTradr" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <span class="profit-value negative" style="color: #f87171; font-weight: 600;">-3.2%</span>
-                                    <div style="width: 7rem; height: 0.375rem; background: #262626; border-radius: 9999px; margin-top: 0.25rem;">
-                                        <div style="height: 100%; background: #f87171; border-radius: 9999px; width: 0%;"></div>
-                                    </div>
+                                    <div class="text-white font-medium">SwingTradr</div>
+                                    <div class="text-xs text-neutral-400">Swing Trader</div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;">
-                                <span style="color: #f87171; font-weight: 500;">↓3</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="win-rate">58%</span></td>
-                            <td style="padding: 1rem;">
-                                <span class="status-badge active" style="background: rgba(6, 182, 212, 0.1); color: #22d3ee; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem;">Active</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="trades-count">87</span></td>
-                        </tr>
-                        <tr class="trader-row" style="transition: all 0.2s ease;">
-                            <td style="padding: 1rem;"><span class="rank-number">7</span></td>
-                            <td style="padding: 1rem;">
-                                <div class="trader-info" style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <div style="width: 2rem; height: 2rem; border-radius: 9999px; background: #262626;"></div>
-                                    <div>
-                                        <div class="trader-name" style="font-weight: 500; color: white;">DayTraderX</div>
-                                        <div class="trader-tag" style="font-size: 0.75rem; color: #a3a3a3;">Scalper</div>
-                                    </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-white">$25K</span></td>
+                        <td class="py-4">
+                            <div>
+                                <div class="text-red-400 font-medium">-3.2%</div>
+                                <div class="w-32 h-2 bg-neutral-800 rounded-full mt-1">
+                                    <div class="h-2 bg-red-500 rounded-full" style="width: 0%;"></div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;"><span class="challenge-badge">$5K</span></td>
-                            <td style="padding: 1rem;">
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-red-400">⬇ -3</span></td>
+                        <td class="py-4"><span class="text-white">58%</span></td>
+                        <td class="py-4">
+                            <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs">Active</span>
+                        </td>
+                        <td class="py-4"><span class="text-white">87</span></td>
+                    </tr>
+                    <!-- Row 7 -->
+                    <tr class="border-t border-neutral-800 hover:bg-neutral-900/40 transition-colors">
+                        <td class="py-4"><span class="text-neutral-400">7</span></td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/100?img=19" alt="DayTraderX" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <span class="profit-value positive" style="color: #34d399; font-weight: 600;">+4.5%</span>
-                                    <div style="width: 7rem; height: 0.375rem; background: #262626; border-radius: 9999px; margin-top: 0.25rem;">
-                                        <div style="height: 100%; background: linear-gradient(90deg, #10b981, #06b6d1); border-radius: 9999px; width: 36%;"></div>
-                                    </div>
+                                    <div class="text-white font-medium">DayTraderX</div>
+                                    <div class="text-xs text-neutral-400">Scalper</div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;">
-                                <span style="color: #a3a3a3; font-weight: 500;">→</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="win-rate">62%</span></td>
-                            <td style="padding: 1rem;">
-                                <span class="status-badge active" style="background: rgba(6, 182, 212, 0.1); color: #22d3ee; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem;">Active</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="trades-count">65</span></td>
-                        </tr>
-                        <tr class="trader-row" style="transition: all 0.2s ease;">
-                            <td style="padding: 1rem;"><span class="rank-number">8</span></td>
-                            <td style="padding: 1rem;">
-                                <div class="trader-info" style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <div style="width: 2rem; height: 2rem; border-radius: 9999px; background: #262626;"></div>
-                                    <div>
-                                        <div class="trader-name" style="font-weight: 500; color: white;">OptionsGuru</div>
-                                        <div class="trader-tag" style="font-size: 0.75rem; color: #a3a3a3;">Algo Trader</div>
-                                    </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-white">$5K</span></td>
+                        <td class="py-4">
+                            <div>
+                                <div class="text-emerald-400 font-medium">+4.5%</div>
+                                <div class="w-32 h-2 bg-neutral-800 rounded-full mt-1">
+                                    <div class="h-2 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full" style="width: 36%;"></div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;"><span class="challenge-badge">$10K</span></td>
-                            <td style="padding: 1rem;">
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-neutral-400">→ 0</span></td>
+                        <td class="py-4"><span class="text-white">62%</span></td>
+                        <td class="py-4">
+                            <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs">Active</span>
+                        </td>
+                        <td class="py-4"><span class="text-white">65</span></td>
+                    </tr>
+                    <!-- Row 8 -->
+                    <tr class="border-t border-neutral-800 hover:bg-neutral-900/40 transition-colors">
+                        <td class="py-4"><span class="text-neutral-400">8</span></td>
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://i.pravatar.cc/100?img=52" alt="OptionsGuru" class="w-10 h-10 rounded-full object-cover">
                                 <div>
-                                    <span class="profit-value positive" style="color: #34d399; font-weight: 600;">+2.1%</span>
-                                    <div style="width: 7rem; height: 0.375rem; background: #262626; border-radius: 9999px; margin-top: 0.25rem;">
-                                        <div style="height: 100%; background: linear-gradient(90deg, #10b981, #06b6d1); border-radius: 9999px; width: 17%;"></div>
-                                    </div>
+                                    <div class="text-white font-medium">OptionsGuru</div>
+                                    <div class="text-xs text-neutral-400">Algo Trader</div>
                                 </div>
-                            </td>
-                            <td style="padding: 1rem;">
-                                <span style="color: #34d399; font-weight: 500;">↑1</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="win-rate">55%</span></td>
-                            <td style="padding: 1rem;">
-                                <span class="status-badge active" style="background: rgba(6, 182, 212, 0.1); color: #22d3ee; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem;">Active</span>
-                            </td>
-                            <td style="padding: 1rem;"><span class="trades-count">54</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-white">$10K</span></td>
+                        <td class="py-4">
+                            <div>
+                                <div class="text-emerald-400 font-medium">+2.1%</div>
+                                <div class="w-32 h-2 bg-neutral-800 rounded-full mt-1">
+                                    <div class="h-2 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full" style="width: 17%;"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-4"><span class="text-emerald-400">⬆ +1</span></td>
+                        <td class="py-4"><span class="text-white">55%</span></td>
+                        <td class="py-4">
+                            <span class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-xs">Active</span>
+                        </td>
+                        <td class="py-4"><span class="text-white">54</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
@@ -466,11 +451,13 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="professional-cta" style="text-align: center; margin-top: 4rem; padding: 3rem 1.5rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2)); border-radius: 1rem; border: 1px solid rgba(16, 185, 129, 0.3);">
-        <div class="container">
-            <h2 class="cta-title" style="font-size: 2rem; font-weight: 700; color: white; margin-bottom: 0.75rem;">Ready to Compete?</h2>
-            <p class="cta-subtitle" style="color: #a3a3a3; font-size: 1.125rem; margin-bottom: 2rem;">Start your evaluation and climb the leaderboard.</p>
-            <a href="/pricing" class="cta-button-primary" style="display: inline-block; background: linear-gradient(135deg, #10b981, #14b8a6); color: #000000; padding: 1rem 2.5rem; border-radius: 0.75rem; font-size: 1rem; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);">Start Your Evaluation</a>
+    <section class="max-w-7xl mx-auto px-6 mt-20">
+        <div class="rounded-xl p-12 text-center bg-gradient-to-r from-emerald-900/40 to-teal-900/40">
+            <h2 class="text-2xl font-semibold text-white">Ready to Compete?</h2>
+            <p class="text-neutral-400 mt-2">Start your evaluation and climb the leaderboard.</p>
+            <a href="/pricing" class="inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-black px-8 py-3 rounded-lg font-semibold mt-6 transition-all duration-300 hover:scale-105">
+                Start Your Evaluation
+            </a>
         </div>
     </section>
 
