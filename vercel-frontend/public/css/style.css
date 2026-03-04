@@ -4960,3 +4960,9 @@ input:checked + .slider:before {
 .negative {
     color: var(--danger-color);
 }
+
+/* Leaderboard Table Row Hover */
+.trader-row:hover {
+    background-color: rgba(38, 38, 38, 0.4);
+    transition: background-color 0.2s ease;
+}
