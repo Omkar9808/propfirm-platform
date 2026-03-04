@@ -37,166 +37,382 @@
         </div>
     </nav>
 
-    <!-- Leaderboard Banner -->
-    <section class="leaderboard-banner">
+    <!-- Page Header -->
+    <section class="leaderboard-header">
         <div class="container">
-            <h1>Top Traders</h1>
-            <p>See how you rank against other challenge participants</p>
+            <h1>Competitive Rankings</h1>
+            <p>Track performance and compete with traders worldwide</p>
         </div>
     </section>
 
-    <!-- Leaderboard Filters -->
-    <section class="leaderboard-filters">
+    <!-- Competition Statistics -->
+    <section class="competition-stats">
         <div class="container">
-            <div class="filter-options">
-                <select id="challengeFilter">
+            <div class="stats-grid-enhanced">
+                <div class="stat-card-enhanced">
+                    <div class="stat-number-enhanced">1,247</div>
+                    <div class="stat-label-enhanced">Total Traders</div>
+                </div>
+                <div class="stat-card-enhanced">
+                    <div class="stat-number-enhanced">342</div>
+                    <div class="stat-label-enhanced">Passed Challenges</div>
+                </div>
+                <div class="stat-card-enhanced">
+                    <div class="stat-number-enhanced">27.4%</div>
+                    <div class="stat-label-enhanced">Success Rate</div>
+                </div>
+                <div class="stat-card-enhanced">
+                    <div class="stat-number-enhanced">15,689</div>
+                    <div class="stat-label-enhanced">Total Trades</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 3 Podium Section -->
+    <section class="podium-section">
+        <div class="container">
+            <h2 class="section-title">Top Performers</h2>
+            <div class="podium-container">
+                <!-- Rank 2 -->
+                <div class="podium-card rank-2">
+                    <div class="podium-medal">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="podium-rank">#2</div>
+                    <div class="podium-username">ForexKing</div>
+                    <div class="podium-tier">$10K Challenge</div>
+                    <div class="podium-stats">
+                        <div class="podium-stat">
+                            <span class="stat-value">+9.8%</span>
+                            <span class="stat-label">Profit</span>
+                        </div>
+                        <div class="podium-stat">
+                            <span class="stat-value">72%</span>
+                            <span class="stat-label">Win Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rank 1 (Center, Elevated) -->
+                <div class="podium-card rank-1">
+                    <div class="podium-medal">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="podium-rank">#1</div>
+                    <div class="podium-username">TradingMaster</div>
+                    <div class="podium-tier">$25K Challenge</div>
+                    <div class="podium-stats">
+                        <div class="podium-stat">
+                            <span class="stat-value">+12.5%</span>
+                            <span class="stat-label">Profit</span>
+                        </div>
+                        <div class="podium-stat">
+                            <span class="stat-value">78%</span>
+                            <span class="stat-label">Win Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rank 3 -->
+                <div class="podium-card rank-3">
+                    <div class="podium-medal">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="podium-rank">#3</div>
+                    <div class="podium-username">RiskTaker</div>
+                    <div class="podium-tier">$5K Challenge</div>
+                    <div class="podium-stats">
+                        <div class="podium-stat">
+                            <span class="stat-value">+8.7%</span>
+                            <span class="stat-label">Profit</span>
+                        </div>
+                        <div class="podium-stat">
+                            <span class="stat-value">65%</span>
+                            <span class="stat-label">Win Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Control Bar -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-control-bar">
+                <select id="challengeFilter" class="filter-select">
                     <option value="all">All Challenges</option>
                     <option value="5k">$5K Challenge</option>
                     <option value="10k">$10K Challenge</option>
                     <option value="25k">$25K Challenge</option>
                 </select>
-                <select id="sortBy">
+                <select id="sortBy" class="filter-select">
                     <option value="profit">Sort by Profit %</option>
                     <option value="winrate">Sort by Win Rate</option>
                     <option value="rank">Sort by Rank</option>
+                </select>
+                <select id="statusFilter" class="filter-select">
+                    <option value="all">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="passed">Passed</option>
                 </select>
             </div>
         </div>
     </section>
 
-    <!-- Leaderboard Table -->
+    <!-- Enhanced Leaderboard Table -->
     <section class="leaderboard-section">
         <div class="container">
-            <div class="leaderboard-table-container">
-                <table class="leaderboard-table">
+            <div class="leaderboard-table-container-enhanced">
+                <table class="leaderboard-table-enhanced">
                     <thead>
                         <tr>
                             <th>Rank</th>
-                            <th>Username</th>
+                            <th>Trader</th>
                             <th>Challenge</th>
                             <th>Profit %</th>
+                            <th>Progress</th>
                             <th>Win Rate</th>
                             <th>Status</th>
                             <th>Trades</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr class="trader-row">
                             <td><span class="rank-badge gold">1</span></td>
-                            <td>TradingMaster</td>
-                            <td>$25K</td>
-                            <td class="positive">+12.5%</td>
-                            <td>78%</td>
+                            <td>
+                                <div class="trader-info">
+                                    <div class="trader-name">TradingMaster</div>
+                                    <div class="trader-tag">Swing Trader</div>
+                                </div>
+                            </td>
+                            <td><span class="challenge-badge">$25K</span></td>
+                            <td>
+                                <div class="profit-cell">
+                                    <span class="profit-value positive">+12.5%</span>
+                                    <div class="profit-bar">
+                                        <div class="profit-bar-fill" style="width: 100%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%;"></div>
+                                    </div>
+                                    <span class="progress-text">Complete</span>
+                                </div>
+                            </td>
+                            <td><span class="win-rate">78%</span></td>
                             <td><span class="status-badge passed">Passed</span></td>
-                            <td>142</td>
+                            <td><span class="trades-count">142</span></td>
                         </tr>
-                        <tr>
+                        <tr class="trader-row">
                             <td><span class="rank-badge silver">2</span></td>
-                            <td>ForexKing</td>
-                            <td>$10K</td>
-                            <td class="positive">+9.8%</td>
-                            <td>72%</td>
+                            <td>
+                                <div class="trader-info">
+                                    <div class="trader-name">ForexKing</div>
+                                    <div class="trader-tag">Scalper</div>
+                                </div>
+                            </td>
+                            <td><span class="challenge-badge">$10K</span></td>
+                            <td>
+                                <div class="profit-cell">
+                                    <span class="profit-value positive">+9.8%</span>
+                                    <div class="profit-bar">
+                                        <div class="profit-bar-fill" style="width: 78%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%;"></div>
+                                    </div>
+                                    <span class="progress-text">Complete</span>
+                                </div>
+                            </td>
+                            <td><span class="win-rate">72%</span></td>
                             <td><span class="status-badge passed">Passed</span></td>
-                            <td>98</td>
+                            <td><span class="trades-count">98</span></td>
                         </tr>
-                        <tr>
+                        <tr class="trader-row">
                             <td><span class="rank-badge bronze">3</span></td>
-                            <td>RiskTaker</td>
-                            <td>$5K</td>
-                            <td class="positive">+8.7%</td>
-                            <td>65%</td>
+                            <td>
+                                <div class="trader-info">
+                                    <div class="trader-name">RiskTaker</div>
+                                    <div class="trader-tag">Trend Trader</div>
+                                </div>
+                            </td>
+                            <td><span class="challenge-badge">$5K</span></td>
+                            <td>
+                                <div class="profit-cell">
+                                    <span class="profit-value positive">+8.7%</span>
+                                    <div class="profit-bar">
+                                        <div class="profit-bar-fill" style="width: 69%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%;"></div>
+                                    </div>
+                                    <span class="progress-text">Complete</span>
+                                </div>
+                            </td>
+                            <td><span class="win-rate">65%</span></td>
                             <td><span class="status-badge passed">Passed</span></td>
-                            <td>76</td>
+                            <td><span class="trades-count">76</span></td>
                         </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>CryptoQueen</td>
-                            <td>$10K</td>
-                            <td class="positive">+7.2%</td>
-                            <td>69%</td>
+                        <tr class="trader-row">
+                            <td><span class="rank-number">4</span></td>
+                            <td>
+                                <div class="trader-info">
+                                    <div class="trader-name">CryptoQueen</div>
+                                    <div class="trader-tag">Swing Trader</div>
+                                </div>
+                            </td>
+                            <td><span class="challenge-badge">$10K</span></td>
+                            <td>
+                                <div class="profit-cell">
+                                    <span class="profit-value positive">+7.2%</span>
+                                    <div class="profit-bar">
+                                        <div class="profit-bar-fill" style="width: 57%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 90%;"></div>
+                                    </div>
+                                    <span class="progress-text">90%</span>
+                                </div>
+                            </td>
+                            <td><span class="win-rate">69%</span></td>
                             <td><span class="status-badge active">Active</span></td>
-                            <td>124</td>
+                            <td><span class="trades-count">124</span></td>
                         </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>ScalperPro</td>
-                            <td>$5K</td>
-                            <td class="positive">+6.9%</td>
-                            <td>75%</td>
+                        <tr class="trader-row">
+                            <td><span class="rank-number">5</span></td>
+                            <td>
+                                <div class="trader-info">
+                                    <div class="trader-name">ScalperPro</div>
+                                    <div class="trader-tag">Scalper</div>
+                                </div>
+                            </td>
+                            <td><span class="challenge-badge">$5K</span></td>
+                            <td>
+                                <div class="profit-cell">
+                                    <span class="profit-value positive">+6.9%</span>
+                                    <div class="profit-bar">
+                                        <div class="profit-bar-fill" style="width: 55%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 86%;"></div>
+                                    </div>
+                                    <span class="progress-text">86%</span>
+                                </div>
+                            </td>
+                            <td><span class="win-rate">75%</span></td>
                             <td><span class="status-badge active">Active</span></td>
-                            <td>201</td>
+                            <td><span class="trades-count">201</span></td>
                         </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>SwingTradr</td>
-                            <td>$25K</td>
-                            <td class="negative">-3.2%</td>
-                            <td>58%</td>
+                        <tr class="trader-row">
+                            <td><span class="rank-number">6</span></td>
+                            <td>
+                                <div class="trader-info">
+                                    <div class="trader-name">SwingTradr</div>
+                                    <div class="trader-tag">Swing Trader</div>
+                                </div>
+                            </td>
+                            <td><span class="challenge-badge">$25K</span></td>
+                            <td>
+                                <div class="profit-cell">
+                                    <span class="profit-value negative">-3.2%</span>
+                                    <div class="profit-bar">
+                                        <div class="profit-bar-fill negative" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%;"></div>
+                                    </div>
+                                    <span class="progress-text">0%</span>
+                                </div>
+                            </td>
+                            <td><span class="win-rate">58%</span></td>
                             <td><span class="status-badge active">Active</span></td>
-                            <td>87</td>
+                            <td><span class="trades-count">87</span></td>
                         </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>DayTraderX</td>
-                            <td>$5K</td>
-                            <td class="positive">+4.5%</td>
-                            <td>62%</td>
-                            <td><span class="status-badge active">Active</td>
-                            <td>65</td>
+                        <tr class="trader-row">
+                            <td><span class="rank-number">7</span></td>
+                            <td>
+                                <div class="trader-info">
+                                    <div class="trader-name">DayTraderX</div>
+                                    <div class="trader-tag">Scalper</div>
+                                </div>
+                            </td>
+                            <td><span class="challenge-badge">$5K</span></td>
+                            <td>
+                                <div class="profit-cell">
+                                    <span class="profit-value positive">+4.5%</span>
+                                    <div class="profit-bar">
+                                        <div class="profit-bar-fill" style="width: 36%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 56%;"></div>
+                                    </div>
+                                    <span class="progress-text">56%</span>
+                                </div>
+                            </td>
+                            <td><span class="win-rate">62%</span></td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td><span class="trades-count">65</span></td>
                         </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>OptionsGuru</td>
-                            <td>$10K</td>
-                            <td class="positive">+2.1%</td>
-                            <td>55%</td>
-                            <td><span class="status-badge active">Active</td>
-                            <td>54</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>ForexBoss</td>
-                            <td>$5K</td>
-                            <td class="negative">-1.8%</td>
-                            <td>49%</td>
-                            <td><span class="status-badge active">Active</td>
-                            <td>43</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>TrendFollower</td>
-                            <td>$25K</td>
-                            <td class="positive">+1.2%</td>
-                            <td>61%</td>
-                            <td><span class="status-badge active">Active</td>
-                            <td>78</td>
+                        <tr class="trader-row">
+                            <td><span class="rank-number">8</span></td>
+                            <td>
+                                <div class="trader-info">
+                                    <div class="trader-name">OptionsGuru</div>
+                                    <div class="trader-tag">Algo Trader</div>
+                                </div>
+                            </td>
+                            <td><span class="challenge-badge">$10K</span></td>
+                            <td>
+                                <div class="profit-cell">
+                                    <span class="profit-value positive">+2.1%</span>
+                                    <div class="profit-bar">
+                                        <div class="profit-bar-fill" style="width: 17%;"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 26%;"></div>
+                                    </div>
+                                    <span class="progress-text">26%</span>
+                                </div>
+                            </td>
+                            <td><span class="win-rate">55%</span></td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td><span class="trades-count">54</span></td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="leaderboard-stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">1,247</div>
-                    <div class="stat-label">Total Traders</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">342</div>
-                    <div class="stat-label">Passed Challenges</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">87%</div>
-                    <div class="stat-label">Success Rate</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">15,689</div>
-                    <div class="stat-label">Total Trades</div>
-                </div>
             </div>
         </div>
     </section>
@@ -230,12 +446,12 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Final CTA -->
+    <section class="professional-cta">
         <div class="container">
-            <h2>Climb to the Top</h2>
-            <p>Start your challenge today and aim to reach the top of the leaderboard</p>
-            <a href="/pricing" class="btn btn-primary">Join the Competition</a>
+            <h2 class="cta-title">Ready to Compete?</h2>
+            <p class="cta-subtitle">Start your evaluation and climb the leaderboard.</p>
+            <a href="/pricing" class="cta-button-primary">Start Your Evaluation</a>
         </div>
     </section>
 
@@ -284,13 +500,15 @@
     <script>
         // Filter and sort functionality
         document.getElementById('challengeFilter').addEventListener('change', function() {
-            // Filter logic would go here in a real implementation
             console.log('Filtering by challenge type:', this.value);
         });
 
         document.getElementById('sortBy').addEventListener('change', function() {
-            // Sort logic would go here in a real implementation
             console.log('Sorting by:', this.value);
+        });
+
+        document.getElementById('statusFilter').addEventListener('change', function() {
+            console.log('Filtering by status:', this.value);
         });
     </script>
 </body>
