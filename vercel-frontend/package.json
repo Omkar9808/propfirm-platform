@@ -8,10 +8,16 @@
     "build": "echo 'Build completed'",
     "start": "node server.js"
   },
-  "keywords": ["propfirm", "trading", "vercel", "express"],
+  "keywords": [
+    "propfirm",
+    "trading",
+    "vercel",
+    "express"
+  ],
   "author": "Prop Firm Team",
   "license": "MIT",
   "dependencies": {
+    "@supabase/supabase-js": "^2.98.0",
     "express": "^4.18.2"
   },
   "devDependencies": {
