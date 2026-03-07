@@ -16,8 +16,12 @@
       "dest": "/public/$1"
     },
     {
-      "src": "/dashboard(/?)",
-      "dest": "/views/dashboard-new.html"
+      "src": "/dashboard/dashboard.css",
+      "dest": "/dashboard/dashboard.css"
+    },
+    {
+      "src": "/dashboard/dashboard.js",
+      "dest": "/dashboard/dashboard.js"
     },
     {
       "src": "/dashboard/journal(/?)",
@@ -30,6 +34,10 @@
     {
       "src": "/dashboard/risk(/?)",
       "dest": "/dashboard/risk.html"
+    },
+    {
+      "src": "/dashboard(/?)",
+      "dest": "/dashboard/dashboard.html"
     },
     {
       "src": "/leaderboard(/?)",
@@ -56,8 +64,12 @@
       "dest": "/views/checkout.html"
     },
     {
-      "src": "/(.*)",
+      "src": "/",
       "dest": "/views/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/views/$1"
     }
   ]
 }
