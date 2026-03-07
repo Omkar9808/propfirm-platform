@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Trading | PropFirmChallenge</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0E0E11] text-white">
+    <!-- Navigation placeholder -->
+    <div class="fixed top-0 left-0 right-0 h-16 bg-[#0a0a0c] border-b border-white/10 z-50 flex items-center px-6">
+        <a href="/dashboard" class="text-[#00ff9d] hover:text-[#00ff9d]/80 transition-colors">
+            <i className="fas fa-arrow-left mr-2"></i>
+            Back to Dashboard
+        </a>
+    </div>
+    
+    <div class="pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold mb-2">Practice Trading Terminal</h1>
+                <p class="text-gray-400">Simulated trading environment with real-time market data</p>
+            </div>
+            
+            <!-- Coming Soon Section -->
+            <div class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl p-12 border border-white/10 text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#00ff9d]/20 to-[#0ea5e9]/20 flex items-center justify-center">
+                        <i className="fas fa-chart-line text-5xl text-[#00ff9d]"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-4">Trading Terminal - Coming Soon</h2>
+                    <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                        Our practice trading terminal is currently under development. You'll soon be able to execute simulated trades 
+                        with real-time market data, practice risk management, and test your strategies in a realistic trading environment.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div class="p-6 bg-white/5 rounded-lg">
+                            <i className="fas fa-bolt text-3xl text-yellow-400 mb-3"></i>
+                            <h3 class="font-semibold mb-2">Real-Time Execution</h3>
+                            <p class="text-sm text-gray-400">Instant trade execution with live market prices</p>
+                        </div>
+                        <div class="p-6 bg-white/5 rounded-lg">
+                            <i className="fas fa-chart-bar text-3xl text-blue-400 mb-3"></i>
+                            <h3 class="font-semibold mb-2">Advanced Charts</h3>
+                            <p class="text-sm text-gray-400">Professional charting tools and technical indicators</p>
+                        </div>
+                        <div class="p-6 bg-white/5 rounded-lg">
+                            <i className="fas fa-shield-alt text-3xl text-green-400 mb-3"></i>
+                            <h3 class="font-semibold mb-2">Risk Management</h3>
+                            <p class="text-sm text-gray-400">Set stop-loss and take-profit levels automatically</p>
+                        </div>
+                    </div>
+                    
+                    <a href="/dashboard" class="inline-block mt-8 px-8 py-3 bg-gradient-to-r from-[#00ff9d] to-[#0ea5e9] rounded-lg font-semibold hover:shadow-lg hover:shadow-[#00ff9d]/20 transition-all">
+                        Return to Dashboard
+                    </a>
+                </motion.div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <script type="text/babel">
+        const { motion } = window.Motion;
+    </script>
+</body>
+</html>

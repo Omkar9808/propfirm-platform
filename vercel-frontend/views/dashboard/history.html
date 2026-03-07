@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade History | PropFirmChallenge</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0E0E11] text-white">
+    <div class="pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="mb-8">
+                <a href="/dashboard" class="text-[#00ff9d] hover:text-[#00ff9d]/80 transition-colors mb-4 inline-block">
+                    <i className="fas fa-arrow-left mr-2"></i>
+                    Back to Dashboard
+                </a>
+                <h1 class="text-3xl font-bold mb-2">Trade History</h1>
+                <p class="text-gray-400">Complete history of all your trading activity</p>
+            </div>
+            
+            <!-- Trade History Table -->
+            <div class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl p-6 border border-white/10">
+                <div className="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold flex items-center gap-2">
+                        <i className="fas fa-history text-[#0ea5e9]"></i>
+                        All Trades
+                    </h2>
+                    <div className="flex gap-3">
+                        <select className="bg-gray-900 border border-gray-800 rounded-lg px-4 py-2 text-sm focus:border-[#00ff9d] focus:outline-none">
+                            <option>All Symbols</option>
+                            <option>EURUSD</option>
+                            <option>GBPUSD</option>
+                            <option>USDJPY</option>
+                        </select>
+                        <select className="bg-gray-900 border border-gray-800 rounded-lg px-4 py-2 text-sm focus:border-[#00ff9d] focus:outline-none">
+                            <option>Last 30 Days</option>
+                            <option>Last 7 Days</option>
+                            <option>Last 90 Days</option>
+                            <option>All Time</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div className="overflow-x-auto">
+                    <table className="w-full">
+                        <thead>
+                            <tr className="text-left text-gray-400 text-sm border-b border-white/10">
+                                <th className="pb-3 pr-4">Ticket #</th>
+                                <th className="pb-3 pr-4">Symbol</th>
+                                <th className="pb-3 pr-4">Type</th>
+                                <th className="pb-3 pr-4">Volume</th>
+                                <th className="pb-3 pr-4">Entry Price</th>
+                                <th className="pb-3 pr-4">Exit Price</th>
+                                <th className="pb-3 pr-4">P&L</th>
+                                <th className="pb-3 pr-4">Commission</th>
+                                <th className="pb-3 pr-4">Swap</th>
+                                <th className="pb-3 pr-4">Open Time</th>
+                                <th className="pb-3">Close Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample trades -->
+                            <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td className="py-3 pr-4 font-mono text-sm">#1234567</td>
+                                <td className="py-3 pr-4 font-semibold">EURUSD</td>
+                                <td className="py-3 pr-4">
+                                    <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-semibold">BUY</span>
+                                </td>
+                                <td className="py-3 pr-4">0.10</td>
+                                <td className="py-3 pr-4 text-gray-300">1.0850</td>
+                                <td className="py-3 pr-4 text-gray-300">1.0870</td>
+                                <td className="py-3 pr-4 font-bold text-green-400">+$200.00</td>
+                                <td className="py-3 pr-4 text-gray-400">-$0.70</td>
+                                <td className="py-3 pr-4 text-gray-400">$0.00</td>
+                                <td className="py-3 pr-4 text-gray-400 text-sm">2026-03-07 10:23</td>
+                                <td className="py-3 text-gray-400 text-sm">2026-03-07 11:45</td>
+                            </tr>
+                            <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td className="py-3 pr-4 font-mono text-sm">#1234566</td>
+                                <td className="py-3 pr-4 font-semibold">GBPUSD</td>
+                                <td className="py-3 pr-4">
+                                    <span className="px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs font-semibold">SELL</span>
+                                </td>
+                                <td className="py-3 pr-4">0.10</td>
+                                <td className="py-3 pr-4 text-gray-300">1.2650</td>
+                                <td className="py-3 pr-4 text-gray-300">1.2630</td>
+                                <td className="py-3 pr-4 font-bold text-green-400">+$180.00</td>
+                                <td className="py-3 pr-4 text-gray-400">-$0.70</td>
+                                <td className="py-3 pr-4 text-gray-400">$0.00</td>
+                                <td className="py-3 pr-4 text-gray-400 text-sm">2026-03-06 14:15</td>
+                                <td className="py-3 text-gray-400 text-sm">2026-03-06 16:30</td>
+                            </tr>
+                            <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                                <td className="py-3 pr-4 font-mono text-sm">#1234565</td>
+                                <td className="py-3 pr-4 font-semibold">USDJPY</td>
+                                <td className="py-3 pr-4">
+                                    <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-semibold">BUY</span>
+                                </td>
+                                <td className="py-3 pr-4">0.20</td>
+                                <td className="py-3 pr-4 text-gray-300">149.50</td>
+                                <td className="py-3 pr-4 text-gray-300">149.80</td>
+                                <td className="py-3 pr-4 font-bold text-red-400">-$120.00</td>
+                                <td className="py-3 pr-4 text-gray-400">-$1.40</td>
+                                <td className="py-3 pr-4 text-gray-400">$0.00</td>
+                                <td className="py-3 pr-4 text-gray-400 text-sm">2026-03-06 09:00</td>
+                                <td className="py-3 text-gray-400 text-sm">2026-03-06 12:20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div className="flex items-center justify-between mt-6 pt-6 border-t border-white/10">
+                    <div className="text-sm text-gray-400">
+                        Showing <span className="font-semibold text-white">1-10</span> of <span className="font-semibold text-white">234</span> trades
+                    </div>
+                    <div className="flex gap-2">
+                        <button className="px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-sm hover:bg-gray-800 transition-colors disabled:opacity-50" disabled>
+                            Previous
+                        </button>
+                        <button className="px-4 py-2 bg-gray-900 border border-gray-800 rounded-lg text-sm hover:bg-gray-800 transition-colors">
+                            Next
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Summary Statistics -->
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+                <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl p-6 border border-white/10 text-center">
+                    <div className="text-sm text-gray-400 mb-2">Total Profit</div>
+                    <div className="text-2xl font-bold text-green-400">+$2,450.00</div>
+                </div>
+                <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl p-6 border border-white/10 text-center">
+                    <div className="text-sm text-gray-400 mb-2">Total Loss</div>
+                    <div className="text-2xl font-bold text-red-400">-$890.00</div>
+                </div>
+                <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl p-6 border border-white/10 text-center">
+                    <div className="text-sm text-gray-400 mb-2">Net P&L</div>
+                    <div className="text-2xl font-bold text-[#00ff9d]">+$1,560.00</div>
+                </div>
+                <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl p-6 border border-white/10 text-center">
+                    <div className="text-sm text-gray-400 mb-2">Win Rate</div>
+                    <div className="text-2xl font-bold text-[#fbbf24]">68%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
