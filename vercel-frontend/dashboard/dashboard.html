@@ -57,8 +57,8 @@
                 <a href="/" class="flex items-center gap-3">
                     <div class="logo-icon">
                         <svg viewBox="0 0 40 40" fill="none" class="w-10 h-10">
-                            <path d="M8 28L16 20L22 26L32 14" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            <circle cx="32" cy="14" r="3" fill="#3b82f6"/>
+                            <path d="M8 28L16 20L22 26L32 14" stroke="#00ffa3" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <circle cx="32" cy="14" r="3" fill="#00ffa3"/>
                         </svg>
                     </div>
                     <span class="logo-text text-xl font-bold">PropFirm<span class="text-accent">Practice</span></span>
@@ -109,7 +109,7 @@
                     </li>
                     <li>
                         <button onclick="navigateTo('leaderboard')" class="nav-item">
-                            <i class="fas fa-users nav-icon"></i>
+                            <i class="fas fa-list nav-icon"></i>
                             <span class="nav-text">Leaderboard</span>
                         </button>
                     </li>
@@ -131,16 +131,14 @@
                             <span class="nav-text">Support</span>
                         </button>
                     </li>
+                    <li class="pt-4 mt-4 border-t border-gray-700">
+                        <button onclick="logout()" class="nav-item w-full text-danger hover:bg-danger/10">
+                            <i class="fas fa-sign-out-alt nav-icon"></i>
+                            <span class="nav-text">Logout</span>
+                        </button>
+                    </li>
                 </ul>
             </nav>
-            
-            <!-- Logout Button -->
-            <div class="sidebar-footer p-4 border-t border-gray-700">
-                <button onclick="logout()" class="nav-item text-danger hover:bg-red-900/20">
-                    <i class="fas fa-sign-out-alt nav-icon"></i>
-                    <span class="nav-text">Logout</span>
-                </button>
-            </div>
         </aside>
         
         <!-- Main Content Area -->
@@ -157,13 +155,6 @@
                     </div>
                     
                     <div class="flex items-center gap-4">
-                        <!-- Account Selector -->
-                        <select id="account-selector" class="bg-primary border border-gray-600 rounded-lg px-3 py-2 text-sm focus:border-accent focus:outline-none">
-                            <option value="account1">Account #12345 - $10K Challenge</option>
-                            <option value="account2">Account #67890 - $25K Challenge</option>
-                            <option value="account3">Account #11111 - $5K Challenge</option>
-                        </select>
-                        
                         <!-- User Profile -->
                         <div class="flex items-center gap-3">
                             <div class="user-avatar w-10 h-10 rounded-full bg-gradient-to-br from-accent to-purple-600 flex items-center justify-center font-bold">
@@ -177,251 +168,8 @@
             <!-- Main Content -->
             <main class="flex-1 overflow-y-auto p-6" id="main-content">
                 
-                <!-- Welcome Section -->
-                <div class="welcome-section mb-6" data-aos="fade-down">
-                    <h2 class="text-2xl font-bold mb-2">Welcome back, Omkar 👋</h2>
-                    <p class="text-gray-400">Phase 1 Challenge • Account Type: Evaluation</p>
-                </div>
-                
-                <!-- Statistics Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                    <!-- Balance Card -->
-                    <div class="stat-card bg-secondary rounded-xl p-5 border border-gray-700 hover:border-accent transition-all" data-aos="fade-up" data-aos-delay="0">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-box w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                                    <i class="fas fa-wallet text-blue-400 text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-400">Account Balance</p>
-                                    <h3 class="text-2xl font-bold" id="balance">$10,245.00</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="progress-bar bg-gray-700 rounded-full h-2">
-                            <div class="progress-fill bg-gradient-to-r from-blue-500 to-blue-400 h-full rounded-full" style="width: 100%"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Equity Card -->
-                    <div class="stat-card bg-secondary rounded-xl p-5 border border-gray-700 hover:border-accent transition-all" data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-box w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center">
-                                    <i class="fas fa-chart-line text-green-400 text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-400">Current Equity</p>
-                                    <h3 class="text-2xl font-bold" id="equity">$10,310.00</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="progress-bar bg-gray-700 rounded-full h-2">
-                            <div class="progress-fill bg-gradient-to-r from-green-500 to-green-400 h-full rounded-full" style="width: 100%"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Daily Loss Card -->
-                    <div class="stat-card bg-secondary rounded-xl p-5 border border-gray-700 hover:border-accent transition-all" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-box w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center">
-                                    <i class="fas fa-arrow-down text-red-400 text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-400">Daily Loss Limit</p>
-                                    <h3 class="text-2xl font-bold text-danger">-$500.00</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="progress-bar bg-gray-700 rounded-full h-2">
-                            <div class="progress-fill bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full" style="width: 20%"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Profit Target Card -->
-                    <div class="stat-card bg-secondary rounded-xl p-5 border border-gray-700 hover:border-accent transition-all" data-aos="fade-up" data-aos-delay="300">
-                        <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-3">
-                                <div class="icon-box w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                                    <i class="fas fa-bullseye text-purple-400 text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-400">Profit Target</p>
-                                    <h3 class="text-2xl font-bold" id="profit-target">$1,000.00</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="progress-bar bg-gray-700 rounded-full h-2">
-                            <div class="progress-fill bg-gradient-to-r from-purple-500 to-purple-400 h-full rounded-full" style="width: 70%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Charts and Analytics -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                    <!-- Equity Curve Chart -->
-                    <div class="lg:col-span-2 bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up">
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fas fa-chart-area text-accent"></i>
-                            Equity Performance
-                        </h3>
-                        <canvas id="equity-chart" height="80"></canvas>
-                    </div>
-                    
-                    <!-- Win Rate Pie Chart -->
-                    <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fas fa-chart-pie text-success"></i>
-                            Win Rate Distribution
-                        </h3>
-                        <canvas id="winrate-chart"></canvas>
-                    </div>
-                </div>
-                
-                <!-- Challenge Progress -->
-                <div class="bg-secondary rounded-xl p-6 border border-gray-700 mb-6" data-aos="fade-up">
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i class="fas fa-tasks text-warning"></i>
-                        Challenge Progress Tracker
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="progress-item">
-                            <div class="flex justify-between mb-2">
-                                <span class="text-sm text-gray-400">Profit Target</span>
-                                <span class="text-sm font-semibold">70%</span>
-                            </div>
-                            <div class="progress-bar bg-gray-700 rounded-full h-3">
-                                <div class="progress-fill bg-gradient-to-r from-green-500 to-green-400 h-full rounded-full" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        <div class="progress-item">
-                            <div class="flex justify-between mb-2">
-                                <span class="text-sm text-gray-400">Daily Drawdown</span>
-                                <span class="text-sm font-semibold">80%</span>
-                            </div>
-                            <div class="progress-bar bg-gray-700 rounded-full h-3">
-                                <div class="progress-fill bg-gradient-to-r from-blue-500 to-blue-400 h-full rounded-full" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="progress-item">
-                            <div class="flex justify-between mb-2">
-                                <span class="text-sm text-gray-400">Max Drawdown</span>
-                                <span class="text-sm font-semibold">90%</span>
-                            </div>
-                            <div class="progress-bar bg-gray-700 rounded-full h-3">
-                                <div class="progress-fill bg-gradient-to-r from-purple-500 to-purple-400 h-full rounded-full" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="progress-item">
-                            <div class="flex justify-between mb-2">
-                                <span class="text-sm text-gray-400">Trading Days</span>
-                                <span class="text-sm font-semibold">5/10</span>
-                            </div>
-                            <div class="progress-bar bg-gray-700 rounded-full h-3">
-                                <div class="progress-fill bg-gradient-to-r from-orange-500 to-orange-400 h-full rounded-full" style="width: 50%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Recent Trades Table -->
-                <div class="bg-secondary rounded-xl p-6 border border-gray-700 mb-6" data-aos="fade-up">
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i class="fas fa-history text-accent"></i>
-                        Recent Trades
-                    </h3>
-                    <div class="overflow-x-auto">
-                        <table class="w-full">
-                            <thead>
-                                <tr class="text-left text-gray-400 text-sm border-b border-gray-700">
-                                    <th class="pb-3 pr-4">Date</th>
-                                    <th class="pb-3 pr-4">Pair</th>
-                                    <th class="pb-3 pr-4">Direction</th>
-                                    <th class="pb-3 pr-4">Lot Size</th>
-                                    <th class="pb-3 pr-4">Profit/Loss</th>
-                                    <th class="pb-3 pr-4">RR</th>
-                                    <th class="pb-3">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="recent-trades-body">
-                                <!-- Trades will be loaded here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                <!-- Bottom Section: Leaderboard + Quick Actions -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                    <!-- Leaderboard Widget -->
-                    <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-right">
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fas fa-trophy text-yellow-400"></i>
-                            Top Traders This Week
-                        </h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-3 bg-primary/50 rounded-lg">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl font-bold text-yellow-400 w-8">1</span>
-                                    <div class="user-avatar w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center font-bold">
-                                        AL
-                                    </div>
-                                    <span class="font-semibold">Alex M.</span>
-                                </div>
-                                <span class="text-green-400 font-bold">+$5,200</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 bg-primary/50 rounded-lg">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl font-bold text-gray-400 w-8">2</span>
-                                    <div class="user-avatar w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center font-bold">
-                                        JD
-                                    </div>
-                                    <span class="font-semibold">John D.</span>
-                                </div>
-                                <span class="text-green-400 font-bold">+$4,890</span>
-                            </div>
-                            <div class="flex items-center justify-between p-3 bg-primary/50 rounded-lg">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-2xl font-bold text-orange-400 w-8">3</span>
-                                    <div class="user-avatar w-10 h-10 rounded-full bg-gradient-to-br from-accent to-purple-600 flex items-center justify-center font-bold">
-                                        OM
-                                    </div>
-                                    <span class="font-semibold">Omkar P.</span>
-                                </div>
-                                <span class="text-green-400 font-bold">+$4,210</span>
-                            </div>
-                        </div>
-                        <button onclick="navigateTo('leaderboard')" class="w-full mt-4 py-3 bg-accent hover:bg-blue-600 rounded-lg font-semibold transition-all">
-                            View Full Leaderboard
-                        </button>
-                    </div>
-                    
-                    <!-- Quick Actions Panel -->
-                    <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-left">
-                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                            <i class="fas fa-bolt text-yellow-400"></i>
-                            Quick Actions
-                        </h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <button class="action-btn p-4 bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-500/30 rounded-lg hover:border-green-500 transition-all">
-                                <i class="fas fa-plus-circle text-green-400 text-2xl mb-2"></i>
-                                <p class="text-sm font-semibold">Start New Challenge</p>
-                            </button>
-                            <button class="action-btn p-4 bg-gradient-to-br from-blue-500/20 to-blue-600/10 border border-blue-500/30 rounded-lg hover:border-blue-500 transition-all">
-                                <i class="fas fa-book text-blue-400 text-2xl mb-2"></i>
-                                <p class="text-sm font-semibold">View Rules</p>
-                            </button>
-                            <button class="action-btn p-4 bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-500/30 rounded-lg hover:border-purple-500 transition-all">
-                                <i class="fas fa-download text-purple-400 text-2xl mb-2"></i>
-                                <p class="text-sm font-semibold">Download MT5</p>
-                            </button>
-                            <button class="action-btn p-4 bg-gradient-to-br from-orange-500/20 to-orange-600/10 border border-orange-500/30 rounded-lg hover:border-orange-500 transition-all">
-                                <i class="fas fa-headset text-orange-400 text-2xl mb-2"></i>
-                                <p class="text-sm font-semibold">Contact Support</p>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Dynamic Content Container -->
+                <div id="dashboardContent"></div>
                 
             </main>
         </div>
@@ -431,8 +179,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="/components/dummyData.js"></script>
     <script src="/components/sidebar.js"></script>
-    <script src="/components/charts.js"></script>
-    <script src="/components/statsCards.js"></script>
     <script src="/dashboard/dashboard.js"></script>
 </body>
 </html>
