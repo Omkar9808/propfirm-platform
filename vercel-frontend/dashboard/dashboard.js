@@ -25,13 +25,31 @@ const dashboardDummyData = typeof dashboardData !== 'undefined' ? dashboardData 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Dashboard initializing...');
     
+    // Check if required elements exist
+    const container = document.getElementById('dashboardContent');
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    if (!container) {
+        console.error('ERROR: #dashboardContent container not found in HTML!');
+    } else {
+        console.log('✓ Container #dashboardContent found');
+    }
+    
+    if (!loadingScreen) {
+        console.error('ERROR: #loading-screen element not found in HTML!');
+    } else {
+        console.log('✓ Loading screen found');
+    }
+    
     // Initialize AOS animations
     if (typeof AOS !== 'undefined') {
         AOS.init({ duration: 600, easing: 'ease-out-cubic', once: true });
+        console.log('✓ AOS initialized');
     }
     
     // Show loader for 800ms then load dashboard
     setTimeout(() => {
+        console.log('Loading complete, rendering dashboard...');
         hideLoadingScreen();
         loadDashboardOverview();
     }, 800);
@@ -55,49 +73,55 @@ function hideLoadingScreen() {
  * Load Dashboard Overview - MAIN LANDING PAGE
  */
 function loadDashboardOverview() {
-    const container = document.getElementById('dashboardContent');
-    if (!container) return;
+    console.log('loadDashboardOverview() called');
     
-    container.innerHTML = `
-        <!-- Welcome Section -->
-        <div class="welcome-section mb-6" data-aos="fade-down">
-            <h2 class="text-2xl font-bold mb-2">Welcome back, Trader 👋</h2>
-            <p class="text-gray-400">Phase 1 Challenge • Account Type: Evaluation</p>
-        </div>
-        
-        <!-- Statistics Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            ${generateBalanceCard()}
-            ${generateEquityCard()}
-            ${generateDailyLossCard()}
-            ${generateProfitTargetCard()}
-        </div>
-        
-        <!-- Charts Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+    const container = document.getElementById('dashboardContent');
+    if (!container) {
+        console.error('CRITICAL ERROR: Cannot find #dashboardContent container');
+        return;
+    }
+    
+    try {
+        container.innerHTML = `
+            <!-- Welcome Section -->
+            <div class="welcome-section mb-6" data-aos="fade-down">
+                <h2 class="text-2xl font-bold mb-2">Welcome back, Trader 👋</h2>
+                <p class="text-gray-400">Phase 1 Challenge • Account Type: Evaluation</p>
+            </div>
+            
+            <!-- Statistics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                ${generateBalanceCard()}
+                ${generateEquityCard()}
+                ${generateDailyLossCard()}
+                ${generateProfitTargetCard()}
+            </div>
+            
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up">
+                    <h3 class="text-lg font-semibold mb-4">Equity Curve</h3>
+                    <canvas id="equity-chart" height="200"></canvas>
+                </div>
+                <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-lg font-semibold mb-4">Win Rate Distribution</h3>
+                    <canvas id="winrate-chart" height="200"></canvas>
+                </div>
+            </div>
+            
+            <!-- Recent Trades Table -->
             <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up">
-                <h3 class="text-lg font-semibold mb-4">Equity Curve</h3>
-                <canvas id="equity-chart" height="200"></canvas>
-            </div>
-            <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-lg font-semibold mb-4">Win Rate Distribution</h3>
-                <canvas id="winrate-chart" height="200"></canvas>
-            </div>
-        </div>
-        
-        <!-- Recent Trades Table -->
-        <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up">
-            <h3 class="text-lg font-semibold mb-4">Recent Trades</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead>
-                        <tr class="text-left text-sm text-gray-400 border-b border-gray-700">
-                            <th class="pb-3 pr-4">Date</th>
-                            <th class="pb-3 pr-4">Pair</th>
-                            <th class="pb-3 pr-4">Direction</th>
-                            <th class="pb-3 pr-4">Lot Size</th>
-                            <th class="pb-3 pr-4">Profit/Loss</th>
-                            <th class="pb-3 pr-4">R:R</th>
+                <h3 class="text-lg font-semibold mb-4">Recent Trades</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="text-left text-sm text-gray-400 border-b border-gray-700">
+                                <th class="pb-3 pr-4">Date</th>
+                                <th class="pb-3 pr-4">Pair</th>
+                                <th class="pb-3 pr-4">Direction</th>
+                                <th class="pb-3 pr-4">Lot Size</th>
+                                <th class="pb-3 pr-4">Profit/Loss</th>
+                                <th class="pb-3 pr-4">R:R</th>
                         </tr>
                     </thead>
                     <tbody id="recent-trades-body">
@@ -108,11 +132,16 @@ function loadDashboardOverview() {
         </div>
     `;
     
+    console.log('Dashboard content rendered successfully');
+    
     // Initialize charts after DOM update
     setTimeout(() => {
         initEquityChart();
         initWinRateChart();
     }, 100);
+} catch (error) {
+    console.error('ERROR in loadDashboardOverview():', error);
+}
 }
 
 /**
