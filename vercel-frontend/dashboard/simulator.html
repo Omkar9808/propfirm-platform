@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equity Simulator | PropFirm Practice Platform</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/dashboard/dashboard.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#3b82f6',
+                        success: '#10b981',
+                        danger: '#ef4444',
+                        warning: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-primary text-white overflow-x-hidden">
+    
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar bg-secondary border-r border-gray-700 transition-all duration-300">
+            <div class="sidebar-header p-4 border-b border-gray-700">
+                <a href="/" class="flex items-center gap-3">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 40 40" fill="none" class="w-10 h-10">
+                            <path d="M8 28L16 20L22 26L32 14" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <circle cx="32" cy="14" r="3" fill="#3b82f6"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text text-xl font-bold">PropFirm<span class="text-accent">Practice</span></span>
+                </a>
+                <button id="close-sidebar-mobile" class="mobile-close-btn lg:hidden"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <nav class="sidebar-nav flex-1 py-4 overflow-y-auto">
+                <ul class="space-y-1 px-3">
+                    <li><button onclick="navigateTo('dashboard')" class="nav-item"><i class="fas fa-home nav-icon"></i><span class="nav-text">Dashboard</span></button></li>
+                    <li><button onclick="navigateTo('challenges')" class="nav-item"><i class="fas fa-trophy nav-icon"></i><span class="nav-text">My Challenges</span></button></li>
+                    <li><button onclick="navigateTo('metrics')" class="nav-item"><i class="fas fa-chart-bar nav-icon"></i><span class="nav-text">Trading Metrics</span></button></li>
+                    <li><button onclick="navigateTo('journal')" class="nav-item"><i class="fas fa-book nav-icon"></i><span class="nav-text">Trade Journal</span></button></li>
+                    <li><button onclick="navigateTo('simulator')" class="nav-item active"><i class="fas fa-calculator nav-icon"></i><span class="nav-text">Equity Simulator</span></button></li>
+                    <li><button onclick="navigateTo('risk')" class="nav-item"><i class="fas fa-shield-alt nav-icon"></i><span class="nav-text">Risk Calculator</span></button></li>
+                    <li><button onclick="navigateTo('leaderboard')" class="nav-item"><i class="fas fa-users nav-icon"></i><span class="nav-text">Leaderboard</span></button></li>
+                    <li><button onclick="navigateTo('rules')" class="nav-item"><i class="fas fa-book-open nav-icon"></i><span class="nav-text">Rules</span></button></li>
+                    <li><button onclick="navigateTo('settings')" class="nav-item"><i class="fas fa-cog nav-icon"></i><span class="nav-text">Account Settings</span></button></li>
+                    <li><button onclick="navigateTo('support')" class="nav-item"><i class="fas fa-headset nav-icon"></i><span class="nav-text">Support</span></button></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer p-4 border-t border-gray-700">
+                <button onclick="logout()" class="nav-item text-danger hover:bg-red-900/20">
+                    <i class="fas fa-sign-out-alt nav-icon"></i>
+                    <span class="nav-text">Logout</span>
+                </button>
+            </div>
+        </aside>
+        
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="topbar bg-secondary border-b border-gray-700 p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <button id="toggle-sidebar" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                        <h1 id="page-title" class="text-xl font-bold">Equity Simulator</h1>
+                    </div>
+                </div>
+            </header>
+            
+            <main class="flex-1 overflow-y-auto p-6">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Input Panel -->
+                    <div class="lg:col-span-1 bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-right">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <i class="fas fa-sliders-h text-accent"></i>
+                            Simulation Parameters
+                        </h3>
+                        
+                        <form id="simulator-form" class="space-y-4">
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Initial Balance ($)</label>
+                                <input type="number" id="initial-balance" value="10000" step="1000" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Risk per Trade (%)</label>
+                                <input type="number" id="risk-per-trade" value="1" step="0.1" min="0.1" max="5" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                                <p class="text-xs text-gray-500 mt-1">Recommended: 1-2%</p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Win Rate (%)</label>
+                                <input type="number" id="win-rate" value="60" step="1" min="0" max="100" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Risk Reward Ratio (R)</label>
+                                <input type="text" id="rr-ratio" value="1:2" placeholder="1:2" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-2">Number of Trades</label>
+                                <input type="number" id="num-trades" value="100" step="10" min="10" max="1000" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                            </div>
+                            
+                            <button type="submit" class="w-full py-3 bg-accent hover:bg-blue-600 rounded-lg font-semibold transition-all mt-6">
+                                <i class="fas fa-play mr-2"></i>Run Simulation
+                            </button>
+                        </form>
+                        
+                        <!-- Results Summary -->
+                        <div class="mt-6 pt-6 border-t border-gray-700">
+                            <h4 class="font-semibold mb-3">Projected Results</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-400">Final Balance:</span>
+                                    <span class="font-bold text-success" id="final-balance">$0.00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-400">Total Profit:</span>
+                                    <span class="font-bold" id="total-profit">$0.00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-400">Expected Wins:</span>
+                                    <span class="font-semibold" id="expected-wins">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-400">Expected Losses:</span>
+                                    <span class="font-semibold" id="expected-losses">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart Panel -->
+                    <div class="lg:col-span-2 bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-left">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i class="fas fa-chart-line text-success"></i>
+                            Projected Equity Curve
+                        </h3>
+                        <canvas id="equity-simulator-chart" height="100"></canvas>
+                        
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                            <div class="bg-primary/50 rounded-lg p-4">
+                                <p class="text-xs text-gray-400 mb-1">Growth %</p>
+                                <p class="text-xl font-bold text-success" id="growth-percent">0%</p>
+                            </div>
+                            <div class="bg-primary/50 rounded-lg p-4">
+                                <p class="text-xs text-gray-400 mb-1">Avg Win</p>
+                                <p class="text-xl font-bold text-success" id="avg-win">$0</p>
+                            </div>
+                            <div class="bg-primary/50 rounded-lg p-4">
+                                <p class="text-xs text-gray-400 mb-1">Avg Loss</p>
+                                <p class="text-xl font-bold text-danger" id="avg-loss">$0</p>
+                            </div>
+                            <div class="bg-primary/50 rounded-lg p-4">
+                                <p class="text-xs text-gray-400 mb-1">Profit Factor</p>
+                                <p class="text-xl font-bold" id="sim-profit-factor">0.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </main>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/components/sidebar.js"></script>
+    <script src="/components/simulator.js"></script>
+</body>
+</html>

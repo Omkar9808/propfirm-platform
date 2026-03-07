@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Calculator | PropFirm Practice Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/dashboard/dashboard.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#3b82f6',
+                        success: '#10b981',
+                        danger: '#ef4444'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-primary text-white overflow-x-hidden">
+    <div class="flex h-screen overflow-hidden">
+        <aside id="sidebar" class="sidebar bg-secondary border-r border-gray-700 transition-all duration-300">
+            <div class="sidebar-header p-4 border-b border-gray-700">
+                <a href="/" class="flex items-center gap-3">
+                    <div class="logo-icon"><svg viewBox="0 0 40 40" fill="none" class="w-10 h-10"><path d="M8 28L16 20L22 26L32 14" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="32" cy="14" r="3" fill="#3b82f6"/></svg></div>
+                    <span class="logo-text text-xl font-bold">PropFirm<span class="text-accent">Practice</span></span>
+                </a>
+                <button id="close-sidebar-mobile" class="mobile-close-btn lg:hidden"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="sidebar-nav flex-1 py-4 overflow-y-auto">
+                <ul class="space-y-1 px-3">
+                    <li><button onclick="navigateTo('dashboard')" class="nav-item"><i class="fas fa-home nav-icon"></i><span class="nav-text">Dashboard</span></button></li>
+                    <li><button onclick="navigateTo('challenges')" class="nav-item"><i class="fas fa-trophy nav-icon"></i><span class="nav-text">My Challenges</span></button></li>
+                    <li><button onclick="navigateTo('metrics')" class="nav-item"><i class="fas fa-chart-bar nav-icon"></i><span class="nav-text">Trading Metrics</span></button></li>
+                    <li><button onclick="navigateTo('journal')" class="nav-item"><i class="fas fa-book nav-icon"></i><span class="nav-text">Trade Journal</span></button></li>
+                    <li><button onclick="navigateTo('simulator')" class="nav-item"><i class="fas fa-calculator nav-icon"></i><span class="nav-text">Equity Simulator</span></button></li>
+                    <li><button onclick="navigateTo('risk')" class="nav-item active"><i class="fas fa-shield-alt nav-icon"></i><span class="nav-text">Risk Calculator</span></button></li>
+                    <li><button onclick="navigateTo('leaderboard')" class="nav-item"><i class="fas fa-users nav-icon"></i><span class="nav-text">Leaderboard</span></button></li>
+                    <li><button onclick="navigateTo('rules')" class="nav-item"><i class="fas fa-book-open nav-icon"></i><span class="nav-text">Rules</span></button></li>
+                    <li><button onclick="navigateTo('settings')" class="nav-item"><i class="fas fa-cog nav-icon"></i><span class="nav-text">Account Settings</span></button></li>
+                    <li><button onclick="navigateTo('support')" class="nav-item"><i class="fas fa-headset nav-icon"></i><span class="nav-text">Support</span></button></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer p-4 border-t border-gray-700"><button onclick="logout()" class="nav-item text-danger hover:bg-red-900/20"><i class="fas fa-sign-out-alt nav-icon"></i><span class="nav-text">Logout</span></button></div>
+        </aside>
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="topbar bg-secondary border-b border-gray-700 p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <button id="toggle-sidebar" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-bars text-xl"></i></button>
+                        <h1 id="page-title" class="text-xl font-bold">Risk Calculator</h1>
+                    </div>
+                </div>
+            </header>
+            <main class="flex-1 overflow-y-auto p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-1 bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-right">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><i class="fas fa-inputs text-accent"></i>Input Parameters</h3>
+                        <form class="space-y-4">
+                            <div><label class="block text-sm text-gray-400 mb-2">Account Balance ($)</label><input type="number" id="account-balance" value="10000" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none"></div>
+                            <div><label class="block text-sm text-gray-400 mb-2">Risk (%)</label><input type="number" id="risk-percent" value="1" step="0.1" min="0.1" max="5" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none"></div>
+                            <div><label class="block text-sm text-gray-400 mb-2">Stop Loss (pips)</label><input type="number" id="stop-loss-pips" value="20" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none"></div>
+                            <div><label class="block text-sm text-gray-400 mb-2">Lot Size</label><input type="number" id="lot-size" value="0.1" step="0.01" class="w-full bg-primary border border-gray-600 rounded-lg px-4 py-2 focus:border-accent focus:outline-none"></div>
+                        </form>
+                    </div>
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-secondary rounded-xl p-5 border border-gray-700" data-aos="fade-up"><p class="text-sm text-gray-400 mb-2">Risk Amount</p><p class="text-2xl font-bold text-danger" id="risk-amount">$100.00</p></div>
+                            <div class="bg-secondary rounded-xl p-5 border border-gray-700" data-aos="fade-up" data-aos-delay="100"><p class="text-sm text-gray-400 mb-2">Position Size</p><p class="text-2xl font-bold" id="position-size">0.50 lots</p></div>
+                            <div class="bg-secondary rounded-xl p-5 border border-gray-700" data-aos="fade-up" data-aos-delay="200"><p class="text-sm text-gray-400 mb-2">Pip Value</p><p class="text-2xl font-bold" id="pip-value">$1.00</p></div>
+                        </div>
+                        <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up">
+                            <h3 class="text-xl font-bold mb-4">Risk Reward Scenarios</h3>
+                            <div id="risk-reward-table"></div>
+                        </div>
+                        <div class="bg-secondary rounded-xl p-6 border border-gray-700" data-aos="fade-up"><h3 class="text-xl font-bold mb-4">Visual Breakdown</h3><canvas id="risk-chart" height="100"></canvas></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/components/sidebar.js"></script>
+    <script src="/components/risk.js"></script>
+</body>
+</html>
