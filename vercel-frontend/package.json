@@ -4,8 +4,9 @@
   "description": "Prop Firm Practice Platform - Vercel Deployment",
   "scripts": {
     "dev": "node server.js",
-    "build": "echo 'Build completed'",
-    "start": "node server.js"
+    "build": "echo 'Build completed successfully'",
+    "start": "node server.js",
+    "vercel-build": "echo 'Vercel build complete'"
   },
   "type": "module",
   "keywords": [

@@ -3,13 +3,21 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build"
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
+    {
       "src": "/dashboard(/?)",
-      "dest": "/dashboard/dashboard.html"
+      "dest": "/views/dashboard-new.html"
     },
     {
       "src": "/dashboard/journal(/?)",
@@ -24,8 +32,32 @@
       "dest": "/dashboard/risk.html"
     },
     {
+      "src": "/leaderboard(/?)",
+      "dest": "/views/leaderboard.html"
+    },
+    {
+      "src": "/pricing(/?)",
+      "dest": "/views/pricing.html"
+    },
+    {
+      "src": "/rules(/?)",
+      "dest": "/views/rules.html"
+    },
+    {
+      "src": "/login(/?)",
+      "dest": "/views/auth/login.html"
+    },
+    {
+      "src": "/register(/?)",
+      "dest": "/views/auth/register.html"
+    },
+    {
+      "src": "/checkout(/?)",
+      "dest": "/views/checkout.html"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/views/index.html"
     }
   ]
 }

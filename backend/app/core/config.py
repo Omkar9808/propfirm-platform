@@ -22,7 +22,12 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # CORS settings
-    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:8000"]
+    BACKEND_CORS_ORIGINS: List[str] = [
+        "http://localhost:3000",
+        "http://localhost:8000",
+        "https://your-domain.vercel.app",  # Replace with your actual Vercel domain
+        "https://your-custom-domain.com"   # Replace with your custom domain if any
+    ]
     
     @property
     def DATABASE_URL(self) -> str:
