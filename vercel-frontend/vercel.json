@@ -2,7 +2,8 @@
   "rewrites": [
     { "source": "/", "destination": "/views/index.html" },
     { "source": "/dashboard", "destination": "/views/dashboard-new.html" },
-    { "source": "/leaderboard", "destination": "/views/leaderboard.html" },
-    { "source": "/rules", "destination": "/views/rules.html" }
+    { "source": "/pricing", "destination": "/views/pricing.html" },
+    { "source": "/rules", "destination": "/views/rules.html" },
+    { "source": "/leaderboard", "destination": "/views/leaderboard.html" }
   ]
 }
