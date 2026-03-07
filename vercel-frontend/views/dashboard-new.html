@@ -154,6 +154,22 @@
         
         const { useState, useEffect, useContext, createContext } = React;
         
+        // STEP 1: Global mock dashboard data
+        const dashboardData = {
+            balance: 51240,
+            profitTarget: 8000,
+            profitProgress: 62,
+            dailyDrawdownRemaining: 1200,
+            maxDrawdownRemaining: 3400,
+            tradingDaysCompleted: 8,
+            tradingDaysTotal: 30,
+            trades: [
+                { symbol: "EURUSD", type: "BUY", entry: 1.0840, exit: 1.0860, profit: 200, status: "Closed" },
+                { symbol: "XAUUSD", type: "SELL", entry: 2320, exit: 2314, profit: 300, status: "Closed" },
+                { symbol: "GBPUSD", type: "BUY", entry: 1.2680, exit: null, profit: -120, status: "Open" }
+            ]
+        };
+        
         // Simple CSS-based animations instead of Framer Motion
         const fadeInUp = {
             animation: 'fadeInUp 0.5s ease-out forwards'
@@ -597,7 +613,7 @@
                                     onChange={(e) => account.switchAccount(e.target.value)}
                                     className="bg-gray-900 border border-gray-800 rounded-lg px-4 py-2 text-sm focus:border-[#00ff9d] focus:outline-none transition-colors cursor-pointer"
                                 >
-                                    {Object.entries(account.accounts).map(([key, acc]) => (
+                                    {Object.entries(account.accounts || {}).map(([key, acc]) => (
                                         <option key={key} value={key}>{acc.name}</option>
                                     ))}
                                 </select>
@@ -607,7 +623,7 @@
                                 <button className="relative text-gray-400 hover:text-white transition-colors">
                                     <i className="fas fa-bell text-xl"></i>
                                     <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-xs flex items-center justify-center">
-                                        {account.notifications.length}
+                                        {(account.notifications || []).length}
                                     </span>
                                 </button>
                                 
@@ -814,6 +830,9 @@
         
         // Notifications Component
         const NotificationsPanel = ({ notifications }) => {
+            // STEP 3: Defensive check for array
+            const notificationList = (notifications && Array.isArray(notifications)) ? notifications : [];
+            
             const getNotificationIcon = (type) => {
                 switch(type) {
                     case 'success': return 'fa-check-circle text-green-400';
@@ -835,7 +854,7 @@
                         Recent Notifications
                     </h3>
                     <div className="space-y-3">
-                        {notifications.map((notification, index) => (
+                        {notificationList.map((notification, index) => (
                             <div
                                 key={notification.id}
                                 initial={{ opacity: 0, x: -20 }}
@@ -1079,21 +1098,24 @@
             );
         };
         
-        // Mount the app
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-        
-        // Remove loading screen when React is ready
-        setTimeout(() => {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
-                loadingScreen.style.opacity = '0';
-                loadingScreen.style.transition = 'opacity 0.5s ease';
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }
-        }, 1000);
+        // STEP 5: Ensure scripts run after DOM loads
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mount the app
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(<App />);
+            
+            // Remove loading screen when React is ready
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                if (loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 1000);
+        });
     </script>
     
     <script src="/public/js/main.js"></script>
