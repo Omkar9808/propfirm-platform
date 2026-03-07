@@ -1,6 +1,19 @@
 /* ========================================
    Prop Firm Dashboard - Custom Styles
+   Updated Theme: Dark with Neon Green/Cyan
    ======================================== */
+
+:root {
+    --bg-primary: #0b0f1a;
+    --bg-secondary: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.05);
+    --primary-gradient: linear-gradient(135deg, #00ffa3, #00c3ff);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --success: #00ffa3;
+    --danger: #ff4757;
+    --accent: #00c3ff;
+}
 
 /* Loading Screen */
 .loading-screen {
@@ -9,7 +22,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0f172a;
+    background: var(--bg-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,8 +33,8 @@
 .spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid rgba(59, 130, 246, 0.1);
-    border-top: 4px solid #3b82f6;
+    border: 4px solid rgba(0, 255, 163, 0.1);
+    border-top: 4px solid #00ffa3;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -37,6 +50,8 @@
     min-width: 280px;
     position: relative;
     z-index: 50;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(10px);
 }
 
 .sidebar.collapsed {
@@ -48,6 +63,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .logo-icon {
@@ -56,6 +72,10 @@
 
 .logo-text {
     transition: opacity 0.3s ease;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .sidebar.collapsed .logo-text {
@@ -85,23 +105,41 @@
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #9ca3af;
+    color: var(--text-secondary);
     background: transparent;
     border: none;
     cursor: pointer;
     font-size: 0.95rem;
     text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: var(--primary-gradient);
+    opacity: 0.1;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::before {
+    width: 100%;
 }
 
 .nav-item:hover {
-    background: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
+    color: var(--success);
+    transform: translateX(4px);
 }
 
 .nav-item.active {
-    background: linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
-    color: #3b82f6;
-    border-left: 3px solid #3b82f6;
+    background: rgba(0, 255, 163, 0.1);
+    color: var(--success);
+    border-left: 3px solid var(--success);
 }
 
 .nav-icon {
@@ -109,6 +147,11 @@
     text-align: center;
     font-size: 1.1rem;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+    transform: scale(1.1);
 }
 
 .nav-text {
@@ -138,12 +181,15 @@
 .stat-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
 }
 
 .stat-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
-    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 12px 24px rgba(0, 255, 163, 0.15);
+    border-color: rgba(0, 255, 163, 0.3);
 }
 
 .icon-box {
@@ -156,12 +202,14 @@
 
 .progress-bar {
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .progress-fill {
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    background: var(--primary-gradient);
 }
 
 .progress-fill::after {
