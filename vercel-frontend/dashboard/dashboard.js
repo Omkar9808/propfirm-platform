@@ -326,3 +326,233 @@ function initWinRateChart() {
 // Make functions globally available
 window.loadDashboardOverview = loadDashboardOverview;
 window.hideLoadingScreen = hideLoadingScreen;
+window.loadChallengesPage = loadChallengesPage;
+window.loadMetricsPage = loadMetricsPage;
+window.loadLeaderboardPage = loadLeaderboardPage;
+window.loadRulesPage = loadRulesPage;
+window.loadSettingsPage = loadSettingsPage;
+window.loadSupportPage = loadSupportPage;
+
+/**
+ * Load Challenges Page
+ */
+function loadChallengesPage() {
+    console.log('Loading Challenges page...');
+    const container = document.getElementById('dashboardContent');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="challenges-page" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6">My Challenges</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-secondary rounded-lg p-6 border border-gray-700">
+                    <h3 class="text-xl font-bold mb-4">$10K Challenge</h3>
+                    <p class="text-gray-400 mb-4">Phase 1 - Active</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Balance:</span>
+                            <span class="font-semibold">$10,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Profit:</span>
+                            <span class="text-green-400">+$420 (4.2%)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Days Left:</span>
+                            <span class="font-semibold">23 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Load Metrics Page
+ */
+function loadMetricsPage() {
+    console.log('Loading Metrics page...');
+    const container = document.getElementById('dashboardContent');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="metrics-page" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6">Trading Metrics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-secondary rounded-lg p-6 border border-gray-700">
+                    <h3 class="text-xl font-bold mb-4">Performance Stats</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Total Trades:</span>
+                            <span class="font-semibold">47</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Win Rate:</span>
+                            <span class="text-green-400">68%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Profit Factor:</span>
+                            <span class="font-semibold">2.15</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Load Leaderboard Page
+ */
+function loadLeaderboardPage() {
+    console.log('Loading Leaderboard page...');
+    const container = document.getElementById('dashboardContent');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="leaderboard-page" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6">Global Leaderboard</h2>
+            <div class="bg-secondary rounded-lg p-6 border border-gray-700">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left border-b border-gray-700">
+                            <th class="pb-3">Rank</th>
+                            <th class="pb-3">Trader</th>
+                            <th class="pb-3">Profit</th>
+                            <th class="pb-3">Win Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-3 text-yellow-400 font-bold">#1</td>
+                            <td class="py-3">TradingMaster</td>
+                            <td class="py-3 text-green-400">+12%</td>
+                            <td class="py-3">78%</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-3 text-gray-400 font-bold">#2</td>
+                            <td class="py-3">ForexKing</td>
+                            <td class="py-3 text-green-400">+9%</td>
+                            <td class="py-3">72%</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-3 text-orange-400 font-bold">#3</td>
+                            <td class="py-3">RiskTaker</td>
+                            <td class="py-3 text-green-400">+8%</td>
+                            <td class="py-3">65%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Load Rules Page
+ */
+function loadRulesPage() {
+    console.log('Loading Rules page...');
+    const container = document.getElementById('dashboardContent');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="rules-page" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6">Challenge Rules</h2>
+            <div class="bg-secondary rounded-lg p-6 border border-gray-700">
+                <h3 class="text-xl font-bold mb-4">Key Rules</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                        <div>
+                            <strong>Profit Target:</strong> Achieve 8% profit target to pass Phase 1
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-exclamation-triangle text-yellow-400 mt-1"></i>
+                        <div>
+                            <strong>Daily Loss Limit:</strong> Maximum 5% loss per day
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-times-circle text-red-400 mt-1"></i>
+                        <div>
+                            <strong>Max Drawdown:</strong> Maximum 10% total drawdown
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-calendar text-blue-400 mt-1"></i>
+                        <div>
+                            <strong>Minimum Trading Days:</strong> Trade at least 10 different days
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Load Settings Page
+ */
+function loadSettingsPage() {
+    console.log('Loading Settings page...');
+    const container = document.getElementById('dashboardContent');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="settings-page" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6">Account Settings</h2>
+            <div class="bg-secondary rounded-lg p-6 border border-gray-700">
+                <h3 class="text-xl font-bold mb-4">Profile Information</h3>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-gray-400 mb-2">Email</label>
+                        <input type="email" value="trader@example.com" class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-2">Username</label>
+                        <input type="text" value="Trader123" class="w-full bg-primary border border-gray-700 rounded-lg px-4 py-2 focus:border-accent focus:outline-none">
+                    </div>
+                    <button type="submit" class="bg-accent text-black font-bold px-6 py-2 rounded-lg hover:bg-accent/80 transition-colors">
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Load Support Page
+ */
+function loadSupportPage() {
+    console.log('Loading Support page...');
+    const container = document.getElementById('dashboardContent');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="support-page" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-6">Support & Help</h2>
+            <div class="bg-secondary rounded-lg p-6 border border-gray-700">
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-gray-400 mb-4">Need help? We're here for you!</p>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-accent"></i>
+                        <span>support@propfirm.com</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-comments text-accent"></i>
+                        <span>Live Chat Available 24/7</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fab fa-discord text-accent"></i>
+                        <span>Join our Discord Community</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
