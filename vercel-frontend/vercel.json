@@ -2,14 +2,30 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.js",
-      "use": "@vercel/node"
+      "src": "package.json",
+      "use": "@vercel/static-build"
     }
   ],
   "routes": [
     {
+      "src": "/dashboard(/?)",
+      "dest": "/dashboard/dashboard.html"
+    },
+    {
+      "src": "/dashboard/journal(/?)",
+      "dest": "/dashboard/journal.html"
+    },
+    {
+      "src": "/dashboard/simulator(/?)",
+      "dest": "/dashboard/simulator.html"
+    },
+    {
+      "src": "/dashboard/risk(/?)",
+      "dest": "/dashboard/risk.html"
+    },
+    {
       "src": "/(.*)",
-      "dest": "api/index.js"
+      "dest": "/$1"
     }
   ]
 }
