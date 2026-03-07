@@ -22,6 +22,34 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <style>
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0E0E11;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 255, 157, 0.1);
+            border-top: 4px solid #00ff9d;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         /* Custom Animations */
         @keyframes slideIn {
             from { opacity: 0; transform: translateX(-20px); }
@@ -95,11 +123,32 @@
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div style="text-align: center;">
+            <div class="spinner" style="margin: 0 auto 20px;"></div>
+            <p style="color: #00ff9d; font-size: 18px;">Loading Dashboard...</p>
+        </div>
+    </div>
+    
     <div id="root"></div>
     
-    <script type="text/babel">
+    <script type="text/babel" data-presets="react">
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('Dashboard Error:', e.message);
+            document.getElementById('loading-screen').innerHTML = `
+                <div style="text-align: center; color: #ef4444;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 48px; margin-bottom: 20px;"></i>
+                    <h2>Error Loading Dashboard</h2>
+                    <p>${e.message}</p>
+                    <a href="/dashboard" class="btn btn-primary" style="margin-top: 20px; display: inline-block; padding: 10px 20px; background: #00ff9d; color: black; border-radius: 8px; text-decoration: none;">Reload Page</a>
+                </div>
+            `;
+        });
+        
         const { useState, useEffect, useContext, createContext, useMemo } = React;
-        const { motion, AnimatePresence } = window.Motion;
+        const { motion, AnimatePresence } = window.Motion || Motion;
         const { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } = Recharts;
         
         // Account Context
@@ -1032,6 +1081,18 @@
         // Mount the app
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
+        
+        // Remove loading screen when React is ready
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }
+        }, 1000);
     </script>
     
     <script src="/public/js/main.js"></script>
