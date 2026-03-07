@@ -42,6 +42,7 @@ app.get(/.*/, (req, res) => {
       filePath = path.join(__dirname, 'views', 'index.html');
       break;
     case '/dashboard':
+    case '/dashboard/':
       filePath = path.join(__dirname, 'views', 'dashboard-new.html');
       break;
     case '/dashboard/journal':
