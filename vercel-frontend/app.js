@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,8 +12,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from public directory
+// Serve static files from multiple directories
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/components', express.static(path.join(__dirname, 'components')));
+app.use('/dashboard', express.static(path.join(__dirname, 'dashboard')));
 
 // API Routes
 app.get('/api', (req, res) => {
@@ -38,6 +41,18 @@ app.get(/.*/, (req, res) => {
     case '/':
       filePath = path.join(__dirname, 'views', 'index.html');
       break;
+    case '/dashboard':
+      filePath = path.join(__dirname, 'views', 'dashboard-new.html');
+      break;
+    case '/dashboard/journal':
+      filePath = path.join(__dirname, 'dashboard', 'journal.html');
+      break;
+    case '/dashboard/simulator':
+      filePath = path.join(__dirname, 'dashboard', 'simulator.html');
+      break;
+    case '/dashboard/risk':
+      filePath = path.join(__dirname, 'dashboard', 'risk.html');
+      break;
     case '/pricing':
       filePath = path.join(__dirname, 'views', 'pricing.html');
       break;
@@ -53,17 +68,8 @@ app.get(/.*/, (req, res) => {
     case '/register':
       filePath = path.join(__dirname, 'views', 'auth', 'register.html');
       break;
-    case '/dashboard':
-      filePath = path.join(__dirname, 'dashboard', 'dashboard.html');
-      break;
-    case '/dashboard/journal':
-      filePath = path.join(__dirname, 'dashboard', 'journal.html');
-      break;
-    case '/dashboard/simulator':
-      filePath = path.join(__dirname, 'dashboard', 'simulator.html');
-      break;
-    case '/dashboard/risk':
-      filePath = path.join(__dirname, 'dashboard', 'risk.html');
+    case '/checkout':
+      filePath = path.join(__dirname, 'views', 'checkout.html');
       break;
     case '/accounts':
       filePath = path.join(__dirname, 'views', 'dashboard', 'accounts.html');
@@ -79,14 +85,6 @@ app.get(/.*/, (req, res) => {
       break;
     case '/affiliate':
       filePath = path.join(__dirname, 'views', 'dashboard', 'affiliate.html');
-      break;
-    case '/checkout':
-      filePath = path.join(__dirname, 'views', 'checkout.html');
-      break;
-    case '/account/12345':
-    case '/account/67890':
-    case '/account/11111':
-      filePath = path.join(__dirname, 'views', 'dashboard', 'account-detail.html');
       break;
     case '/admin/users':
       filePath = path.join(__dirname, 'views', 'admin', 'users.html');
@@ -120,7 +118,17 @@ app.get(/.*/, (req, res) => {
       break;
     default:
       // For any other route, try to find a matching HTML file
-      filePath = path.join(__dirname, 'views', req.path.slice(1) + '.html');
+      // First check views folder, then dashboard folder
+      const viewsPath = path.join(__dirname, 'views', req.path.slice(1) + '.html');
+      const dashboardPath = path.join(__dirname, 'dashboard', req.path.slice(1).replace('/dashboard/', '') + '.html');
+      
+      if (fs.existsSync(viewsPath)) {
+        filePath = viewsPath;
+      } else if (fs.existsSync(dashboardPath)) {
+        filePath = dashboardPath;
+      } else {
+        filePath = path.join(__dirname, 'views', 'index.html');
+      }
       break;
   }
   

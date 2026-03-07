@@ -164,5 +164,3 @@ logs/
 # Temp files
 *.tmp
 *.temp
-# Old frontend folder (backup)
-vercel-frontend/
