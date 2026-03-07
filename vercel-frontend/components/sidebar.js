@@ -117,18 +117,18 @@ function navigateTo(page) {
         activeBtn.classList.add('active');
     }
     
-    // Get main content area
-    const mainContent = document.getElementById('main-content');
-    if (!mainContent) return;
+    // Get main content container
+    const container = document.getElementById('dashboardContent');
+    if (!container) return;
     
     // Add fade out effect
-    mainContent.style.opacity = '0';
-    mainContent.style.transition = 'opacity 0.3s ease';
+    container.style.opacity = '0';
+    container.style.transition = 'opacity 0.3s ease';
     
     setTimeout(() => {
         // Load content based on page
         switch(page) {
-            case 'dashboard': loadDashboardPage(); break;
+            case 'dashboard': loadDashboardOverview(); break;
             case 'challenges': loadChallengesPage(); break;
             case 'metrics': loadMetricsPage(); break;
             case 'journal': window.location.href = '/dashboard/journal'; return;
@@ -138,12 +138,12 @@ function navigateTo(page) {
             case 'rules': loadRulesPage(); break;
             case 'settings': loadSettingsPage(); break;
             case 'support': loadSupportPage(); break;
-            default: loadDashboardPage();
+            default: loadDashboardOverview();
         }
         
         // Fade in
         setTimeout(() => {
-            mainContent.style.opacity = '1';
+            container.style.opacity = '1';
         }, 50);
         
         // Close mobile sidebar if open
@@ -160,11 +160,10 @@ function loadDashboardPage() {
     const pageTitle = document.getElementById('page-title');
     if (pageTitle) pageTitle.textContent = 'Dashboard Overview';
     
-    // Reinitialize charts
-    setTimeout(() => {
-        if (typeof initEquityChart === 'function') initEquityChart();
-        if (typeof initWinRateChart === 'function') initWinRateChart();
-    }, 100);
+    // Call the main dashboard overview function
+    if (typeof loadDashboardOverview === 'function') {
+        loadDashboardOverview();
+    }
 }
 
 /**
