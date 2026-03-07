@@ -60,6 +60,14 @@
             50% { box-shadow: 0 0 20px rgba(0, 255, 157, 0.6); }
         }
         
+        @keyframes progress-fill {
+            from { width: 0; }
+        }
+        
+        .animate-progress-fill {
+            animation: progress-fill 1.5s ease-out forwards;
+        }
+        
         .animate-slide-in {
             animation: slideIn 0.3s ease-out forwards;
         }
@@ -169,7 +177,7 @@
         // Account Context
         const AccountContext = createContext();
         
-        // Mock Data
+        // Mock Data - ERROR 4 FIX: Ensure mock data exists
         const accountsData = {
             account1: {
                 id: '#12345',
@@ -345,7 +353,8 @@
             const [sidebarOpen, setSidebarOpen] = useState(true);
             
             const switchAccount = (accountId) => {
-                if (accountsData[accountId]) {
+                // ERROR 3 FIX: Defensive check before accessing object
+                if (accountsData && accountsData[accountId]) {
                     setIsUpdating(true);
                     setSelectedAccountId(accountId);
                     setSelectedAccount({...accountsData[accountId], sidebarOpen});
@@ -690,7 +699,8 @@
         
         // Equity Chart Component
         const EquityChart = ({ data }) => {
-            const chartData = data || [];
+            // ERROR 3 FIX: Defensive check for null/undefined data
+            const chartData = (data && Array.isArray(data)) ? data : [];
             
             return (
                 <div
@@ -739,12 +749,12 @@
         
         // Recent Trades Table Component
         const RecentTradesTable = ({ trades }) => {
+            // ERROR 3 FIX: Defensive check for null/undefined data
+            const tradeList = (trades && Array.isArray(trades)) ? trades : [];
+            
             return (
                 <div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl p-6 border border-white/10"
+                    className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-xl p-6 border border-white/10 animate-fade-in-up"
                 >
                     <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                         <i className="fas fa-history text-[#0ea5e9]"></i>
@@ -764,7 +774,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {trades.map((trade, index) => (
+                                {tradeList.map((trade, index) => (
                                     <tr
                                         key={index}
                                         initial={{ opacity: 0, x: -20 }}
