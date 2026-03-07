@@ -62,6 +62,9 @@ app.get(/.*/, (req, res) => {
     case '/dashboard/history':
       filePath = path.join(__dirname, 'views', 'dashboard', 'history.html');
       break;
+    case '/test-dashboard':
+      filePath = path.join(__dirname, 'views', 'test-dashboard.html');
+      break;
     case '/accounts':
       filePath = path.join(__dirname, 'views', 'dashboard', 'accounts.html');
       break;

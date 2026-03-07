@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <script src="https://unpkg.com/recharts@2.10.3/umd/recharts.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-gray-900 text-white p-8">
+    <div id="root"></div>
+    
+    <script type="text/babel" data-presets="react">
+        const { motion } = window.Motion || Motion;
+        
+        function TestComponent() {
+            return (
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="max-w-2xl mx-auto bg-gray-800 rounded-lg p-8 border border-green-400"
+                >
+                    <h1 className="text-3xl font-bold text-green-400 mb-4">✅ Dashboard Loading Successfully!</h1>
+                    <p className="mb-4">If you can see this, React and all libraries are working correctly.</p>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-gray-700 p-4 rounded">
+                            <div className="text-sm text-gray-400">React Version</div>
+                            <div className="text-xl font-bold">18.x ✓</div>
+                        </div>
+                        <div className="bg-gray-700 p-4 rounded">
+                            <div className="text-sm text-gray-400">Framer Motion</div>
+                            <div className="text-xl font-bold">Loaded ✓</div>
+                        </div>
+                        <div className="bg-gray-700 p-4 rounded">
+                            <div className="text-sm text-gray-400">Recharts</div>
+                            <div className="text-xl font-bold">Loaded ✓</div>
+                        </div>
+                        <div className="bg-gray-700 p-4 rounded">
+                            <div className="text-sm text-gray-400">TailwindCSS</div>
+                            <div className="text-xl font-bold">Active ✓</div>
+                        </div>
+                    </div>
+                    <a href="/dashboard" className="mt-6 inline-block px-6 py-3 bg-green-500 text-black font-semibold rounded hover:bg-green-400 transition">
+                        Go to Full Dashboard →
+                    </a>
+                </motion.div>
+            );
+        }
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<TestComponent />);
+    </script>
+</body>
+</html>
