@@ -15,6 +15,12 @@
     <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
+    <!-- PropTypes for type checking -->
+    <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+    
+    <!-- Recharts for charts -->
+    <script src="https://unpkg.com/recharts/umd/Recharts.min.js"></script>
+    
     <style>
         /* Loading Screen */
         .loading-screen {
@@ -153,6 +159,17 @@
         });
         
         const { useState, useEffect, useContext, createContext } = React;
+        
+        // Destructure Recharts components
+        const {
+            ResponsiveContainer,
+            AreaChart,
+            Area,
+            XAxis,
+            YAxis,
+            CartesianGrid,
+            Tooltip
+        } = window.Recharts || {};
         
         // STEP 1: Global mock dashboard data
         const dashboardData = {
@@ -609,7 +626,7 @@
                                 </button>
                                 
                                 <select
-                                    value={account.id}
+                                    value={account.selectedAccountId}
                                     onChange={(e) => account.switchAccount(e.target.value)}
                                     className="bg-gray-900 border border-gray-800 rounded-lg px-4 py-2 text-sm focus:border-[#00ff9d] focus:outline-none transition-colors cursor-pointer"
                                 >
@@ -623,7 +640,7 @@
                                 <button className="relative text-gray-400 hover:text-white transition-colors">
                                     <i className="fas fa-bell text-xl"></i>
                                     <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-xs flex items-center justify-center">
-                                        {(account.notifications || []).length}
+                                        {account.notifications ? account.notifications.length : 0}
                                     </span>
                                 </button>
                                 
@@ -715,8 +732,7 @@
         
         // Equity Chart Component
         const EquityChart = ({ data }) => {
-            // ERROR 3 FIX: Defensive check for null/undefined data
-            const chartData = (data && Array.isArray(data)) ? data : [];
+            const chartData = Array.isArray(data) ? data : [];
             
             return (
                 <div
