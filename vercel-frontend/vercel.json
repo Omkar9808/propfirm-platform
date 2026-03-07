@@ -1,75 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/dashboard/dashboard.css",
-      "dest": "/dashboard/dashboard.css"
-    },
-    {
-      "src": "/dashboard/dashboard.js",
-      "dest": "/dashboard/dashboard.js"
-    },
-    {
-      "src": "/dashboard/journal(/?)",
-      "dest": "/dashboard/journal.html"
-    },
-    {
-      "src": "/dashboard/simulator(/?)",
-      "dest": "/dashboard/simulator.html"
-    },
-    {
-      "src": "/dashboard/risk(/?)",
-      "dest": "/dashboard/risk.html"
-    },
-    {
-      "src": "/dashboard(/?)",
-      "dest": "/dashboard/dashboard.html"
-    },
-    {
-      "src": "/leaderboard(/?)",
-      "dest": "/views/leaderboard.html"
-    },
-    {
-      "src": "/pricing(/?)",
-      "dest": "/views/pricing.html"
-    },
-    {
-      "src": "/rules(/?)",
-      "dest": "/views/rules.html"
-    },
-    {
-      "src": "/login(/?)",
-      "dest": "/views/auth/login.html"
-    },
-    {
-      "src": "/register(/?)",
-      "dest": "/views/auth/register.html"
-    },
-    {
-      "src": "/checkout(/?)",
-      "dest": "/views/checkout.html"
-    },
-    {
-      "src": "/",
-      "dest": "/views/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/views/$1"
-    }
+  "rewrites": [
+    { "source": "/", "destination": "/views/index.html" },
+    { "source": "/dashboard", "destination": "/dashboard/dashboard.html" },
+    { "source": "/pricing", "destination": "/views/pricing.html" },
+    { "source": "/rules", "destination": "/views/rules.html" },
+    { "source": "/leaderboard", "destination": "/views/leaderboard.html" }
   ]
 }
