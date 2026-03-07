@@ -228,8 +228,7 @@ function loadChallengesPage() {
     
     if (pageTitle) pageTitle.textContent = 'My Challenges';
     
-    const challenge = dashboardData.account;
-    const progress = dashboardData.challengeProgress;
+    const account = dashboardData.account;
     
     mainContent.innerHTML = `
         <div class="space-y-6" data-aos="fade-up">
@@ -237,8 +236,8 @@ function loadChallengesPage() {
             <div class="bg-secondary rounded-xl p-6 border border-gray-700">
                 <div class="flex items-center justify-between mb-6">
                     <div>
-                        <h3 class="text-2xl font-bold text-white">${challenge.challengeType}</h3>
-                        <p class="text-gray-400">${challenge.phase}</p>
+                        <h3 class="text-2xl font-bold text-white">$10K Challenge</h3>
+                        <p class="text-gray-400">Phase 1</p>
                     </div>
                     <div class="icon-box w-16 h-16 rounded-lg bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center">
                         <i class="fas fa-trophy text-green-400 text-2xl"></i>
@@ -250,40 +249,40 @@ function loadChallengesPage() {
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm text-gray-400">Profit Target</span>
-                            <span class="text-sm font-semibold text-green-400">${progress.profitTarget.percentage}%</span>
+                            <span class="text-sm font-semibold text-green-400">70%</span>
                         </div>
                         <div class="progress-bar bg-gray-700 rounded-full h-3">
-                            <div class="progress-fill bg-gradient-to-r from-green-500 to-emerald-500 h-full rounded-full" style="width: ${progress.profitTarget.percentage}%"></div>
+                            <div class="progress-fill bg-gradient-to-r from-green-500 to-emerald-500 h-full rounded-full" style="width: 70%"></div>
                         </div>
                     </div>
                     
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm text-gray-400">Daily Drawdown</span>
-                            <span class="text-sm font-semibold text-blue-400">${progress.dailyDrawdown.percentage}% used</span>
+                            <span class="text-sm font-semibold text-blue-400">20% used</span>
                         </div>
                         <div class="progress-bar bg-gray-700 rounded-full h-3">
-                            <div class="progress-fill bg-gradient-to-r from-blue-500 to-cyan-500 h-full rounded-full" style="width: ${progress.dailyDrawdown.percentage}%"></div>
+                            <div class="progress-fill bg-gradient-to-r from-blue-500 to-cyan-500 h-full rounded-full" style="width: 20%"></div>
                         </div>
                     </div>
                     
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm text-gray-400">Max Drawdown</span>
-                            <span class="text-sm font-semibold text-purple-400">${progress.maxDrawdown.percentage}% used</span>
+                            <span class="text-sm font-semibold text-purple-400">15% used</span>
                         </div>
                         <div class="progress-bar bg-gray-700 rounded-full h-3">
-                            <div class="progress-fill bg-gradient-to-r from-purple-500 to-pink-500 h-full rounded-full" style="width: ${progress.maxDrawdown.percentage}%"></div>
+                            <div class="progress-fill bg-gradient-to-r from-purple-500 to-pink-500 h-full rounded-full" style="width: 15%"></div>
                         </div>
                     </div>
                     
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm text-gray-400">Trading Days</span>
-                            <span class="text-sm font-semibold text-yellow-400">${challenge.currentTradingDays} / ${challenge.minimumTradingDays}</span>
+                            <span class="text-sm font-semibold text-yellow-400">3 / 5</span>
                         </div>
                         <div class="progress-bar bg-gray-700 rounded-full h-3">
-                            <div class="progress-fill bg-gradient-to-r from-yellow-500 to-orange-500 h-full rounded-full" style="width: ${progress.tradingDays.percentage}%"></div>
+                            <div class="progress-fill bg-gradient-to-r from-yellow-500 to-orange-500 h-full rounded-full" style="width: 60%"></div>
                         </div>
                     </div>
                 </div>
@@ -292,19 +291,19 @@ function loadChallengesPage() {
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                     <div class="text-center p-3 bg-gray-800/50 rounded-lg">
                         <p class="text-xs text-gray-400 mb-1">Profit Target</p>
-                        <p class="text-lg font-bold text-green-400">${challenge.profitTarget}%</p>
+                        <p class="text-lg font-bold text-green-400">${account.profitTarget}%</p>
                     </div>
                     <div class="text-center p-3 bg-gray-800/50 rounded-lg">
                         <p class="text-xs text-gray-400 mb-1">Daily Loss</p>
-                        <p class="text-lg font-bold text-red-400">${challenge.dailyLossLimit}%</p>
+                        <p class="text-lg font-bold text-red-400">${account.dailyLossLimit}%</p>
                     </div>
                     <div class="text-center p-3 bg-gray-800/50 rounded-lg">
                         <p class="text-xs text-gray-400 mb-1">Max Drawdown</p>
-                        <p class="text-lg font-bold text-orange-400">${challenge.maxDrawdown}%</p>
+                        <p class="text-lg font-bold text-orange-400">${account.maxDrawdown}%</p>
                     </div>
                     <div class="text-center p-3 bg-gray-800/50 rounded-lg">
                         <p class="text-xs text-gray-400 mb-1">Min Days</p>
-                        <p class="text-lg font-bold text-blue-400">${challenge.minimumTradingDays}</p>
+                        <p class="text-lg font-bold text-blue-400">5</p>
                     </div>
                 </div>
             </div>
@@ -399,11 +398,11 @@ function loadMetricsPage() {
                     <div class="space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-gray-400">Winning Trades</span>
-                            <span class="text-green-400 font-semibold">${analytics.wins}</span>
+                            <span class="text-green-400 font-semibold">32</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-gray-400">Losing Trades</span>
-                            <span class="text-red-400 font-semibold">${analytics.losses}</span>
+                            <span class="text-red-400 font-semibold">15</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-gray-400">Win Percentage</span>
@@ -495,7 +494,6 @@ function loadLeaderboardPage() {
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Trader</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Profit</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Win Rate</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Trades</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-700">
@@ -503,7 +501,7 @@ function loadLeaderboardPage() {
                                 <tr class="hover:bg-gray-800/30 transition-colors">
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="text-lg font-bold ${index === 0 ? 'text-yellow-400' : index === 1 ? 'text-gray-400' : index === 2 ? 'text-orange-400' : 'text-gray-500'}">
-                                            #${trader.rank}
+                                            #${index + 1}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -519,9 +517,6 @@ function loadLeaderboardPage() {
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="text-blue-400">${trader.winRate}%</span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="text-gray-400">${trader.trades}</span>
                                     </td>
                                 </tr>
                             `).join('')}
@@ -612,8 +607,6 @@ function loadSettingsPage() {
     
     if (pageTitle) pageTitle.textContent = 'Account Settings';
     
-    const user = dashboardData.userSettings;
-    
     mainContent.innerHTML = `
         <div class="space-y-6" data-aos="fade-up">
             <!-- Profile Settings -->
@@ -624,22 +617,12 @@ function loadSettingsPage() {
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
-                            <input type="text" value="${user.name}" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-accent">
+                            <input type="text" value="John Doe" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-accent">
                         </div>
                         
                         <div>
                             <label class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
-                            <input type="email" value="${user.email}" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-accent">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Phone Number</label>
-                            <input type="tel" value="${user.phone}" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-accent">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Country</label>
-                            <input type="text" value="${user.country}" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-accent">
+                            <input type="email" value="john@example.com" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-accent">
                         </div>
                     </div>
                     
@@ -693,8 +676,6 @@ function loadSupportPage() {
     
     if (pageTitle) pageTitle.textContent = 'Support Center';
     
-    const faq = dashboardData.faqData;
-    
     mainContent.innerHTML = `
         <div class="space-y-6" data-aos="fade-up">
             <!-- Quick Actions -->
@@ -729,12 +710,18 @@ function loadSupportPage() {
                 <h3 class="text-xl font-bold text-white mb-6">Frequently Asked Questions</h3>
                 
                 <div class="space-y-4">
-                    ${faq.map((item, index) => `
-                        <div class="border border-gray-700 rounded-lg p-4">
-                            <h4 class="text-lg font-semibold text-white mb-2">${item.question}</h4>
-                            <p class="text-gray-400">${item.answer}</p>
-                        </div>
-                    `).join('')}
+                    <div class="border border-gray-700 rounded-lg p-4">
+                        <h4 class="text-lg font-semibold text-white mb-2">How do I request a payout?</h4>
+                        <p class="text-gray-400">Navigate to the Payout section in your dashboard and submit a withdrawal request.</p>
+                    </div>
+                    <div class="border border-gray-700 rounded-lg p-4">
+                        <h4 class="text-lg font-semibold text-white mb-2">What is the maximum lot size?</h4>
+                        <p class="text-gray-400">For $10K accounts, it's 3.0 lots. For larger accounts, it scales proportionally.</p>
+                    </div>
+                    <div class="border border-gray-700 rounded-lg p-4">
+                        <h4 class="text-lg font-semibold text-white mb-2">Can I hold trades over the weekend?</h4>
+                        <p class="text-gray-400">Yes, you can hold trades over the weekend with sufficient margin.</p>
+                    </div>
                 </div>
             </div>
         </div>
