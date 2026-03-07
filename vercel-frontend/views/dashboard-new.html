@@ -180,16 +180,19 @@
 
         const { useState, useEffect, useContext, createContext } = React;
 
-        // Destructure Recharts components
-        const {
-            ResponsiveContainer,
-            AreaChart,
-            Area,
-            XAxis,
-            YAxis,
-            CartesianGrid,
-            Tooltip
-        } = window.Recharts || {};
+        // Destructure Recharts components safely
+        let ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip;
+        if (window.Recharts) {
+            ({
+                ResponsiveContainer,
+                AreaChart,
+                Area,
+                XAxis,
+                YAxis,
+                CartesianGrid,
+                Tooltip
+            } = window.Recharts);
+        }
 
         // STEP 1: Global mock dashboard data
         window.dashboardData = {
@@ -773,7 +776,7 @@
                         </div>
                         <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
                             <div
-                                className={`h-full rounded-full bg-gradient-to-r ${color.replace('text-', 'from-').replace('400', '400')} to-${color.replace('text-', '')} animate-progress-fill`}
+                                className="h-full rounded-full bg-gradient-to-r from-green-400 to-green-600 animate-progress-fill"
                                 style={{ width: `${percent}%`, transition: 'width 1.5s ease-out' }}
                             ></div>
                         </div>
@@ -798,34 +801,40 @@
                         Equity Performance
                     </h3>
                     <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <AreaChart data={chartData}>
-                                <defs>
-                                    <linearGradient id="colorEquity" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#00ff9d" stopOpacity={0.3}/>
-                                        <stop offset="95%" stopColor="#00ff9d" stopOpacity={0}/>
-                                    </linearGradient>
-                                </defs>
-                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                                <XAxis dataKey="date" stroke="#9ca3af" />
-                                <YAxis stroke="#9ca3af" />
-                                <Tooltip 
-                                    contentStyle={{ 
-                                        backgroundColor: 'rgba(17, 24, 39, 0.95)', 
-                                        border: '1px solid rgba(255,255,255,0.1)',
-                                        borderRadius: '8px'
-                                    }} 
-                                />
-                                <Area 
-                                    type="monotone" 
-                                    dataKey="equity" 
-                                    stroke="#00ff9d" 
-                                    strokeWidth={2}
-                                    fillOpacity={1} 
-                                    fill="url(#colorEquity)" 
-                                />
-                            </AreaChart>
-                        </ResponsiveContainer>
+                        {ResponsiveContainer ? (
+                            <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart data={chartData}>
+                                    <defs>
+                                        <linearGradient id="colorEquity" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#00ff9d" stopOpacity={0.3}/>
+                                            <stop offset="95%" stopColor="#00ff9d" stopOpacity={0}/>
+                                        </linearGradient>
+                                    </defs>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                                    <XAxis dataKey="date" stroke="#9ca3af" />
+                                    <YAxis stroke="#9ca3af" />
+                                    <Tooltip 
+                                        contentStyle={{ 
+                                            backgroundColor: 'rgba(17, 24, 39, 0.95)', 
+                                            border: '1px solid rgba(255,255,255,0.1)',
+                                            borderRadius: '8px'
+                                        }} 
+                                    />
+                                    <Area 
+                                        type="monotone" 
+                                        dataKey="equity" 
+                                        stroke="#00ff9d" 
+                                        strokeWidth={2}
+                                        fillOpacity={1} 
+                                        fill="url(#colorEquity)" 
+                                    />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        ) : (
+                            <div className="text-gray-400 text-center pt-20">
+                                Chart loading...
+                            </div>
+                        )}
                     </div>
                 </div>
             );
@@ -1381,21 +1390,19 @@
             root.render(<App />);
 
             // Remove loading screen when React is ready
-            setTimeout(() => {
+            requestAnimationFrame(() => {
                 const loadingScreen = document.getElementById('loading-screen');
                 if (loadingScreen) {
                     loadingScreen.style.opacity = '0';
                     loadingScreen.style.transition = 'opacity 0.5s ease';
                     setTimeout(() => {
-                        loadingScreen.style.display = 'none';
+                        loadingScreen.remove();
                     }, 500);
                 }
-            }, 1000);
+            });
         });
     </script>
 
-    <!-- Dashboard Scripts -->
-    <script src="/dashboard/dashboard.js"></script>
     <script src="/public/js/main.js"></script>
 </body>
 </html>
