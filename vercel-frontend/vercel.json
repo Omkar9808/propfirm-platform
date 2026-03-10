@@ -1,21 +1,29 @@
 {
-  "version": 2,
-  "functions": {
-    "api/index.js": {
-      "includeFiles": [
-        "../views/**",
-        "../public/**"
-      ]
-    }
-  },
   "routes": [
-    {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.js"
-    }
+    { "src": "^/$", "dest": "/views/index.html" },
+    { "src": "^/dashboard$", "dest": "/views/dashboard/index.html" },
+    { "src": "^/pricing$", "dest": "/views/pricing.html" },
+    { "src": "^/rules$", "dest": "/views/rules.html" },
+    { "src": "^/leaderboard$", "dest": "/views/leaderboard.html" },
+    { "src": "^/login$", "dest": "/views/auth/login.html" },
+    { "src": "^/register$", "dest": "/views/auth/register.html" },
+    { "src": "^/checkout$", "dest": "/views/checkout.html" },
+    { "src": "^/accounts$", "dest": "/views/dashboard/accounts.html" },
+    { "src": "^/buy$", "dest": "/views/dashboard/buy.html" },
+    { "src": "^/certificates$", "dest": "/views/dashboard/certificates.html" },
+    { "src": "^/settings$", "dest": "/views/dashboard/settings.html" },
+    { "src": "^/affiliate$", "dest": "/views/dashboard/affiliate.html" },
+    { "src": "^/admin$", "dest": "/views/admin/index.html" },
+    { "src": "^/admin/login$", "dest": "/views/admin/login.html" },
+    { "src": "^/admin/users$", "dest": "/views/admin/users.html" },
+    { "src": "^/admin/accounts$", "dest": "/views/admin/accounts.html" },
+    { "src": "^/admin/challenges$", "dest": "/views/admin/challenges.html" },
+    { "src": "^/admin/payments$", "dest": "/views/admin/payments.html" },
+    { "src": "^/admin/violations$", "dest": "/views/admin/violations.html" },
+    { "src": "^/admin/risk-monitor$", "dest": "/views/admin/risk-monitor.html" },
+    { "src": "^/admin/analytics$", "dest": "/views/admin/analytics.html" },
+    { "src": "^/admin/settings$", "dest": "/views/admin/settings.html" },
+    { "src": "^/public/(.*)", "dest": "/public/$1" },
+    { "src": "^/api/(.*)", "dest": "/api/index.js" }
   ]
 }
