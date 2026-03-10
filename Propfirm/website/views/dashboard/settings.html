@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Prop Firm Challenge</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>PropFirm<span class="highlight">Challenge</span></h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="/accounts"><i class="fas fa-wallet"></i> My Accounts</a></li>
+            <li><a href="/buy"><i class="fas fa-shopping-cart"></i> Buy Challenge</a></li>
+            <li><a href="/leaderboard"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+            <li><a href="/affiliate"><i class="fas fa-users"></i> Affiliate</a></li>
+            <li><a href="/certificates"><i class="fas fa-certificate"></i> Certificates</a></li>
+            <li class="active"><a href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>John Doe</span>
+            </div>
+        </div>
+
+        <!-- Settings Content -->
+        <div class="settings-container">
+            <h1>Account Settings</h1>
+            
+            <!-- Profile Settings -->
+            <div class="settings-section">
+                <h2>Profile Settings</h2>
+                <div class="settings-form">
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" value="John">
+                        </div>
+                        <div class="form-group half">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" value="Doe">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" value="john.doe@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" value="+1 (555) 123-4567">
+                    </div>
+                    
+                    <button class="btn btn-primary">Save Profile Changes</button>
+                </div>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="settings-section">
+                <h2>Security Settings</h2>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter current password">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group half">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password">
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary">Change Password</button>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-section">
+                <h2>Notification Preferences</h2>
+                <div class="notification-settings">
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <h3>Email Notifications</h3>
+                            <p>Receive important updates and alerts via email</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <h3>Push Notifications</h3>
+                            <p>Receive real-time alerts on your device</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <h3>Rule Violation Alerts</h3>
+                            <p>Immediate notifications when you violate rules</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <h3>Weekly Performance Reports</h3>
+                            <p>Receive weekly summary of your trading performance</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <h3>Marketing Communications</h3>
+                            <p>Receive promotional offers and updates</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Management -->
+            <div class="settings-section">
+                <h2>Account Management</h2>
+                <div class="account-management">
+                    <div class="management-item">
+                        <div class="management-info">
+                            <h3>Two-Factor Authentication</h3>
+                            <p>Add an extra layer of security to your account</p>
+                        </div>
+                        <button class="btn btn-secondary">Enable 2FA</button>
+                    </div>
+                    
+                    <div class="management-item">
+                        <div class="management-info">
+                            <h3>Export Account Data</h3>
+                            <p>Download all your trading data and account information</p>
+                        </div>
+                        <button class="btn btn-secondary">Export Data</button>
+                    </div>
+                    
+                    <div class="management-item danger-zone">
+                        <div class="management-info">
+                            <h3>Delete Account</h3>
+                            <p>Permanently delete your account and all associated data</p>
+                        </div>
+                        <button class="btn btn-danger" id="deleteAccountBtn">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MT5 Credentials -->
+            <div class="settings-section">
+                <h2>MT5 Credentials</h2>
+                <div class="mt5-credentials">
+                    <div class="credential-item">
+                        <label>Server</label>
+                        <p>PropFirmChallenge-Demo</p>
+                    </div>
+                    <div class="credential-item">
+                        <label>Login</label>
+                        <p>1234567</p>
+                    </div>
+                    <div class="credential-item">
+                        <label>Password</label>
+                        <div class="password-field">
+                            <span id="investorPassword">••••••••</span>
+                            <button class="btn btn-small" onclick="togglePassword()">Show</button>
+                        </div>
+                    </div>
+                    <div class="credential-item">
+                        <label>Investor Password</label>
+                        <div class="password-field">
+                            <span id="tradingPassword">••••••••</span>
+                            <button class="btn btn-small" onclick="toggleInvestorPassword()">Show</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/main.js"></script>
+    <script>
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            window.location.href = '/login';
+        });
+
+        // Toggle password visibility
+        let passwordVisible = false;
+        let investorPasswordVisible = false;
+
+        function togglePassword() {
+            const passwordEl = document.getElementById('tradingPassword');
+            const button = event.target;
+            
+            if (passwordVisible) {
+                passwordEl.textContent = '••••••••';
+                button.textContent = 'Show';
+                passwordVisible = false;
+            } else {
+                passwordEl.textContent = 'MT5Pass123!';
+                button.textContent = 'Hide';
+                passwordVisible = true;
+            }
+        }
+
+        function toggleInvestorPassword() {
+            const passwordEl = document.getElementById('investorPassword');
+            const button = event.target;
+            
+            if (investorPasswordVisible) {
+                passwordEl.textContent = '••••••••';
+                button.textContent = 'Show';
+                investorPasswordVisible = false;
+            } else {
+                passwordEl.textContent = 'Investor456!';
+                button.textContent = 'Hide';
+                investorPasswordVisible = true;
+            }
+        }
+
+        // Delete account confirmation
+        document.getElementById('deleteAccountBtn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to permanently delete your account? This action cannot be undone.')) {
+                alert('Account deletion process initiated. Please contact support for assistance.');
+            }
+        });
+    </script>
+</body>
+</html>

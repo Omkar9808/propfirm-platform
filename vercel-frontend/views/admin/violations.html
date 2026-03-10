@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violations | Admin Panel - Prop Firm Challenge</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Admin Sidebar Navigation -->
+    <div class="sidebar admin-sidebar">
+        <div class="sidebar-header">
+            <h2>PropFirm<span class="highlight">Admin</span></h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/admin"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="/admin/users"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="/admin/accounts"><i class="fas fa-wallet"></i> Accounts</a></li>
+            <li><a href="/admin/challenges"><i class="fas fa-tasks"></i> Challenges</a></li>
+            <li><a href="/admin/payments"><i class="fas fa-credit-card"></i> Payments</a></li>
+            <li class="active"><a href="/admin/violations"><i class="fas fa-exclamation-triangle"></i> Violations</a></li>
+            <li><a href="/admin/analytics"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a href="/"><i class="fas fa-arrow-left"></i> Back to Site</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content admin-main">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="admin-info">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin User</span>
+            </div>
+        </div>
+
+        <!-- Violations Content -->
+        <div class="admin-violations-container">
+            <div class="page-header">
+                <h1>Violations Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="manualOverrideBtn">
+                        <i class="fas fa-cog"></i> Manual Override
+                    </button>
+                    <button class="btn btn-secondary" id="exportViolationsBtn">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="statusFilter">Severity</label>
+                    <select id="statusFilter">
+                        <option value="all">All</option>
+                        <option value="critical">Critical</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="typeFilter">Violation Type</label>
+                    <select id="typeFilter">
+                        <option value="all">All Types</option>
+                        <option value="daily_loss">Daily Loss</option>
+                        <option value="max_dd">Max Drawdown</option>
+                        <option value="news_trading">News Trading</option>
+                        <option value="lot_size">Lot Size</option>
+                        <option value="copy_trading">Copy Trading</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="searchInput">Search</label>
+                    <input type="text" id="searchInput" placeholder="Search violations...">
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="violation-summary">
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Total Violations</h3>
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="card-value">42</div>
+                    <div class="card-change positive">-15% this week</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Critical</h3>
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="card-value">3</div>
+                    <div class="card-change warning">Requires attention</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Auto Resolved</h3>
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="card-value">32</div>
+                    <div class="card-change positive">76% success rate</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Manual Review</h3>
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="card-value">7</div>
+                    <div class="card-change">Pending review</div>
+                </div>
+            </div>
+
+            <!-- Violations Table -->
+            <div class="violations-table-container">
+                <table class="violations-table">
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th>User</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                            <th>Severity</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#12345</td>
+                            <td>John Doe</td>
+                            <td>Daily Loss</td>
+                            <td>-5.2%</td>
+                            <td><span class="severity critical">Critical</span></td>
+                            <td>Mar 1, 2026</td>
+                            <td><span class="status-badge failed">Failed</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="reviewViolation('1')">Review</button>
+                                <button class="btn btn-small btn-success" onclick="resolveViolation('1')">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#67890</td>
+                            <td>Sarah Miller</td>
+                            <td>News Trading</td>
+                            <td>NFP Release</td>
+                            <td><span class="severity high">High</span></td>
+                            <td>Feb 28, 2026</td>
+                            <td><span class="status-badge warning">Warning</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="reviewViolation('2')">Review</button>
+                                <button class="btn btn-small btn-success" onclick="resolveViolation('2')">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#11111</td>
+                            <td>Mike Roberts</td>
+                            <td>Lot Size</td>
+                            <td>1.5 lots (limit 1.0)</td>
+                            <td><span class="severity medium">Medium</span></td>
+                            <td>Feb 25, 2026</td>
+                            <td><span class="status-badge warning">Warning</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="reviewViolation('3')">Review</button>
+                                <button class="btn btn-small btn-success" onclick="resolveViolation('3')">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#22222</td>
+                            <td>Jane Kim</td>
+                            <td>Max Drawdown</td>
+                            <td>-10.5%</td>
+                            <td><span class="severity critical">Critical</span></td>
+                            <td>Feb 20, 2026</td>
+                            <td><span class="status-badge failed">Failed</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="reviewViolation('4')">Review</button>
+                                <button class="btn btn-small btn-success" onclick="resolveViolation('4')">Resolve</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#33333</td>
+                            <td>David Thompson</td>
+                            <td>Copy Trading</td>
+                            <td>External signal</td>
+                            <td><span class="severity high">High</span></td>
+                            <td>Feb 18, 2026</td>
+                            <td><span class="status-badge warning">Warning</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="reviewViolation('5')">Review</button>
+                                <button class="btn btn-small btn-success" onclick="resolveViolation('5')">Resolve</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="btn btn-secondary">Previous</button>
+                <span class="page-info">Page 1 of 8</span>
+                <button class="btn btn-secondary">Next</button>
+            </div>
+
+            <!-- Violation Detail Modal -->
+            <div id="violationDetailModal" class="modal-overlay hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Violation Details</h2>
+                        <button class="close-btn" onclick="closeViolationModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="violation-detail-view">
+                            <div class="violation-overview">
+                                <div class="overview-header">
+                                    <h3>Violation #1 - Daily Loss Exceeded</h3>
+                                    <span class="severity critical">Critical</span>
+                                </div>
+                                <div class="overview-details">
+                                    <div class="detail-item">
+                                        <span class="label">Account:</span>
+                                        <span class="value">#12345</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">User:</span>
+                                        <span class="value">John Doe</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Type:</span>
+                                        <span class="value">Daily Loss</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Value:</span>
+                                        <span class="value">-5.2%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Limit:</span>
+                                        <span class="value">5.0%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Date:</span>
+                                        <span class="value">March 1, 2026 2:30 PM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Status:</span>
+                                        <span class="value">Failed</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="violation-context">
+                                <h4>Context</h4>
+                                <div class="context-details">
+                                    <div class="context-item">
+                                        <span class="label">Account Balance:</span>
+                                        <span class="value">$5,000.00</span>
+                                    </div>
+                                    <div class="context-item">
+                                        <span class="label">Account Equity:</span>
+                                        <span class="value">$4,740.00</span>
+                                    </div>
+                                    <div class="context-item">
+                                        <span class="label">Previous Day High:</span>
+                                        <span class="value">$4,995.00</span>
+                                    </div>
+                                    <div class="context-item">
+                                        <span class="label">Trade Details:</span>
+                                        <span class="value">EURUSD SELL, 0.2 lots, SL hit</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="violation-actions">
+                                <h4>Resolution Actions</h4>
+                                <div class="action-buttons">
+                                    <button class="btn btn-danger" onclick="failAccount('12345')">Fail Account</button>
+                                    <button class="btn btn-success" onclick="resolveViolation('1')">Resolve Violation</button>
+                                    <button class="btn btn-warning" onclick="overrideViolation('1')">Manual Override</button>
+                                    <button class="btn btn-secondary" onclick="escalateViolation('1')">Escalate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/main.js"></script>
+    <script>
+        // Violation management functions
+        function reviewViolation(violationId) {
+            document.getElementById('violationDetailModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            // In a real app, this would fetch violation details
+        }
+
+        function closeViolationModal() {
+            document.getElementById('violationDetailModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function resolveViolation(violationId) {
+            if (confirm(`Are you sure you want to resolve violation #${violationId}?`)) {
+                // In a real app, this would make an API call
+                alert(`Violation #${violationId} has been resolved.`);
+                closeViolationModal();
+            }
+        }
+
+        function failAccount(accountId) {
+            if (confirm(`Are you sure you want to fail account #${accountId}?`)) {
+                // In a real app, this would make an API call
+                alert(`Account #${accountId} has been failed.`);
+                closeViolationModal();
+            }
+        }
+
+        function overrideViolation(violationId) {
+            if (confirm(`Are you sure you want to manually override violation #${violationId}?`)) {
+                // In a real app, this would make an API call
+                alert(`Violation #${violationId} has been manually overridden.`);
+                closeViolationModal();
+            }
+        }
+
+        function escalateViolation(violationId) {
+            if (confirm(`Are you sure you want to escalate violation #${violationId}?`)) {
+                // In a real app, this would make an API call
+                alert(`Violation #${violationId} has been escalated.`);
+                closeViolationModal();
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('violationDetailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeViolationModal();
+            }
+        });
+
+        // Manual override button
+        document.getElementById('manualOverrideBtn').addEventListener('click', function() {
+            alert('Manual override functionality would open modal in a real implementation');
+        });
+
+        // Export violations button
+        document.getElementById('exportViolationsBtn').addEventListener('click', function() {
+            alert('Exporting violation data...');
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            // In a real app, this would filter the table
+            console.log('Searching for:', this.value);
+        });
+    </script>
+</body>
+</html>

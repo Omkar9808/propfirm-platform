@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments | Admin Panel - Prop Firm Challenge</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Admin Sidebar Navigation -->
+    <div class="sidebar admin-sidebar">
+        <div class="sidebar-header">
+            <h2>PropFirm<span class="highlight">Admin</span></h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/admin"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="/admin/users"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="/admin/accounts"><i class="fas fa-wallet"></i> Accounts</a></li>
+            <li><a href="/admin/challenges"><i class="fas fa-tasks"></i> Challenges</a></li>
+            <li class="active"><a href="/admin/payments"><i class="fas fa-credit-card"></i> Payments</a></li>
+            <li><a href="/admin/violations"><i class="fas fa-exclamation-triangle"></i> Violations</a></li>
+            <li><a href="/admin/analytics"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+            <li><a href="/"><i class="fas fa-arrow-left"></i> Back to Site</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content admin-main">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="admin-info">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin User</span>
+            </div>
+        </div>
+
+        <!-- Payments Content -->
+        <div class="admin-payments-container">
+            <div class="page-header">
+                <h1>Payments Management</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="refundPaymentBtn">
+                        <i class="fas fa-undo"></i> Process Refund
+                    </button>
+                    <button class="btn btn-secondary" id="exportPaymentsBtn">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="statusFilter">Status</label>
+                    <select id="statusFilter">
+                        <option value="all">All</option>
+                        <option value="completed">Completed</option>
+                        <option value="pending">Pending</option>
+                        <option value="failed">Failed</option>
+                        <option value="refunded">Refunded</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="methodFilter">Payment Method</label>
+                    <select id="methodFilter">
+                        <option value="all">All Methods</option>
+                        <option value="card">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="stripe">Stripe</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="searchInput">Search</label>
+                    <input type="text" id="searchInput" placeholder="Search payments...">
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="payment-summary">
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Total Revenue</h3>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="card-value">$3,450.00</div>
+                    <div class="card-change positive">+22% this month</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Total Transactions</h3>
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="card-value">1,247</div>
+                    <div class="card-change positive">+12% this month</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Successful</h3>
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="card-value">1,223</div>
+                    <div class="card-change positive">98.2% success rate</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="card-header">
+                        <h3>Refunds</h3>
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <div class="card-value">24</div>
+                    <div class="card-change">1.8% refund rate</div>
+                </div>
+            </div>
+
+            <!-- Payments Table -->
+            <div class="payments-table-container">
+                <table class="payments-table">
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>User</th>
+                            <th>Challenge</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#TXN-123456789</td>
+                            <td>John Doe</td>
+                            <td>$5K Challenge</td>
+                            <td>$1.00</td>
+                            <td><span class="payment-method">Card</span></td>
+                            <td>Mar 1, 2026</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewPayment('#TXN-123456789')">View</button>
+                                <button class="btn btn-small btn-secondary" onclick="processRefund('#TXN-123456789')">Refund</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#TXN-987654321</td>
+                            <td>Sarah Miller</td>
+                            <td>$10K Challenge</td>
+                            <td>$2.00</td>
+                            <td><span class="payment-method">PayPal</span></td>
+                            <td>Feb 28, 2026</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewPayment('#TXN-987654321')">View</button>
+                                <button class="btn btn-small btn-secondary" onclick="processRefund('#TXN-987654321')">Refund</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#TXN-456789123</td>
+                            <td>Mike Roberts</td>
+                            <td>$25K Challenge</td>
+                            <td>$5.00</td>
+                            <td><span class="payment-method">Stripe</span></td>
+                            <td>Feb 25, 2026</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewPayment('#TXN-456789123')">View</button>
+                                <button class="btn btn-small btn-secondary" onclick="processRefund('#TXN-456789123')">Refund</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#TXN-789123456</td>
+                            <td>Jane Kim</td>
+                            <td>$5K Challenge</td>
+                            <td>$1.00</td>
+                            <td><span class="payment-method">Card</span></td>
+                            <td>Feb 20, 2026</td>
+                            <td><span class="status-badge refunded">Refunded</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewPayment('#TXN-789123456')">View</button>
+                                <button class="btn btn-small btn-success" disabled>Refunded</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#TXN-321654987</td>
+                            <td>David Thompson</td>
+                            <td>$10K Challenge</td>
+                            <td>$2.00</td>
+                            <td><span class="payment-method">PayPal</span></td>
+                            <td>Feb 18, 2026</td>
+                            <td><span class="status-badge failed">Failed</span></td>
+                            <td>
+                                <button class="btn btn-small" onclick="viewPayment('#TXN-321654987')">View</button>
+                                <button class="btn btn-small btn-warning" onclick="retryPayment('#TXN-321654987')">Retry</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="btn btn-secondary">Previous</button>
+                <span class="page-info">Page 1 of 24</span>
+                <button class="btn btn-secondary">Next</button>
+            </div>
+
+            <!-- Payment Detail Modal -->
+            <div id="paymentDetailModal" class="modal-overlay hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Payment Details</h2>
+                        <button class="close-btn" onclick="closePaymentModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payment-detail-view">
+                            <div class="payment-overview">
+                                <div class="overview-header">
+                                    <h3>Transaction #TXN-123456789</h3>
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                                <div class="overview-details">
+                                    <div class="detail-item">
+                                        <span class="label">User:</span>
+                                        <span class="value">John Doe (#12345)</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Challenge:</span>
+                                        <span class="value">$5K Challenge</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Amount:</span>
+                                        <span class="value">$1.00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Payment Method:</span>
+                                        <span class="value">Credit Card</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Transaction ID:</span>
+                                        <span class="value">#TXN-123456789</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Date:</span>
+                                        <span class="value">March 1, 2026 10:30 AM</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Status:</span>
+                                        <span class="value">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="payment-actions">
+                                <h4>Payment Actions</h4>
+                                <div class="action-buttons">
+                                    <button class="btn btn-danger" onclick="processRefund('#TXN-123456789')">Process Refund</button>
+                                    <button class="btn btn-secondary" onclick="cancelRefund('#TXN-123456789')">Cancel Refund</button>
+                                    <button class="btn btn-primary">View Transaction Logs</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/main.js"></script>
+    <script>
+        // Payment management functions
+        function viewPayment(transactionId) {
+            document.getElementById('paymentDetailModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            // In a real app, this would fetch payment details
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentDetailModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function processRefund(transactionId) {
+            if (confirm(`Are you sure you want to process a refund for transaction ${transactionId}?`)) {
+                // In a real app, this would make an API call
+                alert(`Refund processed for transaction ${transactionId}.`);
+                closePaymentModal();
+            }
+        }
+
+        function retryPayment(transactionId) {
+            if (confirm(`Are you sure you want to retry payment for transaction ${transactionId}?`)) {
+                // In a real app, this would make an API call
+                alert(`Payment retry initiated for transaction ${transactionId}.`);
+            }
+        }
+
+        function cancelRefund(transactionId) {
+            if (confirm(`Are you sure you want to cancel the refund for transaction ${transactionId}?`)) {
+                // In a real app, this would make an API call
+                alert(`Refund cancelled for transaction ${transactionId}.`);
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('paymentDetailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePaymentModal();
+            }
+        });
+
+        // Process refund button
+        document.getElementById('refundPaymentBtn').addEventListener('click', function() {
+            alert('Refund processing functionality would open modal in a real implementation');
+        });
+
+        // Export payments button
+        document.getElementById('exportPaymentsBtn').addEventListener('click', function() {
+            alert('Exporting payment data...');
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            // In a real app, this would filter the table
+            console.log('Searching for:', this.value);
+        });
+    </script>
+</body>
+</html>
