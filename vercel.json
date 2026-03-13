@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "src": "^/$", "dest": "/vercel-frontend/views/index.html" },
+    { "src": "^/dashboard$", "dest": "/vercel-frontend/views/dashboard/index.html" },
+    { "src": "^/pricing$", "dest": "/vercel-frontend/views/pricing.html" },
+    { "src": "^/rules$", "dest": "/vercel-frontend/views/rules.html" },
+    { "src": "^/leaderboard$", "dest": "/vercel-frontend/views/leaderboard.html" }
+  ]
+}
