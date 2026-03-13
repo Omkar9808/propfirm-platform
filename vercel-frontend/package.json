@@ -1,32 +1,31 @@
 {
-  "name": "propfirm-frontend-vercel",
-  "version": "1.0.0",
-  "description": "Prop Firm Practice Platform - Vercel Deployment",
+  "name": "propfirm-frontend-react",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server.js",
-    "build": "echo 'Build completed'",
-    "start": "NODE_ENV=production node server.js"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "keywords": [
-    "propfirm",
-    "trading",
-    "vercel",
-    "express"
-  ],
-  "author": "Prop Firm Team",
-  "license": "MIT",
   "dependencies": {
-    "@supabase/supabase-js": "^2.98.0",
-    "express": "^4.18.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
+    "axios": "^1.3.4"
   },
   "devDependencies": {
-    "@vercel/node": "^2.15.0",
-    "autoprefixer": "^10.4.27",
-    "postcss": "^8.5.8",
-    "tailwindcss": "^4.2.1"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.3.0"
   }
 }
