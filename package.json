@@ -2,7 +2,6 @@
   "name": "propfirm-platform",
   "version": "1.0.0",
   "description": "Prop Firm Practice Platform - Vercel Deployment",
-  "type": "module",
   "scripts": {
     "dev": "cd vercel-frontend && node server.js",
     "build": "echo 'Build completed'",
