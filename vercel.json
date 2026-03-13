@@ -1,9 +1,32 @@
 {
-  "routes": [
-    { "src": "^/$", "dest": "/vercel-frontend/views/index.html" },
-    { "src": "^/dashboard$", "dest": "/vercel-frontend/views/dashboard/index.html" },
-    { "src": "^/pricing$", "dest": "/vercel-frontend/views/pricing.html" },
-    { "src": "^/rules$", "dest": "/vercel-frontend/views/rules.html" },
-    { "src": "^/leaderboard$", "dest": "/vercel-frontend/views/leaderboard.html" }
+  "buildCommand": "cd vercel-frontend && npm run build",
+  "outputDirectory": "vercel-frontend/dist",
+  "installCommand": "cd vercel-frontend && npm install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ]
 }
