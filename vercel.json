@@ -1,29 +1,18 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "vercel-frontend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
-    { "src": "^/$", "dest": "/vercel-frontend/views/index.html" },
-    { "src": "^/dashboard$", "dest": "/vercel-frontend/views/dashboard/index.html" },
-    { "src": "^/pricing$", "dest": "/vercel-frontend/views/pricing.html" },
-    { "src": "^/rules$", "dest": "/vercel-frontend/views/rules.html" },
-    { "src": "^/leaderboard$", "dest": "/vercel-frontend/views/leaderboard.html" },
-    { "src": "^/login$", "dest": "/vercel-frontend/views/auth/login.html" },
-    { "src": "^/register$", "dest": "/vercel-frontend/views/auth/register.html" },
-    { "src": "^/checkout$", "dest": "/vercel-frontend/views/checkout.html" },
-    { "src": "^/accounts$", "dest": "/vercel-frontend/views/dashboard/accounts.html" },
-    { "src": "^/buy$", "dest": "/vercel-frontend/views/dashboard/buy.html" },
-    { "src": "^/certificates$", "dest": "/vercel-frontend/views/dashboard/certificates.html" },
-    { "src": "^/settings$", "dest": "/vercel-frontend/views/dashboard/settings.html" },
-    { "src": "^/affiliate$", "dest": "/vercel-frontend/views/dashboard/affiliate.html" },
-    { "src": "^/admin$", "dest": "/vercel-frontend/views/admin/index.html" },
-    { "src": "^/admin/login$", "dest": "/vercel-frontend/views/admin/login.html" },
-    { "src": "^/admin/users$", "dest": "/vercel-frontend/views/admin/users.html" },
-    { "src": "^/admin/accounts$", "dest": "/vercel-frontend/views/admin/accounts.html" },
-    { "src": "^/admin/challenges$", "dest": "/vercel-frontend/views/admin/challenges.html" },
-    { "src": "^/admin/payments$", "dest": "/vercel-frontend/views/admin/payments.html" },
-    { "src": "^/admin/violations$", "dest": "/vercel-frontend/views/admin/violations.html" },
-    { "src": "^/admin/risk-monitor$", "dest": "/vercel-frontend/views/admin/risk-monitor.html" },
-    { "src": "^/admin/analytics$", "dest": "/vercel-frontend/views/admin/analytics.html" },
-    { "src": "^/admin/settings$", "dest": "/vercel-frontend/views/admin/settings.html" },
-    { "src": "^/public/(.*)", "dest": "/vercel-frontend/public/$1" },
-    { "src": "^/api/(.*)", "dest": "/vercel-frontend/api/index.js" }
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "vercel-frontend/server.js"
+    }
   ]
 }
