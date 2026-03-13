@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "version": 2,
   "builds": [
     {
@@ -12,7 +13,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "server.js"
+      "dest": "vercel-frontend/server.js"
     }
   ]
 }
